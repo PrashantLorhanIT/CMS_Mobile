@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "872013473289",
+    "firebase_url": "https://ercms-a3aaf.firebaseio.com",
+    "project_id": "ercms-a3aaf",
+    "storage_bucket": "ercms-a3aaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872013473289:android:5cc70444c0792efc9fbad8",
+        "android_client_info": {
+          "package_name": "com.etihadrail.cms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872013473289-70uspiji83dt5olq3s03sk71hslrpl7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVQQIifuk-SKkki4Ni3bba4N__BiDHwfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872013473289-70uspiji83dt5olq3s03sk71hslrpl7u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

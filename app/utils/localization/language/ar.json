@@ -1,0 +1,250 @@
+
+  {
+    "common": {
+
+        "lists": "Lists"
+
+    },
+    "lists": {
+
+        "Dashboard": "Dashboard",
+        "Inbox": "Inbox",
+        "Search": "Search",
+        "Profile": "Profile",
+        "Logout": "Logout"
+
+    },
+
+    "LoginScreen": {
+
+      "welcome": "Correspondence Management System",
+      "username" : "اسم المستخدم",
+      "password": "كلمه السر",
+      "language": "لغة",
+      "login_button": "تسجيل الدخول",
+      "device_Msg":"تذكرني على هذا الجهاز",
+      "forgotPassword": "هل نسيت كلمة المرور",
+      "EmailId": "عنوان الايميل",
+      "Cancel": "إلغاء",
+      "Submit":  "إرسال"
+
+    },
+
+    "DashboardScreeen": {
+
+      "title": "لوحة القيادة",
+      "Incoming": " الوارد",
+      "Outgoing": "منفتح",
+      "DocumentType" : "نوع الوثيقة",
+      "Recipient": "مستلم",
+      "Sender": "مرسل",
+      "Contract": "عقد",
+      "TotalReceived": "إجمالي المتلقاة",
+      "TotalOpen": "إجمالي الفتح للرد",
+      "ResponseOverdue": "تأخر الرد أكثر من سبعة أيام",
+      "TotalClosed": "إجمالي مغلق تم الرد",
+      "TotalInfo": "إجمالي المعلومات فقط",
+      "TotalSent": "إجمالي المرسل",
+      "Summary": "ملخص",
+      "MonthlyTrend": "الاتجاه الشهري",
+      "OverdueMonthlyTrend": "متأخر - الاتجاه الشهري"
+
+    },
+
+    "InboxScreen": {
+
+        "title": "صندوق الوارد",
+        "Filter": "منقي",
+        "SearchReferenceNumber": "رقم المرجع",
+        "SelectCorrespondenceType": "انواع المراسلات",
+        "SearchSubject": "موضوع",
+        "SelectSender": "مرسل",
+        "SelectRecipient": "مستلم",
+        "SelectFromDate":  "من التاريخ",
+        "SelectToDate": "حتى الآن",
+
+        "ReferenceNumber": "رقم المرجع ",
+        "CorrespondenceType": "نوع المراسلات",
+        "Subject": "موضوع  ",
+        "Sender": "مرسل ",
+        "Recipient ": "مستلم ",
+        "Date": "تاريخ",
+        "Overdue": "متأخر",
+        "Cancel": "إلغاء",
+        "Ok": "حسنا",
+        "Submit":  "إرسال",
+        
+        "From":  "من عند",
+        "To": "إلى",
+        "DueDate": "تاريخ الاستحقاق",
+        "SubjectDetails": "موضوع",
+        "Query": "استعلام",
+        "Response": "استجابة",
+        "ActionItems": "خطوات العمل",
+        "TaskDetails": "تفاصيل المهمة",
+        "Approvals":  "الموافقات",
+
+        "AssignmentDate": "تاريخ التكليف",
+        "CompletionDate": "موعد الإكمال",
+        "ApprovalCommment": "تعليق الموافقة",
+        "ApprovalDueDate": "تاريخ استحقاق الموافقة",
+        
+        "CorrespondenceProperties": "خصائص المراسلات",
+        "Correspondence": "المراسلات",
+        "Distribute": "نشر",
+        "Approval":  "الموافقات",
+        "Originator": "المنشئ",
+        "DocumentType": "نوع الوثيقة",
+        "Template":  "قالب",
+        "ReplyRequired": "الرد مطلوب",
+        "ReplyRequiredDate": "مطلوب حسب التاريخ",
+        "Confidential": "هل هي سرية؟",
+        "MDL": "MDL",
+        "AdHoc": "مخصصة",
+        "CC": "CC",
+        "Reviewer": "المراجع",
+        "Approver": "الاعتمادات",
+
+        "CorrespondenceComment": "تعليق بالمراسلة ",
+
+        "MOMProperties": "MOM خصائص",
+        "MOMDetails": "MOM تفاصيل",
+        "Attendees": "الحضور",
+        "TaskComment": "المهمة / التعليق",
+        "Organizer": "منظم",
+        "AddedBy": "أضيفت من قبل",
+        "ProjectContract":  "معرف عقد المشروع",
+        "MeetingAgenda": "جدول أعمال الاجتماع",
+        "ActionBy": "عمل بواسطة",
+        "Name": "الاسم",
+        "Title": "العنوان",
+        "EmailID": "عنوان البريد الالكتروني",
+        "UnitOrganization": "الوحدة / المنظمة",
+        "DistributionChannel": "قناة التوزيع",
+
+        "MOMComment": "MOM تعليقات",
+        "AddComment": " تعليقات",
+
+        "RFIProperties": "RFI الخصائص",
+        "DRN": "DRN",
+        "InitiatorName": "اسم البادئ",
+    
+        "Status": "الحالة",
+        "RFIDate":  "تاريخ RFI",
+        "Contract": "عقد",
+        "Location": "موقعك",
+        "Discipline": "الضوابط",
+
+        "RFIComment": "تعليقاتRFI",
+        "FromName":  "من عند الاسم",
+        "ToName": "الاسم إلى",
+        "Comment": "تعليقات",
+        "CommentDate": "تاريخ التعليق ",
+        "Comments": "تعليقات",
+
+        "Approve": "الموافق",
+        "ApproveMessage": "هل أنت متأكد أنك تريد الموافقة",
+
+        "Initiate": "الشروع في ",
+        "InitiateMessage": "هل أنت متأكد من أنك تريد البدء",
+
+        "Forward":  "إلى الأمام",
+        "Pleaseselectforward": "الرجاء تحديد مستخدم لإعادة التوجيه",
+        "Selectusers": "اختر المستخدم",
+
+        "Delegate": "مندوب",
+        "Pleaseselectdelegate": "الرجاء تحديد مستخدم لتفويضه",
+        "Selectuser": "اختر المستخدم",
+
+        "Reject": "رفض",
+        "RejectMessage": "هل أنت متأكد أنك تريد الرفض؟ل",
+
+        "Calendar": "التقويم",
+        "SelectDate": "حدد تاريخ",
+        "Done": "منجز"
+
+    },
+
+    "SearchScreen":{
+
+      "title": "البحث",
+      "QuickSearch": "بحث سريع",
+      "AdvanceSearch":  "البحث المتقدم",
+      "ReferenceNumber": "رقم المرجع",
+      "SelectStatus": "الحالة",
+      "SelectSender": "مرسل",
+      "SelectRecipient": "مستلم",
+      "SelectFromDate": "من التاريخ",
+      "SelectToDate": "حتى الآن",
+      "Subject": "موضوع",
+      "SuperSearch": "سوبر بحث",
+      "Search": "البحث",
+      "SelectCorrespondencesource": "مصدر المراسلات",
+      "SelectProject/ContractIdentifier":  "معرف عقد المشروع",
+      "SelectReviewer":  "المراجع",
+      "SelectApprover": "الموافق",
+      "SelectReplyFromDate":  "مطلوب الرد من التاريخ",
+      "SelectReplyToDate": "الرد مطلوب حتى الآن",
+      "Confidential": "سري",
+      "ReplyRequired": "الرد مطلوب",
+      "Initiator": "البادئ",
+      "Query": "استعلام",
+      "Response":  "استجابة",
+      "SearchResults": "نتائج البحث",
+
+
+      "Correspondence": "المراسلات",
+      "Distribute": "نشر",
+      "Approval":  "الموافقات",
+      "MOM": "دقائق الاجتماع",
+      "Originator":  "المنشئ",
+      "DocumentType": "نوع الوثيقة",
+      "Sender": "مرسل",
+      "Contract": "عقد",
+      "Template":  "قالب",
+      "Recipient": "مستلم",
+      "ReplyRequiredDate": "مطلوب الرد حسب",
+      "MDL": "MDL",
+      "AdHoc": "مخصصة",
+      "To": "إلى",
+      "CC": "CC",
+      "Reviewer":  "المراجع",
+      "Approver": "الموافق",
+      "DRN": "DRN",
+      "AddedBy": "أضيفت من قبل",
+      "Status": "الحالة",
+      "Discipline": "الضوابط",
+      "Project/Contract":  "معرف عقد المشروع",
+      "DueDate": "تاريخ الاستحقاق",
+      "Location": "موقعك",
+      "MeetingAgenda": "جدول أعمال الاجتماع",
+      "TaskComment": "المهمة / التعليق",
+      "Attendees": "الحاضرين",
+      "RFI": "RFI",
+      "InitiatorName": "اسم البادئ",
+      "RFIDate":  "تاريخ RFI",
+      "Date": "تاريخ",
+      "SelectLocation": "اختر موقعا",
+      "SelectDiscipline": "حدد الانضباط",
+      "SelectContract": "حدد العقد"
+
+    },
+
+    "ProfileScreen": {
+
+      "title": "الملف الشخصي",
+      "Designation": "المهام",
+      "Role": "المهام",
+      "Company": "شركة",
+      "Email": "البريد الإلكتروني",
+      "ChangePassword": "غير كلمة السر",
+
+      "ChangePasswordTitle": "غير كلمة السر",
+      "UserName": "اسم المستخدم",
+      "OldPassword": "كلمة المرور القديمة",
+      "NewPassword": "كلمة مرور جديدة",
+      "ConfirmPassword": "تأكيد كلمة المرور",
+      "Cancel": "إلغاء",
+      "Submit": "إرسال"
+    }
+}

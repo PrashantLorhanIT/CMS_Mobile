@@ -10,8 +10,10 @@ export const getCorrespondeceList = (userId,token) => {
     return async (dispatch) => { 
         try {
             const params = {
-                UserID: userId
-            }
+                UserID: userId,
+                    PageSize: 20,
+                    PageNumber: 1
+           }
             console.log('Correspondence action parameter');
             console.log(params);
              dispatch(isAppLoading(true));

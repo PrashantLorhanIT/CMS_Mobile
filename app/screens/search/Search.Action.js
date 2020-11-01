@@ -39,7 +39,7 @@ export const getSearchDropDwonValues = (token) => {
             console.log('Search sender and recipent response');
             console.log(responseApprover);
             const jsonArrayRA = responseApprover['data'];
-            console.log('Search jsonArraysenderandRecipent Record Json');
+            console.log('Search Approver and rewiewer Record Json');
             console.log(jsonArrayRA);
             dispatch(setSearchDropDwonReviewerAndApprover(jsonArrayRA));
 

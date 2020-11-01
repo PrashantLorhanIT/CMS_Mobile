@@ -13,7 +13,18 @@ import {
     Input,
     Picker,
   } from 'native-base';
-import { StyleSheet,  SafeAreaView, StatusBar, ScrollView, KeyboardAvoidingView,ImageBackground, Image, Dimensions,TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  StatusBar,
+  ScrollView,
+  KeyboardAvoidingView,
+  ImageBackground,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  Alert
+} from 'react-native';
 import { FONT_SIZE_12, FONT_SIZE_16,FONT_WEIGHT_BOLD, FONT_SIZE_14, FONT_FAMILY_PT_REGULAR, FONT_FAMILY_PT_BOLD } from '../../utils/styles/typography';
 import HeaderTilte from '../../assets/image/headerTitle/HeaderTilte.jpg';
 import styles from './Search.style';
@@ -2524,29 +2535,29 @@ _renderSearchList =() => {
      if (this.state.searchType == "Correspondence") {
       this.props.setSearchDetailEmpty()
       const entityId = this.props.userProfile.ridEntityList;
-      // if (this.state.fromDate != '' && this.state.toDate != '') {
+       if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
         this.props.getQuickSearchCorrespondenceRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId, token);
-      //  } else {
-      //   this.props.getQuickSearchCorrespondenceRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, null, null, this.state.superSearch, entityId, token);
-      //  }
+        } else {
+
+          this.alertWithMessage('Please select at least one search parameter');
+        }
      } else if (this.state.searchType == "MOM") {
       this.props.setSearchDetailEmpty()
       const entityId = this.props.userProfile.ridEntityList;
-     // if (this.state.fromDate != '' && this.state.toDate != '') {
+      if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
         this.props.getQuickSearchMomRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId, token);
-      // } else {
-      //   this.props.getQuickSearchMomRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, new Date(), new Date(), this.state.superSearch, entityId, token);
+       } else {
+         this.alertWithMessage('Please select at least one search parameter');
 
-     // }
+      }
      } else if (this.state.searchType == "RFI") {
       this.props.setSearchDetailEmpty()
       const entityId = this.props.userProfile.ridEntityList;
-      //if (this.state.fromDate != '' && this.state.toDate != '') {
+      if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
         this.props.getQuickSearchRFIRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId, token);
-      // } else {
-      //   this.props.getQuickSearchRFIRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, new Date(), new Date(), this.state.superSearch, entityId, token);
-
-      // }
+       } else {
+         this.alertWithMessage('Please select at least one search parameter');
+       }
      } else {
 
      }  
@@ -2555,34 +2566,38 @@ _renderSearchList =() => {
     const token = this.props.loggedInUser.token;
     this.props.setSearchDetailEmpty()
     const entityId = this.props.userProfile.ridEntityList;
-    //if (this.state.corrFromDate != '' && this.state.corrToDate != '' && this.state.corrReplyFromDate != '' && this.state.corrReplyToDate != '')  {
-      this.props.getAdvanceSearchCorrespondenceRecordList(this.state.corrRefernceNumber, this.state.corrSubject, this.state.corrSource, this.state.corrProjectContract, this.state.corrSender, this.state.corrRecipent, 
-      this.state.corrReviewer, this.state.corrApprover, this.state.corrFromDateFormat, this.state.corrToDateFormat, this.state.corrReplyFromDateFormat, this.state.corrReplyToDateFormat, this.state.corrisReplyRequired, this.state.corrisConfidential, this.state.corrStatus, this.state.corrsuperSearch, entityId, token);
-    // } else if (this.state.corrFromDate != '' && this.state.corrToDate != '' && this.state.corrReplyFromDate == '' && this.state.corrReplyToDate == '') {
-    //   this.props.getAdvanceSearchCorrespondenceRecordList(this.state.corrRefernceNumber, this.state.corrSubject, this.state.corrSource, this.state.corrProjectContract, this.state.corrSender, this.state.corrRecipent, 
-    //     this.state.corrReviewer, this.state.corrApprover, this.state.corrFromDate, this.state.corrToDate, new Date(), new Date(), this.state.corrisReplyRequired, this.state.corrisConfidential, this.state.corrStatus, this.state.corrsuperSearch, entityId, token);
-    // } else if (this.state.corrFromDate == '' && this.state.corrToDate == '' && this.state.corrReplyFromDate != '' && this.state.corrReplyToDate != ''){
-    //   this.props.getAdvanceSearchCorrespondenceRecordList(this.state.corrRefernceNumber, this.state.corrSubject, this.state.corrSource, this.state.corrProjectContract, this.state.corrSender, this.state.corrRecipent, 
-    //     this.state.corrReviewer, this.state.corrApprover, new Date(), new Date(), this.state.corrReplyFromDate, this.state.corrReplyToDate, this.state.corrisReplyRequired, this.state.corrisConfidential, this.state.corrStatus, this.state.corrsuperSearch, entityId, token);
-    // } else {
-    //   this.props.getAdvanceSearchCorrespondenceRecordList(this.state.corrRefernceNumber, this.state.corrSubject, this.state.corrSource, this.state.corrProjectContract, this.state.corrSender, this.state.corrRecipent, 
-    //     this.state.corrReviewer, this.state.corrApprover, new Date(), new Date(), new Date(), new Date(), this.state.corrisReplyRequired, this.state.corrisConfidential, this.state.corrStatus, this.state.corrsuperSearch, entityId, token);
-    // }
-      
+      if (this.state.corrRefernceNumber != '' || this.state.corrSubject != '' || this.state.corrSource != '' || this.state.corrProjectContract != '' || this.state.corrSender != '' || this.state.corrRecipent != '' ||
+        this.state.corrReviewer != '' || this.state.corrApprover != '' || this.state.corrFromDateFormat != '' || this.state.corrToDateFormat != '' || this.state.corrReplyFromDateFormat != '' || this.state.corrReplyToDateFormat != '' || this.state.corrisReplyRequired != '' || this.state.corrisConfidential != '' || this.state.corrStatus != '' || this.state.corrsuperSearch != '') {
+        this.props.getAdvanceSearchCorrespondenceRecordList(this.state.corrRefernceNumber, this.state.corrSubject, this.state.corrSource, this.state.corrProjectContract, this.state.corrSender, this.state.corrRecipent, 
+          this.state.corrReviewer, this.state.corrApprover, this.state.corrFromDateFormat, this.state.corrToDateFormat, this.state.corrReplyFromDateFormat, this.state.corrReplyToDateFormat, this.state.corrisReplyRequired, this.state.corrisConfidential, this.state.corrStatus, this.state.corrsuperSearch, entityId, token);
+       } else {
+         this.alertWithMessage('Please select at least one search parameter');
+
+       }
   }
   goMomAdvaceSearchList () {
     const token = this.props.loggedInUser.token;
 
     this.props.setSearchDetailEmpty()
     const entityId = this.props.userProfile.ridEntityList;
-    this.props.getAdvanceSearchMomRecordList(this.state.momRefernceNumber, this.state.momSubject, this.state.momStatus, this.state.momInitiator, this.state.momSuperSearch, token);
+    if (this.state.momRefernceNumber != '' || this.state.momSubject != '' || this.state.momStatus != '' || this.state.momInitiator != '' || this.state.momSuperSearch != '') {
+      this.props.getAdvanceSearchMomRecordList(this.state.momRefernceNumber, this.state.momSubject, this.state.momStatus, this.state.momInitiator, this.state.momSuperSearch, token);
+    } else {
+      console.log('Please select search value');
+
+    }
   }
   goRfiAdvaceSearchList () {
     const token = this.props.loggedInUser.token;
 
     this.props.setSearchDetailEmpty()
     const entityId = this.props.userProfile.ridEntityList;
-    this.props.getAdvanceSearchRFIRecordList(this.state.rfiRefernceNumber, this.state.rfiSubject, this.state.rfiStatus, this.state.rfiInitiator, this.state.rfiQuery, this.state.rfiResponse, this.state.rfiSuperSearch, token);
+    if (this.state.rfiRefernceNumber != '' || this.state.rfiSubject != '' || this.state.rfiStatus != '' || this.state.rfiInitiator != '' || this.state.rfiQuery != '' || this.state.rfiResponse != '' || this.state.rfiSuperSearch != '') {
+      this.props.getAdvanceSearchRFIRecordList(this.state.rfiRefernceNumber, this.state.rfiSubject, this.state.rfiStatus, this.state.rfiInitiator, this.state.rfiQuery, this.state.rfiResponse, this.state.rfiSuperSearch, token);
+    } else {
+      console.log('Please select search value');
+
+    }
   }
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -2614,6 +2629,17 @@ _renderSearchList =() => {
     }
   }
   }
+  alertWithMessage = (message) =>
+    Alert.alert(
+      "",
+      message,
+      [{
+        text: "OK",
+        onPress: () => {}
+      }], {
+        cancelable: false
+      }
+    );
     render() {
   //     if (this.state.isQuickSearch == true) {
   //      if (this.props.searchDetails && this.props.searchDetails.length > 0) {

@@ -1,5 +1,18 @@
 import React, { useState, useEffect} from 'react';
-import { SafeAreaView, View, StatusBar, Image, Modal, Linking, Platform,TouchableOpacity, StyleSheet, ActivityIndicator,Dimensions} from 'react-native';
+import {
+    SafeAreaView,
+    View,
+    StatusBar,
+    Image,
+    Modal,
+    Linking,
+    Platform,
+    TouchableOpacity,
+    StyleSheet,
+    ActivityIndicator,
+    Dimensions,
+    AsyncStorage
+} from 'react-native';
 import { Container, Button, Text, Content, Header, Left, Icon, Body, Title, Right} from 'native-base';
 import { BlurView } from '@react-native-community/blur';
 import { SCALE_8, SCALE_18 } from '../../../utils/styles/spacing';
@@ -23,12 +36,14 @@ const SignaturePopup = (props) => {
     const  onButtonOKClick = () => {
         if (props.worlFlowName == 'Outgoing RFI' || props.worlFlowName == 'Incoming RFI') {
             const ridcorDetails = props.ridCorrDetail
-            const token = props.token
-            submitRFICheckSigned(ridcorDetails, token);
+            AsyncStorage.getItem('token').then((token) => {
+                submitRFICheckSigned(ridcorDetails, token);
+            });
         } else {
             const ridcorDetails = props.ridCorrDetail
-            const token = props.token
-            submitCorrespondenceCheckSigned(ridcorDetails, token);
+            AsyncStorage.getItem('token').then((token) => {
+                submitCorrespondenceCheckSigned(ridcorDetails, token);
+            });
         }
     };
    

@@ -9,8 +9,8 @@ export const CorrespondenceReducer = (state = initialState, action) => {
         case ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX:
             return {
                 ...state,
-                correspondenceInbox: action.payload,
-              //  correspondenceInbox: state.correspondenceInbox.concat(action.payload)
+                //correspondenceInbox: action.payload,
+                correspondenceInbox: state.correspondenceInbox.concat(action.payload)
             };
         case ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_SENDERANDRECIPENT:
                 return {

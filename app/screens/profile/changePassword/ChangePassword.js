@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions,Alert,ScrollView } from 'react-native';
+import {
+    View,
+    SafeAreaView,
+    Image,
+    Modal,
+    ImageBackground,
+    Dimensions,
+    Alert,
+    ScrollView,
+    AsyncStorage
+} from 'react-native';
 import { Container, Content, Button, Text, Icon, Input, Label, Textarea } from 'native-base';
 import HeaderTilte from '../../../assets/image/popup/popup.jpg';
 import { FONT_SIZE_12, FONT_SIZE_16, FONT_WEIGHT_BOLD, FONT_FAMILY_PT_BOLD,FONT_FAMILY_PT_REGULAR } from '../../../utils/styles/typography';
@@ -54,8 +64,9 @@ const ChangePassword = (props) => {
         } else if (newPassword != confirmPassword) {
             alertWithMessage('Please enter new password and confrom password');
         }
-        const token = props.token
-        submitChangePassword(userName, oldPassword, newPassword, token);   
+        AsyncStorage.getItem('token').then((token) => {
+            submitChangePassword(userName, oldPassword, newPassword, token);   
+        });
       };
 
     const  submitChangePassword =  (userName, oldPassword, newPassword, token) => {

@@ -3,10 +3,13 @@ import networkManager from '../../../services/network-manager/networkManager';
 import { constants } from '../../../utils/constants/constants';
 import  SecurityManager  from '../../../services/Keychain/SecurityManager';
 import { Reachability } from '../../../services/netInfo/Rechability';
-
-export const getCorrespondenceDetails = (userId,corrId,token) => {
+import {
+    AsyncStorage
+} from 'react-native';
+export const getCorrespondenceDetails = (userId, corrId) => {
     console.log('Correspondence details Action method Get details')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 UserID: userId,
@@ -29,15 +32,15 @@ export const getCorrespondenceDetails = (userId,corrId,token) => {
             console.log(responseAttachment);
             const jsonAttachment = responseAttachment['data'];
             dispatch(setCorrespondenceDetailsAttachment(jsonAttachment))
-            // const Tparam = {
-            //     CorrID:corrId,
-            //     UserID: userId,
-            // }
-            // const responseTask = await networkManager.getRequestHandler(constants.webService.methods.common.correspondenceTaskList, Tparam, token);
-            // console.log('User response Correspondence responseTask');
-            // console.log(responseTask);
-            // const jsonTask = responseTask['data'];
-            // dispatch(setCorrespondenceDetailTasks(jsonTask))
+            const Tparam = {
+                CorrID: corrId,
+                UserID: userId,
+            }
+            const responseTask = await networkManager.getRequestHandler(constants.webService.methods.common.correspondenceTaskList, Tparam, token);
+            console.log('User response Correspondence responseTask');
+            console.log(responseTask);
+            const jsonTask = responseTask['data'];
+            dispatch(setCorrespondenceDetailTasks(jsonTask))
             dispatch(getCorrespondenceDetailCorrespondenceProperties(corrId,token));
             dispatch(getCorrespondenceDetailComments(corrId, token));
             dispatch(getCorrespondenceDetailDistributeProperties(corrId, token));
@@ -49,9 +52,10 @@ export const getCorrespondenceDetails = (userId,corrId,token) => {
     }
 }
 
-export const getTaskDetails = (userId, taskId, token) => {
+export const getTaskDetails = (userId, taskId) => {
     console.log('Correspondence details Action method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 UserID: userId,
@@ -115,9 +119,10 @@ export const getTaskDetails = (userId, taskId, token) => {
         }
     }
 }
-export const getMomDetails = (userId, momId, token) => {
+export const getMomDetails = (userId, momId) => {
     console.log('Correspondence details Action method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 UserID: userId,
@@ -190,9 +195,10 @@ export const getMomDetails = (userId, momId, token) => {
         }
     }
 }
-export const getRFIDetails = (userId, rfiId, entityListId,workFlowTransactionID, token) => {
+export const getRFIDetails = (userId, rfiId, entityListId, workFlowTransactionID) => {
     console.log('RFI details Action method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 UserID: userId,
@@ -243,9 +249,10 @@ export const getRFIDetails = (userId, rfiId, entityListId,workFlowTransactionID,
         }
     }
 }
-export const getCorrespondenceCategory = (token) => {
+export const getCorrespondenceCategory = () => {
     console.log('Correspondence details Action method  getCorrespondenceCategory')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 
@@ -264,9 +271,10 @@ export const getCorrespondenceCategory = (token) => {
         }
     }
 }
-export const getCorrespondenceDetailsDelegateUserMasters = (entityID, token) => {
+export const getCorrespondenceDetailsDelegateUserMasters = (entityID) => {
     console.log('Correspondence details Action method  User Master')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 EntityID: entityID,
@@ -285,9 +293,10 @@ export const getCorrespondenceDetailsDelegateUserMasters = (entityID, token) => 
         }
     }
 }
-export const getCorrespondenceDetailsForwardUserMasters = (entityID, corrId, token) => {
+export const getCorrespondenceDetailsForwardUserMasters = (entityID, corrId) => {
     console.log('Correspondence details Action method Forward User Master')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 EntityID: entityID,
@@ -308,9 +317,10 @@ export const getCorrespondenceDetailsForwardUserMasters = (entityID, corrId, tok
     }
 }
 
-export const getRFIDetailsForwardUserMasters = (token) => {
+export const getRFIDetailsForwardUserMasters = () => {
     console.log('RFI details Action method Forward User Master')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                // EntityID: entityID,
@@ -333,11 +343,12 @@ export const getRFIDetailsForwardUserMasters = (token) => {
     }
 }
 
-export const submitCorrespondenceDetailApproveReject = (wftId, approve, comment,token) => {
+export const submitCorrespondenceDetailApproveReject = (wftId, approve, comment) => {
     console.log('Correspondence details Action method  Approve');
     
     return async (dispatch) => {
         dispatch(isAppLoading(true));
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 workFlowTransactionID:wftId,
@@ -362,9 +373,10 @@ export const submitCorrespondenceDetailApproveReject = (wftId, approve, comment,
     }
 }
 
-export const getCorrespondenceDetailComments = (corrId,token) => {
+export const getCorrespondenceDetailComments = (corrId) => {
     console.log('Correspondence details Action method  Comments');
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 CorrID:corrId,
@@ -386,9 +398,10 @@ export const getCorrespondenceDetailComments = (corrId,token) => {
     }
 }
 
-export const getCorrespondenceDetailCorrespondenceProperties= (corrId, token) => {
+export const getCorrespondenceDetailCorrespondenceProperties = (corrId) => {
     console.log('Correspondence details Action method  CorrespondenceProperties');
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 CorrID:corrId,   
@@ -414,9 +427,10 @@ export const getCorrespondenceDetailCorrespondenceProperties= (corrId, token) =>
     }
 }
 
-export const getCorrespondenceDetailDistributeProperties= (corrId, token) => {
+export const getCorrespondenceDetailDistributeProperties = (corrId) => {
     console.log('Correspondence details Action method  DistributeProperties');
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 CorrID:corrId,   
@@ -436,9 +450,10 @@ export const getCorrespondenceDetailDistributeProperties= (corrId, token) => {
         }
     }
 }
-export const getCorrespondenceDetailcorrespondenceWorkFlow= (workFlowId, token) => {
+export const getCorrespondenceDetailcorrespondenceWorkFlow = (workFlowId) => {
     console.log('Correspondence details Action method  correspondenceWorkFlow');
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 WorkflowID: workFlowId,   

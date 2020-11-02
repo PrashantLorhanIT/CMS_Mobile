@@ -3,15 +3,18 @@ import networkManager from '../../services/network-manager/networkManager';
 import { constants } from '../../utils/constants/constants';
 import  SecurityManager  from '../../services/Keychain/SecurityManager';
 import { Reachability } from '../../services/netInfo/Rechability';
-
+import {
+    AsyncStorage
+} from 'react-native';
 export const setSearchDetailEmpty = () => {
     return async (dispatch) => {
         dispatch(setSearchDetails(null));
     }
 }
-export const getSearchDropDwonValues = (token) => {
+export const getSearchDropDwonValues = () => {
     console.log('Search drop dwon Action method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try { 
             const params = {
             } 
@@ -66,9 +69,10 @@ export const getSearchDropDwonValues = (token) => {
         }
     }
 }
-export const getQuickSearchCorrespondenceRecordList = (referencenumber, subject, status, senderRidEntityList, recipientRidEntityList, correspondenceFromDate, correspondenceToDate,superSearch, entityId, token) => {
+export const getQuickSearchCorrespondenceRecordList = (referencenumber, subject, status, senderRidEntityList, recipientRidEntityList, correspondenceFromDate, correspondenceToDate, superSearch, entityId) => {
     console.log('getQuickSearchCorrespondenceRecordList Action method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try { 
             if (superSearch != '') {
                 const params = {
@@ -116,9 +120,10 @@ export const getQuickSearchCorrespondenceRecordList = (referencenumber, subject,
     }
 }
 
-export const getQuickSearchMomRecordList = (referencenumber, subject, status, senderRidEntityList, recipientRidEntityList, momFromDate, momToDate, superSearch, entityId, token) => {
+export const getQuickSearchMomRecordList = (referencenumber, subject, status, senderRidEntityList, recipientRidEntityList, momFromDate, momToDate, superSearch, entityId) => {
     console.log('Search Mom Action method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try { 
             if (superSearch != '') {
                 const params = {
@@ -170,9 +175,10 @@ export const getQuickSearchMomRecordList = (referencenumber, subject, status, se
     }
 }
 
-export const getQuickSearchRFIRecordList = (referencenumber, subject, status, senderRidEntityList, recipientRidEntityList, rfiFromDate, rfiToDate, superSearch, entityId, token) => {
+export const getQuickSearchRFIRecordList = (referencenumber, subject, status, senderRidEntityList, recipientRidEntityList, rfiFromDate, rfiToDate, superSearch, entityId) => {
     console.log('Search getQuickSearchRFIRecordList Action method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try { 
             if (superSearch != '') {
                 const params = {
@@ -221,9 +227,10 @@ export const getQuickSearchRFIRecordList = (referencenumber, subject, status, se
     }
 }
 export const getAdvanceSearchCorrespondenceRecordList = (referencenumber, subject, ridCorrCategory, ridContractlist, senderRidEntityList, recipientRidEntityList, 
-    reviwer, approver, correspondenceFromDate, correspondenceToDate, replyrequiredbyFromdate, replyrequiredbyTodate, isreplyrequired, isconfidential, status, superSearch, entityId, token) => {
+    reviwer, approver, correspondenceFromDate, correspondenceToDate, replyrequiredbyFromdate, replyrequiredbyTodate, isreplyrequired, isconfidential, status, superSearch, entityId) => {
     console.log('Advance Search Action Correspondence method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try { 
             if (superSearch != '') {
                 const params = {
@@ -280,9 +287,10 @@ export const getAdvanceSearchCorrespondenceRecordList = (referencenumber, subjec
     }
 }
 
-export const getAdvanceSearchMomRecordList = (referencenumber, subject, status, initiator, superSearch, token) => {
+export const getAdvanceSearchMomRecordList = (referencenumber, subject, status, initiator, superSearch) => {
     console.log(' Advance Search Mom Action method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try { 
             if (superSearch != '') {
                 const params = {
@@ -331,9 +339,10 @@ export const getAdvanceSearchMomRecordList = (referencenumber, subject, status, 
         }
     }
 }
-export const getAdvanceSearchRFIRecordList = (referencenumber, subject, status, initiator, query, responses, superSearch, token) => {
+export const getAdvanceSearchRFIRecordList = (referencenumber, subject, status, initiator, query, responses, superSearch) => {
     console.log('Search Action method')
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try { 
             if (superSearch != '') {
                 const params = { 

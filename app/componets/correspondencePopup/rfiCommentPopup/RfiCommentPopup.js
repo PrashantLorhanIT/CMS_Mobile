@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions, Alert } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Image,
+  Modal,
+  ImageBackground,
+  Dimensions,
+  Alert,
+  AsyncStorage
+} from 'react-native';
 import { Container, Content, Button, Text, Icon, Input, Label, Textarea } from 'native-base';
 import HeaderTilte from '../../../assets/image/popup/popup.jpg';
 import { FONT_SIZE_12, FONT_SIZE_16, FONT_WEIGHT_BOLD, FONT_FAMILY_PT_BOLD,FONT_FAMILY_PT_REGULAR } from '../../../utils/styles/typography';
@@ -29,7 +38,9 @@ const RfiCommentPopup = (props) => {
       };
       const onSubmitClick = () => {
         const token = props.token;
-        submitRFIcomment(token);
+        AsyncStorage.getItem('token').then((token) => {
+          submitRFIcomment(token);
+        });
       };
 
       const  submitRFIcomment =  (token) => {
@@ -40,10 +51,10 @@ const RfiCommentPopup = (props) => {
                 ridRficomment: 0,
                 comments:comment,
                 isactive: 'Y',
-                hasattachment: 'null',
+              //  hasattachment: 'null',
                 ridRfidetails: props.ridRfiDetails,
                 forRidRfidetails: 0,
-                  commentTime: moment(new Date()).format('yyyy-MM-DDTHH:MM:ss'),
+                 // commentTime: moment(new Date()).format('yyyy-MM-DDTHH:MM:ss'),
                 //commenttime: 'null'
             }
 

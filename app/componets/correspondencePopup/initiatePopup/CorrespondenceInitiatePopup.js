@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
-import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions,Alert, ScrollView } from 'react-native';
-import { Container, Content, Button, Text, Icon, Input, Label, Textarea } from 'native-base';
+import {
+  View,
+  SafeAreaView,
+  Image,
+  Modal,
+  ImageBackground,
+  Dimensions,
+  Alert,
+  ScrollView,
+  AsyncStorage
+} from 'react-native';
+import {
+  Container,
+  Button,
+  Text,
+  Textarea
+} from 'native-base';
 import HeaderTilte from '../../../assets/image/popup/popup.jpg';
-import { FONT_SIZE_12, FONT_SIZE_16, FONT_WEIGHT_BOLD, FONT_FAMILY_PT_BOLD,FONT_FAMILY_PT_REGULAR } from '../../../utils/styles/typography';
+import {
+  FONT_FAMILY_PT_BOLD,
+  FONT_FAMILY_PT_REGULAR
+} from '../../../utils/styles/typography';
 const screenWidth = Dimensions.get("window").width;
-import { BlurView } from "@react-native-community/blur";
-import Loader from '../../../componets/loder/Loader';
-import { ActionTypes, appHasError, isAppLoading, isInternetReachable } from '../../../redux/index';
 import { constants } from '../../../utils/constants/constants';
 import { Reachability } from '../../../services/netInfo/Rechability';
 import axios from 'axios'
@@ -33,8 +48,9 @@ const CorrespondenceInitiatePopup = (props) => {
         const wrokFlowTransactionId = props.workFTID;
         const Approve = "Y";
         const comments = comment
-        const token = props.token
-        submitCorrespondenceDetailApproveReject(wrokFlowTransactionId, Approve, comments, token);   
+        AsyncStorage.getItem('token').then((token) => {
+          submitCorrespondenceDetailApproveReject(wrokFlowTransactionId, Approve, comments, token);   
+        });
       };
 
     const  submitCorrespondenceDetailApproveReject =  (wftId, approve, comment, token) => {
@@ -58,10 +74,8 @@ const CorrespondenceInitiatePopup = (props) => {
                     console.log(res);
                     console.log(res.data)
                     if (res.data.statusCode == "200") {
-                         //setIsback(true);
                       alertWithMessage("Initiated sucessfully");  
-                    }   else {
-                     // setIsback(false);
+                    } else {
                     } 
                 })
                 .catch(error => console.log(error));

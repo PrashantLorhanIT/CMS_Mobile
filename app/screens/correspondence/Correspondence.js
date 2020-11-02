@@ -35,6 +35,7 @@ import * as config from '../../utils/localization/config/i18n';
 class Correspondence extends Component {
   constructor(props) {
     super(props);
+    this.page = 1;
     this.state = {
        isRefreshing: false,
        search: '',
@@ -52,12 +53,11 @@ class Correspondence extends Component {
 componentDidMount = () => {
   
   const userId = this.props.userProfile.ridUsermaster;
-  const token = this.props.loggedInUser.token;
-  this.props.getSenderAndRecipentList(token);
+  this.props.getSenderAndRecipentList();
  
   if (this.props.correspondenceInbox.length == 0) {
    
-    this.props.getCorrespondeceList(userId,token);
+    this.props.getCorrespondeceList(userId);
       this.setState({
           isRefreshing: true,
           correspondenceData: this.props.correspondenceInbox,
@@ -118,8 +118,7 @@ onValueOverdueChange =(value) => {
 onRefresh = () => {
   console.log('onRefresh');
   const userId = this.props.userProfile.ridUsermaster;
-  const token = this.props.loggedInUser.token;
-  this.props.getCorrespondeceList(userId, token);
+  this.props.getCorrespondeceList(userId);
     this.setState({
       isRefreshing: true,
     });
@@ -167,9 +166,7 @@ searchFilterRefernceNumberFunction = text => {
 
   const newData = this.state.inMemorycorrespondenceData.filter(item => {   
     
-    const itemData = `${item.correspondenceReferenceNumber.toUpperCase()} || ${item.subject.toUpperCase()} || ${item.workflowName.toUpperCase()}` 
-                      
-
+    const itemData = `${item.correspondenceReferenceNumber.toUpperCase()} || ${item.subject.toUpperCase()} || ${item.workflowName.toUpperCase()}`
      const textData = text.toUpperCase();      
      return itemData.indexOf(textData) > -1;    
   });
@@ -242,12 +239,70 @@ _renderCard =() => {
         <Content
             refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} title='Loading...' />}>
             {
-              this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => <CorrespondenceCard isCorrespondenceInbox={true} key={index} correspondence={ele} />) : <Text style={styles.noRecordsText}>No Record Found</Text>
+              this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => < CorrespondenceCard isCorrespondenceInbox = {
+                 true
+                }
+                key = {
+                 index
+                }
+                correspondence = {
+                 ele
+                }
+                />): < Text style = {styles.noRecordsText} > No Record Found </Text >
             }
         </Content>
     );
+//     return (
+//             < FlatList
+//             data = {
+//               this.state.correspondenceData
+//             }
+//             extraData = {
+//               this.state
+//             }
+//             refreshControl = {
+//               <
+//               RefreshControl
+//               refreshing = {
+//                 this.state.isRefreshing
+//               }
+//               onRefresh = {
+//                 this.onRefresh.bind(this)
+//               }
+//               />
+//             }
+//             renderItem = {
+//               ({
+//                 item
+//               }) => ( <
+//                 CorrespondenceCard isCorrespondenceInbox = {
+//                   true
+//                 }
+//                 correspondence = {
+//                   item
+//                 }
+//                 /> 
+//               )
+//             }
+//             keyExtractor = {
+//               (item, index) => index.toString()
+//             }
+//             onEndReachedThreshold = {
+//               0.4
+//             }
+//             onEndReached = {
+//                 this.handleLoadMore.bind(this)
+//             }
+// / >
+//     );
 }
 
+handleLoadMore = () => {
+ const userId = this.props.userProfile.ridUsermaster;
+ this.page = this.page + 1; // increase page by 1
+ this.props.getCorrespondeceLoadMoreList(userId, this.page); // method for API call 
+
+};
 handleOnSearchfromandToDateChangeValue(fromDates, toDates) { 
   console.log('Indise Calendar before method');
    const selectedFromDate = moment(fromDates).format('MMM DD, YYYY');

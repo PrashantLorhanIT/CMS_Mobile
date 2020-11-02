@@ -117,10 +117,18 @@ class NetworkManager {
              axios.post(`${this.baseUrl}${constants.webService.methods.auth.getRefershToken}`, params, options)
              .then(res => {
                console.log('Network Details 401 response');
-                 console.log(res);
-                 console.log(res.data)
-                 if (res.data.statusCode == "200") {
+               const response = res['data'];
+               console.log(res)
+               const jsonResponse = response['data'];
+               const {
+                   token,
+                   refreshToken
+               } = jsonResponse;
+               console.log(token, refreshToken);
+               if (res.data.statusCode == "200" && res.data != null) {
                      console.log('Get refersh token success');
+                     AsyncStorage.setItem('token', token);
+                     AsyncStorage.setItem('refershToken', refreshToken);
                  } else {
                    
                  }   

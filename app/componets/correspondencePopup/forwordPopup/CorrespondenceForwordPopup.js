@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions, Alert,TouchableOpacity, ScrollView} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Image,
+  Modal,
+  ImageBackground,
+  Dimensions,
+  Alert,
+  TouchableOpacity,
+  ScrollView,
+  AsyncStorage
+} from 'react-native';
 import { Container, Content, Button, Text, Icon, Input, Label, Textarea,Picker, CardItem, Header, List, ListItem, Left, Right,Body, Separator, Title} from 'native-base';
 import HeaderTilte from '../../../assets/image/popup/popup.jpg';
 import { FONT_SIZE_12, FONT_SIZE_16, FONT_WEIGHT_BOLD, FONT_FAMILY_PT_BOLD,FONT_FAMILY_PT_REGULAR } from '../../../utils/styles/typography';
@@ -41,8 +52,9 @@ const CorrespondenceForwordPopup = (props) => {
         const toUserID = userMasterIds; 
         const workFlowTransactionId = props.workFTID;
         const comments = comment
-        const token = props.token
-        submitCorrespondenceDetailForward(userId, toUserID,workFlowTransactionId,comments, token);
+        AsyncStorage.getItem('token').then((token) => {
+          submitCorrespondenceDetailForward(userId, toUserID,workFlowTransactionId,comments, token);
+        });
         --length;
         if(length == 0){
           alertWithMessage("Forwarded sucessfully");

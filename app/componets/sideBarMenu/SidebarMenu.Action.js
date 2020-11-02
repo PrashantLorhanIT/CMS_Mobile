@@ -12,6 +12,9 @@ import {
     setDashboardMonthlyTrend,
     setDashboardMonthlyOverdueTrend
 } from '../../screens/dashboard/Dashboard.Action';
+import {
+    AsyncStorage
+} from 'react-native';
 export const performLogout = (callback) => {
     return async (dispatch) => {
         try {
@@ -30,6 +33,9 @@ export const performLogout = (callback) => {
                 dispatch(setDashboardMonthlyTrend([]));
                 dispatch(setDashboardMonthlyOverdueTrend([]));
                 dispatch(setProfile(null));
+                await AsyncStorage.removeItem('userId');
+                await AsyncStorage.removeItem('token');
+                await AsyncStorage.removeItem('refershToken');
                 //props.navigation.navigate('Auth');
                 callback();
             }

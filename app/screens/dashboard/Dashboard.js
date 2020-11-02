@@ -61,41 +61,20 @@ class Dashboard extends Component {
     };
   }
 
- componentDidMount  = () => {
-console.log('Change language', `${t('DashboardScreeen:Incoming')}`);
-//   AsyncStorage.getItem('userId').then((value) => {
-//   console.log('name is ', value);
-// });
-const token = this.getUserRefershToken();
-console.log(token);
-// AsyncStorage.getItem('token').then((value) => {
-//   console.log('name is token', value);
-// });
-// AsyncStorage.getItem('refershToken').then((value) => {
-//   console.log('name is refershToken', value);
-// });
+ componentDidMount = () => {
+
   this.onSegmentCorrespondenceInboxClick();
-   if(this.state.isCorrespondenceInbox == true) {
-      
-      AsyncStorage.getItem('token').then((value) => {
-         this.setState({
-          token: value
-         });
-      });
+   if (this.state.isCorrespondenceInbox == true) {
       AsyncStorage.getItem('userId').then((value1) => {
-           AsyncStorage.getItem('token').then((value) => {
             console.log('Dashboard get userId ',value1);
               this.setState({
                 userid: value1,
                 dashboardEntitiesInBoxRecipent: value1,
-                token:value
-        });
       });
     });
       console.log('Dashboard get userId ',this.state.userid);
-      console.log('Dashboard get token ', this.state.token);
-     this.props.getDocumenttypes(this.state.userId, this.state.corrcategory, this.state.token);
-     this.props.getExternalSenderAndRecipent(this.state.token);  
+      this.props.getDocumenttypes(this.state.userId, this.state.corrcategory);
+      this.props.getExternalSenderAndRecipent();
     //   this.setState({
     //     dashboardEntitiesInBoxRecipent: this.state.userid,
     // });
@@ -112,30 +91,6 @@ console.log(token);
   }
   return userId;
 }
-// async _getStorageValue(){
-//   var value = await AsyncStorage.getItem('userId')
-//   return value
-// }
-//   getUserId = async () => {
-//   let token = '';
-//   try {
-//     token = await AsyncStorage.getItem('token') || 'none';
-//   } catch (error) {
-//     // Error retrieving data
-//     console.log(error.message);
-//   }
-//   return token;
-// }
-getUserRefershToken = async () => {
-  let refershtoken = '';
-  try {
-    refershtoken = await AsyncStorage.getItem('refershToken') || 'none';
-  } catch (error) {
-    // Error retrieving data
-    console.log(error.message);
-  }
-  return refershtoken;
-}
 
   onSegmentCorrespondenceInboxClick = () => {
   console.log(`onSegmentCabClick - onSegmentCorrespondenceInboxClick`);
@@ -149,7 +104,7 @@ getUserRefershToken = async () => {
     dashboardContract: '',
     dashboardEntitiesInBoxRecipent: ridEntityList,
     dashboardEntitiesOutBoxSender: '',
-  }, () => this.props.getDocumenttypes(ridEntityList, 2, this.props.loggedInUser.token),  this.props.getDashboardSummaryDetailsData(this.props.userProfile.ridEntityList, 0,  2, this.state.dashboardDocumentType, 0, this.props.loggedInUser.token));
+  }, () => this.props.getDocumenttypes(ridEntityList, 2), this.props.getDashboardSummaryDetailsData(this.props.userProfile.ridEntityList, 0, 2, this.state.dashboardDocumentType, 0));
   
 }
 
@@ -164,7 +119,7 @@ onSegmentCorrespondenceOutboxClick = (isActive) => {
     dashboardDocumentType: this.state.dashboardDocumentType,
     dashboardEntitiesOutBoxSender: ridEntityList,
     dashboardEntitiesInBoxRecipent: ''
-  }, () => this.props.getDocumenttypes(ridEntityList, 1, this.props.loggedInUser.token),  this.props.getDashboardSummaryDetailsData(0,this.props.userProfile.ridEntityList,1, this.state.dashboardDocumentType, 0, this.props.loggedInUser.token));
+  }, () => this.props.getDocumenttypes(ridEntityList, 1), this.props.getDashboardSummaryDetailsData(0, this.props.userProfile.ridEntityList, 1, this.state.dashboardDocumentType, 0));
   
 }
 
@@ -173,7 +128,7 @@ onInCommingDocumentTypeChange = (value) => {
         this.setState({  
           dashboardDocumentType: value,
 
-        }, () =>  this.state.dashboardDocumentType == 1 ? this.props.getExternalSenderAndRecipent(this.props.loggedInUser.token): this.props.getInternalSenderAndRecipent(this.props.loggedInUser.token));
+        }, () => this.state.dashboardDocumentType == 1 ? this.props.getExternalSenderAndRecipent() : this.props.getInternalSenderAndRecipent());
   //}
 }
 
@@ -184,7 +139,7 @@ onOutgoingDocumentTypeChange = (value) => {
         this.setState({  
           dashboardDocumentType: value,
 
-        }, () =>  this.state.dashboardDocumentType == 1 ? this.props.getExternalSenderAndRecipent(this.props.loggedInUser.token): this.props.getInternalSenderAndRecipent(this.props.loggedInUser.token));
+        }, () => this.state.dashboardDocumentType == 1 ? this.props.getExternalSenderAndRecipent() : this.props.getInternalSenderAndRecipent());
   //}
 }
 
@@ -193,26 +148,26 @@ onEntitiesInboxSenderChange = (value) => {
       this.setState({
           dashboardEntitiesInboxSender: value,
           dashboardContract:''
-      }, () => this.props.getContracts(this.state.dashboardEntitiesInboxSender,this.props.userProfile.ridEntityList, this.props.loggedInUser.token));
+      }, () => this.props.getContracts(this.state.dashboardEntitiesInboxSender, this.props.userProfile.ridEntityList));
 }
 onEntitiesOutboxRecipentChange = (value) => {
       this.setState({
             dashboardEntitiesRecipent: value,
             dashboardContract:''
-      }, () => this.props.getContracts(this.props.userProfile.ridEntityList, this.state.dashboardEntitiesRecipent, this.props.loggedInUser.token)); 
+      }, () => this.props.getContracts(this.props.userProfile.ridEntityList, this.state.dashboardEntitiesRecipent));
 }
   onContractInboxChange = (value) => {
     if (value != -1) {
         this.setState({
           dashboardContract: value,
-        },  () => this.props.getDashboardSummaryDetailsData(this.props.userProfile.ridEntityList, this.state.dashboardEntitiesInboxSender, 2, this.state.dashboardDocumentType, this.state.dashboardContract, this.props.loggedInUser.token )); 
+        }, () => this.props.getDashboardSummaryDetailsData(this.props.userProfile.ridEntityList, this.state.dashboardEntitiesInboxSender, 2, this.state.dashboardDocumentType, this.state.dashboardContract));
     }
 }
 onContractOutBoxChange = (value) => {
   if (value != -1) {
     this.setState({
       dashboardContract: value,
-    },  () => this.props.getDashboardSummaryDetailsData(this.state.dashboardEntitiesRecipent, this.props.userProfile.ridEntityList, 1, this.state.dashboardDocumentType, this.state.dashboardContract, this.props.loggedInUser.token));
+    }, () => this.props.getDashboardSummaryDetailsData(this.state.dashboardEntitiesRecipent, this.props.userProfile.ridEntityList, 1, this.state.dashboardDocumentType, this.state.dashboardContract));
   }
 }
 

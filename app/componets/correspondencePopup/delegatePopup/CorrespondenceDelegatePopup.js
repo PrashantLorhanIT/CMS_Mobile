@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions, Alert, ScrollView} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Image,
+  Modal,
+  ImageBackground,
+  Dimensions,
+  Alert,
+  ScrollView,
+  AsyncStorage
+} from 'react-native';
 import { Container, Content, Button, Text, Icon, Input, Label, Textarea,Picker, CardItem } from 'native-base';
 import HeaderTilte from '../../../assets/image/popup/popup.jpg';
 import { FONT_SIZE_12, FONT_SIZE_16, FONT_WEIGHT_BOLD, FONT_FAMILY_PT_BOLD,FONT_FAMILY_PT_REGULAR } from '../../../utils/styles/typography';
@@ -41,9 +51,10 @@ const CorrespondenceDelegatePopup = (props) => {
         const userId = props.userId;
         const delegateUserID = userMasterId; 
         const workFlowTransactionId = props.workFTID;
-        const comments = comment
-        const token = props.token
-        submitCorrespondenceDetailDelegate(userId, delegateUserID,workFlowTransactionId,comments, token);
+        const comments = comment;
+        AsyncStorage.getItem('token').then((token) => {
+          submitCorrespondenceDetailDelegate(userId, delegateUserID,workFlowTransactionId,comments, token);
+        });
       }
     };
     const onUserMasterChange = (value) => {

@@ -120,8 +120,7 @@ class Search extends Component {
 
     componentDidMount = () => {
       console.log('Search componenet didmount ');
-      const token =  this.props.loggedInUser.token
-      this.props.getSearchDropDwonValues(token);
+      this.props.getSearchDropDwonValues();
     }
     onSegmentQuickSearchClick = () => {
       console.log(`onSegmentCabClick - onSegmentCorrespondenceInboxClick`);
@@ -136,8 +135,8 @@ class Search extends Component {
       console.log(`onSegmentCabClick - onSegmentCorrespondenceInboxClick`);
       this.onValueSearchTypeClear();
       this.onValueAdvanceSearchTypeClear();
-      var reviewer = this.props.searchReviewerandApprover.filter(value => value.rolename === 'Reviewer');
-      var appprover = this.props.searchReviewerandApprover.filter(value => value.rolename === 'Approver');
+      var reviewer = this.props.searchReviewerandApprover && this.props.searchReviewerandApprover.filter(value => value.rolename === 'Reviewer');
+      var appprover = this.props.searchReviewerandApprover && this.props.searchReviewerandApprover.filter(value => value.rolename === 'Approver');
 
       this.setState({
         isQuickSearch: false,
@@ -2531,12 +2530,11 @@ _renderSearchList =() => {
   }
 }
   goQuickSearchListScreen() {
-    const token = this.props.loggedInUser.token;
      if (this.state.searchType == "Correspondence") {
       this.props.setSearchDetailEmpty()
       const entityId = this.props.userProfile.ridEntityList;
        if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
-        this.props.getQuickSearchCorrespondenceRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId, token);
+        this.props.getQuickSearchCorrespondenceRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId);
         } else {
 
           this.alertWithMessage('Please select at least one search parameter');
@@ -2545,7 +2543,7 @@ _renderSearchList =() => {
       this.props.setSearchDetailEmpty()
       const entityId = this.props.userProfile.ridEntityList;
       if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
-        this.props.getQuickSearchMomRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId, token);
+        this.props.getQuickSearchMomRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId);
        } else {
          this.alertWithMessage('Please select at least one search parameter');
 
@@ -2554,7 +2552,7 @@ _renderSearchList =() => {
       this.props.setSearchDetailEmpty()
       const entityId = this.props.userProfile.ridEntityList;
       if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
-        this.props.getQuickSearchRFIRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId, token);
+        this.props.getQuickSearchRFIRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId);
        } else {
          this.alertWithMessage('Please select at least one search parameter');
        }
@@ -2562,38 +2560,33 @@ _renderSearchList =() => {
 
      }  
   }
-  goCorrespondenceAdvaceSearchList () {
-    const token = this.props.loggedInUser.token;
+  goCorrespondenceAdvaceSearchList() {
     this.props.setSearchDetailEmpty()
     const entityId = this.props.userProfile.ridEntityList;
       if (this.state.corrRefernceNumber != '' || this.state.corrSubject != '' || this.state.corrSource != '' || this.state.corrProjectContract != '' || this.state.corrSender != '' || this.state.corrRecipent != '' ||
         this.state.corrReviewer != '' || this.state.corrApprover != '' || this.state.corrFromDateFormat != '' || this.state.corrToDateFormat != '' || this.state.corrReplyFromDateFormat != '' || this.state.corrReplyToDateFormat != '' || this.state.corrisReplyRequired != '' || this.state.corrisConfidential != '' || this.state.corrStatus != '' || this.state.corrsuperSearch != '') {
         this.props.getAdvanceSearchCorrespondenceRecordList(this.state.corrRefernceNumber, this.state.corrSubject, this.state.corrSource, this.state.corrProjectContract, this.state.corrSender, this.state.corrRecipent, 
-          this.state.corrReviewer, this.state.corrApprover, this.state.corrFromDateFormat, this.state.corrToDateFormat, this.state.corrReplyFromDateFormat, this.state.corrReplyToDateFormat, this.state.corrisReplyRequired, this.state.corrisConfidential, this.state.corrStatus, this.state.corrsuperSearch, entityId, token);
+          this.state.corrReviewer, this.state.corrApprover, this.state.corrFromDateFormat, this.state.corrToDateFormat, this.state.corrReplyFromDateFormat, this.state.corrReplyToDateFormat, this.state.corrisReplyRequired, this.state.corrisConfidential, this.state.corrStatus, this.state.corrsuperSearch, entityId);
        } else {
          this.alertWithMessage('Please select at least one search parameter');
 
        }
   }
-  goMomAdvaceSearchList () {
-    const token = this.props.loggedInUser.token;
-
+  goMomAdvaceSearchList() {
     this.props.setSearchDetailEmpty()
     const entityId = this.props.userProfile.ridEntityList;
     if (this.state.momRefernceNumber != '' || this.state.momSubject != '' || this.state.momStatus != '' || this.state.momInitiator != '' || this.state.momSuperSearch != '') {
-      this.props.getAdvanceSearchMomRecordList(this.state.momRefernceNumber, this.state.momSubject, this.state.momStatus, this.state.momInitiator, this.state.momSuperSearch, token);
+      this.props.getAdvanceSearchMomRecordList(this.state.momRefernceNumber, this.state.momSubject, this.state.momStatus, this.state.momInitiator, this.state.momSuperSearch);
     } else {
       console.log('Please select search value');
 
     }
   }
-  goRfiAdvaceSearchList () {
-    const token = this.props.loggedInUser.token;
-
+  goRfiAdvaceSearchList() {
     this.props.setSearchDetailEmpty()
     const entityId = this.props.userProfile.ridEntityList;
     if (this.state.rfiRefernceNumber != '' || this.state.rfiSubject != '' || this.state.rfiStatus != '' || this.state.rfiInitiator != '' || this.state.rfiQuery != '' || this.state.rfiResponse != '' || this.state.rfiSuperSearch != '') {
-      this.props.getAdvanceSearchRFIRecordList(this.state.rfiRefernceNumber, this.state.rfiSubject, this.state.rfiStatus, this.state.rfiInitiator, this.state.rfiQuery, this.state.rfiResponse, this.state.rfiSuperSearch, token);
+      this.props.getAdvanceSearchRFIRecordList(this.state.rfiRefernceNumber, this.state.rfiSubject, this.state.rfiStatus, this.state.rfiInitiator, this.state.rfiQuery, this.state.rfiResponse, this.state.rfiSuperSearch);
     } else {
       console.log('Please select search value');
 

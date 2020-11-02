@@ -2,11 +2,14 @@ import { ActionTypes, appHasError, isAppLoading, isInternetReachable } from '../
 import networkManager from '../../../services/network-manager/networkManager';
 import { constants } from '../../../utils/constants/constants';
 import { Reachability } from '../../../services/netInfo/Rechability';
-
-export const getQuickSearchRecordDetailsProperties = (corrId, token) => {
+import {
+    AsyncStorage
+} from 'react-native';
+export const getQuickSearchRecordDetailsProperties = (corrId) => {
     console.log('Search Action method')
     return async (dispatch) => {
         dispatch(isAppLoading(true));
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 CorrID:corrId,   
@@ -39,9 +42,10 @@ export const getQuickSearchRecordDetailsProperties = (corrId, token) => {
         }
     }
 }
-export const getQuickSearchCorrespondenceDetailDistribute = (corrId, token) => {
+export const getQuickSearchCorrespondenceDetailDistribute = (corrId) => {
     console.log(' search Correspondence details Action method  DistributeProperties');
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 CorrID:corrId,   
@@ -62,9 +66,10 @@ export const getQuickSearchCorrespondenceDetailDistribute = (corrId, token) => {
     }
 }
 
-export const getQuickSearchCorrespondenceDetailWorkFlow= (workFlowId, token) => {
+export const getQuickSearchCorrespondenceDetailWorkFlow = (workFlowId) => {
     console.log(' search Correspondence details Action method  correspondenceWorkFlow');
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 WorkflowID:workFlowId,   
@@ -86,10 +91,11 @@ export const getQuickSearchCorrespondenceDetailWorkFlow= (workFlowId, token) => 
     }
 }
 
-export const getQuickSearchRecordsMomDetailsProperties = (momId, token) => {
+export const getQuickSearchRecordsMomDetailsProperties = (momId) => {
     console.log('Search Mom details Action method')
     return async (dispatch) => {
         dispatch(isAppLoading(true));
+        const token = await AsyncStorage.getItem('token');
         try {
             const Aaram = {
                 MomID:momId
@@ -134,11 +140,11 @@ export const getQuickSearchRecordsMomDetailsProperties = (momId, token) => {
     }
 }
 
-export const getQuickSearchRecordRFIDetailsProperties = (rfiId, token) => {
+export const getQuickSearchRecordRFIDetailsProperties = (rfiId) => {
     console.log(' Search RFI details Action method')
     return async (dispatch) => {
         dispatch(isAppLoading(true));
-
+        const token = await AsyncStorage.getItem('token');
         try {
             
             const Aaram = {

@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions, Alert, ScrollView } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Image,
+  Modal,
+  ImageBackground,
+  Dimensions,
+  Alert,
+  ScrollView,
+  AsyncStorage
+} from 'react-native';
 import { Container, Content, Button, Text, Icon, Input, Label, Textarea } from 'native-base';
 import HeaderTilte from '../../../assets/image/popup/popup.jpg';
 import { FONT_SIZE_12, FONT_SIZE_16,FONT_WEIGHT_BOLD, FONT_SIZE_14,FONT_FAMILY_PT_REGULAR, FONT_FAMILY_PT_BOLD } from '../../../utils/styles/typography';
@@ -33,8 +43,9 @@ const MomAopprovePopup = (props) => {
         const wrokFlowTransactionId = props.workFTID;
         const Approve = "Y";
         const comments = comment
-        const token = props.token
-        submitCorrespondenceDetailApproveReject(wrokFlowTransactionId, Approve, comments, token);
+        AsyncStorage.getItem('token').then((token) => {
+          submitCorrespondenceDetailApproveReject(wrokFlowTransactionId, Approve, comments, token);
+        });
        
       };
       

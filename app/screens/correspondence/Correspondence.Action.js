@@ -3,42 +3,77 @@ import networkManager from '../../services/network-manager/networkManager';
 import { constants } from '../../utils/constants/constants';
 import  SecurityManager  from '../../services/Keychain/SecurityManager';
 import { Reachability } from '../../services/netInfo/Rechability';
+import {
+    AsyncStorage
+} from 'react-native';
 
 
-export const getCorrespondeceList = (userId,token) => {
+export const getCorrespondeceList = (userId) => {
     console.log('Correspondence Action method')
-    return async (dispatch) => { 
+    return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 UserID: userId,
-                    PageSize: 20,
-                    PageNumber: 1
-           }
+                PageSize: 100,
+                PageNumber: 1
+            }
             console.log('Correspondence action parameter');
             console.log(params);
-             dispatch(isAppLoading(true));
+            dispatch(isAppLoading(true));
             const newLocal = await networkManager.getRequestHandler(constants.webService.methods.common.correspondenceList, params, token);
             const response = newLocal;
             console.log('Correspondence list response');
             console.log(response);
             const jsonArray = response['data'];
-           // if (jsonArray.length > 0) {   
+            // if (jsonArray.length > 0) {   
             dispatch(setCorrespondenceInbox(jsonArray));
-               // dispatch(isAppLoading(false));
-           // } else {
+            // dispatch(isAppLoading(false));
+            // } else {
             dispatch(isAppLoading(false));
-           // }
+            // }
         } catch (error) {
             dispatch(isAppLoading(false));
         }
     }
 }
 
-export const getSenderAndRecipentList = (token) => {
+export const getCorrespondeceLoadMoreList = (userId, PageNumber) => {
+    console.log('Correspondence Action load more method')
+    return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
+        try {
+            const params = {
+                UserID: userId,
+                PageSize: 20,
+                PageNumber: PageNumber
+            }
+            console.log('Correspondence action parameter');
+            console.log(params);
+            // dispatch(isAppLoading(true));
+            const newLocal = await networkManager.getRequestHandler(constants.webService.methods.common.correspondenceList, params, token);
+            const response = newLocal;
+            console.log('Correspondence list response');
+            console.log(response);
+            const jsonArray = response['data'];
+            // if (jsonArray.length > 0) {   
+            dispatch(setCorrespondenceInbox(jsonArray));
+            // dispatch(isAppLoading(false));
+            // } else {
+            dispatch(isAppLoading(false));
+            // }
+        } catch (error) {
+            dispatch(isAppLoading(false));
+        }
+    }
+}
+
+export const getSenderAndRecipentList = () => {
     console.log('Correspondence Action method')
    // dispatch(isAppLoading(true));
 
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 

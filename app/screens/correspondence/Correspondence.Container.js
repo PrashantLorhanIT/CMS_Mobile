@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Correspondence from './Correspondence';
-import { getCorrespondeceList, getCorrespondeceUpdateList, getSenderAndRecipentList} from './Correspondence.Action';
+import {
+    getCorrespondeceList,
+    getCorrespondeceUpdateList,
+    getSenderAndRecipentList,
+    getCorrespondeceLoadMoreList
+} from './Correspondence.Action';
 import withLoader from '../../componets/loder/withLoader';
 import {isAppLoading} from '../../redux/index';
 
@@ -19,10 +24,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         isAppLoading: (isLoading) => dispatch(isAppLoading(isLoading)),
         appHasError: (error) => dispatch(appHasError(error)),
-        getCorrespondeceList: (userID,token) => dispatch(getCorrespondeceList(userID,token)),
+        getCorrespondeceList: (userID) => dispatch(getCorrespondeceList(userID)),
         // getCorrespondeceTaskList: (userID) => dispatch(getCorrespondeceTaskList(userID)),
         getCorrespondeceUpdateList: (correspondece) => dispatch(getCorrespondeceUpdateList(correspondece)),
-        getSenderAndRecipentList: (token) => dispatch(getSenderAndRecipentList(token)),
+        getSenderAndRecipentList: () => dispatch(getSenderAndRecipentList()),
+            getCorrespondeceLoadMoreList: (userId, PageNumber) => dispatch(getCorrespondeceLoadMoreList(userId, PageNumber)),
      }
 }
 

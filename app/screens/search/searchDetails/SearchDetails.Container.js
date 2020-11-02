@@ -22,9 +22,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         isAppLoading: (isLoading) => dispatch(isAppLoading(isLoading)),
-        getQuickSearchRecordDetailsProperties: (corrId, token) => dispatch(getQuickSearchRecordDetailsProperties(corrId, token)),
-        getQuickSearchRecordsMomDetailsProperties: (momId, token) => dispatch(getQuickSearchRecordsMomDetailsProperties(momId, token)),
-        getQuickSearchRecordRFIDetailsProperties: (rfiId, token) => dispatch(getQuickSearchRecordRFIDetailsProperties(rfiId, token)),
+        getQuickSearchRecordDetailsProperties: (corrId) => dispatch(getQuickSearchRecordDetailsProperties(corrId)),
+            getQuickSearchRecordsMomDetailsProperties: (momId) => dispatch(getQuickSearchRecordsMomDetailsProperties(momId)),
+            getQuickSearchRecordRFIDetailsProperties: (rfiId) => dispatch(getQuickSearchRecordRFIDetailsProperties(rfiId)),
     }
 }
 

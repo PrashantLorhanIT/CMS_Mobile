@@ -3,11 +3,14 @@ import networkManager from '../../services/network-manager/networkManager';
 import { constants } from '../../utils/constants/constants';
 import  SecurityManager  from '../../services/Keychain/SecurityManager';
 import { Reachability } from '../../services/netInfo/Rechability';
+import {
+    AsyncStorage
+} from 'react-native';
 
-
-export const getExternalSenderAndRecipent = (token) => {
+export const getExternalSenderAndRecipent = () => {
     console.log('Dashboard Action External Sender and recipent method')
     return async (dispatch) => { 
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                
@@ -26,9 +29,10 @@ export const getExternalSenderAndRecipent = (token) => {
         }
     }
 }
-export const getInternalSenderAndRecipent = (token) => {
+export const getInternalSenderAndRecipent = () => {
     console.log('Dashboard Action Internal sender method')
     return async (dispatch) => { 
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                
@@ -48,9 +52,10 @@ export const getInternalSenderAndRecipent = (token) => {
     }
 }
 
-export const getDocumenttypes = (SenderEntityId, corrCategoryId, token) => {
+export const getDocumenttypes = (SenderEntityId, corrCategoryId) => {
     console.log('Dashboard DocmentTypes Action method')
     return async (dispatch) => { 
+        const token = await AsyncStorage.getItem('token');
         try {
         
             const params = {
@@ -74,9 +79,10 @@ export const getDocumenttypes = (SenderEntityId, corrCategoryId, token) => {
     }
 }
 
-export const getContracts = (SenderEntityListId, RecipientEntityListId, token) => {
+export const getContracts = (SenderEntityListId, RecipientEntityListId) => {
     console.log('Dashboard getContracts Action method')
     return async (dispatch) => { 
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 SenderEntityListID: SenderEntityListId,
@@ -97,11 +103,12 @@ export const getContracts = (SenderEntityListId, RecipientEntityListId, token) =
     }
 }
 
-export const getDashboardPieChartsGraphSummary = (forEntitiy, fromEntity, corrcategory, documentType, ridContract, token) => {
+export const getDashboardPieChartsGraphSummary = (forEntitiy, fromEntity, corrcategory, documentType, ridContract) => {
     console.log('Dashboard  inside SummaryData parameter');
 
     return async (dispatch) => {
         dispatch(isAppLoading(false));
+        const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 forEntity: forEntitiy,
@@ -125,10 +132,11 @@ export const getDashboardPieChartsGraphSummary = (forEntitiy, fromEntity, corrca
     }
 }
 
-export const getDashboardSummaryDetailsData = (forEntitiy, fromEntity, corrcategory, doctype, ridcontract, token) => {
+export const getDashboardSummaryDetailsData = (forEntitiy, fromEntity, corrcategory, doctype, ridcontract) => {
     console.log('Dashboard Action method')
     return async (dispatch) => {
        // dispatch(isAppLoading(true));
+       const token = await AsyncStorage.getItem('token');
         try {
             const Sparams = {
                 forEntity: forEntitiy,
@@ -165,10 +173,11 @@ export const getDashboardSummaryDetailsData = (forEntitiy, fromEntity, corrcateg
     }
 }
 
-export const getDashboardGrapahMonthlyTrend = (forEntity, fromEntity, corrcategory, doctype, ridcontract, token) => {
+export const getDashboardGrapahMonthlyTrend = (forEntity, fromEntity, corrcategory, doctype, ridcontract) => {
     console.log('Dashboard Action monthely trend method')
 
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const Mparams = {
                 forEntity: forEntity,
@@ -192,10 +201,11 @@ export const getDashboardGrapahMonthlyTrend = (forEntity, fromEntity, corrcatego
     }
 }
 
-export const getDashboardGrapahonthlyOverdueTrend = (forEntitiy, fromEntity, corrcategory, doctype, ridcontract, token) => {
+export const getDashboardGrapahonthlyOverdueTrend = (forEntitiy, fromEntity, corrcategory, doctype, ridcontract) => {
     console.log('Dashboard Action method')
 
     return async (dispatch) => {
+        const token = await AsyncStorage.getItem('token');
         try {
             const Oparams = {
                 forEntity: forEntitiy,

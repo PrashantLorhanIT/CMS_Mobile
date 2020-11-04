@@ -15,20 +15,24 @@ export const getCorrespondeceList = (userId) => {
         try {
             const params = {
                 UserID: userId,
-                PageSize: 100,
+                PageSize: 25,
                 PageNumber: 1
             }
             console.log('Correspondence action parameter');
             console.log(params);
             dispatch(isAppLoading(true));
+            dispatch(setCorrespondenceInbox([]));
             const newLocal = await networkManager.getRequestHandler(constants.webService.methods.common.correspondenceList, params, token);
             const response = newLocal;
             console.log('Correspondence list response');
             console.log(response);
+          
             const jsonArray = response['data'];
+            const jsonCount = response['totalCount'];
+            console.log(jsonCount);
             // if (jsonArray.length > 0) {   
             dispatch(setCorrespondenceInbox(jsonArray));
-            // dispatch(isAppLoading(false));
+            dispatch(setCorrepondenceInboxCount(jsonCount));
             // } else {
             dispatch(isAppLoading(false));
             // }
@@ -45,7 +49,7 @@ export const getCorrespondeceLoadMoreList = (userId, PageNumber) => {
         try {
             const params = {
                 UserID: userId,
-                PageSize: 20,
+                PageSize: 25,
                 PageNumber: PageNumber
             }
             console.log('Correspondence action parameter');
@@ -138,5 +142,12 @@ export const setDeleteCorrepondenceRecord = (id) => {
     return {
         type : ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_DELETERECORD,
         id: id,
+    }
+}
+
+export const setCorrepondenceInboxCount = (payload) => {
+    return {
+        type : ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_COUNT,
+        payload: payload,
     }
 }

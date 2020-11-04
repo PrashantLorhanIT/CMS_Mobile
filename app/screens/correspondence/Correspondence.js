@@ -235,74 +235,83 @@ handleFilterTap = () => {
 }
 
 _renderCard =() => {
+    // return (
+    //     <Content
+    //         refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} title='Loading...' />}>
+    //         {
+    //           this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => < CorrespondenceCard isCorrespondenceInbox = {
+    //              true
+    //             }
+    //             key = {
+    //              index
+    //             }
+    //             correspondence = {
+    //              ele
+    //             }
+    //             />): < Text style = {styles.noRecordsText} > No Record Found </Text >
+    //         }
+    //     </Content>
+    // );
     return (
-        <Content
-            refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} title='Loading...' />}>
-            {
-              this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => < CorrespondenceCard isCorrespondenceInbox = {
-                 true
-                }
-                key = {
-                 index
+            < FlatList
+            data = {
+              this.state.correspondenceData
+            }
+            extraData = {
+              this.state
+            }
+            refreshControl = {
+              <
+              RefreshControl
+              refreshing = {
+                this.state.isRefreshing
+              }
+              onRefresh = {
+                this.onRefresh.bind(this)
+              }
+              />
+            }
+            renderItem = {
+              ({
+                item
+              }) => ( <
+                CorrespondenceCard isCorrespondenceInbox = {
+                  true
                 }
                 correspondence = {
-                 ele
+                  item
                 }
-                />): < Text style = {styles.noRecordsText} > No Record Found </Text >
+                /> 
+              )
             }
-        </Content>
+            keyExtractor = {
+              (item, index) => index.toString()
+            }
+            // onEndReachedThreshold = {
+            //   0.4
+            // }
+            onEndReached = {
+                this.handleLoadMore.bind(this)
+            }
+/ >
     );
-//     return (
-//             < FlatList
-//             data = {
-//               this.state.correspondenceData
-//             }
-//             extraData = {
-//               this.state
-//             }
-//             refreshControl = {
-//               <
-//               RefreshControl
-//               refreshing = {
-//                 this.state.isRefreshing
-//               }
-//               onRefresh = {
-//                 this.onRefresh.bind(this)
-//               }
-//               />
-//             }
-//             renderItem = {
-//               ({
-//                 item
-//               }) => ( <
-//                 CorrespondenceCard isCorrespondenceInbox = {
-//                   true
-//                 }
-//                 correspondence = {
-//                   item
-//                 }
-//                 /> 
-//               )
-//             }
-//             keyExtractor = {
-//               (item, index) => index.toString()
-//             }
-//             onEndReachedThreshold = {
-//               0.4
-//             }
-//             onEndReached = {
-//                 this.handleLoadMore.bind(this)
-//             }
-// / >
-//     );
 }
 
 handleLoadMore = () => {
+
  const userId = this.props.userProfile.ridUsermaster;
  this.page = this.page + 1; // increase page by 1
- this.props.getCorrespondeceLoadMoreList(userId, this.page); // method for API call 
+ let pageSize = this.calculatePageSize();
+ console.log('Total Page Size', pageSize);
+ if (pageSize > this.page){
+  this.props.getCorrespondeceLoadMoreList(userId, this.page);
+ }
+  // method for API call 
 
 };
+calculatePageSize = () => {
+  return this.props.correspondenceInboxCount / 25
+}; 
 handleOnSearchfromandToDateChangeValue(fromDates, toDates) { 
   console.log('Indise Calendar before method');
    const selectedFromDate = moment(fromDates).format('MMM DD, YYYY');

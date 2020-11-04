@@ -12,21 +12,37 @@ import {
         Container,
         Body
       } from 'native-base';
-import { View, Image, TouchableOpacity,SafeAreaView ,Modal,StyleSheet,AsyncStorage} from 'react-native';
+import { View, Image, TouchableOpacity,SafeAreaView ,Modal,StyleSheet,AsyncStorage, Alert} from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import  CheckBox  from '../componets/checkbox/CheckBox';
 import * as config from '../utils/localization/config/i18n';
 import languageStore from '../utils/localization/languageStore';
 import i18n from '../utils/localization/servicesi18n/index';
+import RNRestart from 'react-native-restart'; 
 
-const STORAGE_KEY = 'SelectedLanguage'
-;
+const STORAGE_KEY = 'SelectedLanguage';
+
 const ChangeLanguage = (props) => {
         const [visible, setVisible] = useState(true);
         const [language, setLanguage] = useState();
         const [checkedEnglish, setcheckedEnglish] = useState();
         const [checkedArabic, setcheckedArabic] = useState();
         const [isI18nInitialized, SetisI18nInitialized] = useState();
+
+        // AsyncStorage.getItem('SelectedLanguage').then((value) => {
+        //         if (value == 'en'){
+        //                 setcheckedArabic(false);
+        //                 setcheckedEnglish(true);
+        //                 setLanguage('en');
+                
+        //         } else {
+        //                 setcheckedArabic(true);
+        //                 setcheckedEnglish(false);
+        //                 setLanguage('ar');
+                
+        //         }
+        // });
+       
 
         const handleCheckBoxEnglish = () => {
         
@@ -50,14 +66,36 @@ const ChangeLanguage = (props) => {
           };
     
          const onButtonContinueClick = () => {
-                storelanguage(language);
-                props.onModalClose(); 
-                setVisible(false);
+                handleClick();
           };
 
+          const handleClick = () => {
+                Alert.alert(
+                        '',
+                        'Are you sure You want to Restart App change language?',
+                        [
+                          {
+                            text: 'Cancel',
+                            onPress: () => {
+                              return null;
+                            },
+                          },
+                          {
+                            text: 'Confirm',
+                            onPress: () => {
+                                storelanguage(language);
+                                props.onModalClose(); 
+                                setVisible(false);
+                                RNRestart.Restart();
+                            },
+                          },
+                        ],
+                        { cancelable: false }
+                      );
+          }
         const storelanguage = async (language) => {
                // config.fallback = language
-                ChangeLanguagemethod(language);
+               // ChangeLanguagemethod(language);
         //       console.log('Change language store method');
                await AsyncStorage.setItem(STORAGE_KEY, language);
               

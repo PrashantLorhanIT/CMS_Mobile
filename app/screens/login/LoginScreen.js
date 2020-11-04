@@ -21,6 +21,8 @@ import ForgotPassword from './forgotPassword/ForgotPassword';
 import * as config from '../../utils/localization/config/i18n';
 import i18n, { t } from '../../utils/localization/servicesi18n/index';
 
+const STORAGE_KEY = 'SelectedLanguage';
+
 class LoginScreen extends Component {
     
   constructor(props) {
@@ -52,14 +54,20 @@ onValueChange =(value) => {
     if (value == 'English' ){
         console.log('Selected Lanhuage English');
        //this.onChangeLang('en');
-       this.ChangeLanguagemethod('en')
+       this.ChangeLanguagemethod('en');
+       this.getanguage('en');
     } else {
         console.log('Selected Lanhuage Arabic');
-        this.ChangeLanguagemethod('ar')
-        //this.onChangeLang('ar');
+        this.ChangeLanguagemethod('ar');
+        this.getanguage('ar');
     }
   }
 
+   getanguage = async () => {
+    console.log('Change language get method');
+    const language = await AsyncStorage.getItem(STORAGE_KEY);
+    console.log(language);
+}
 //   async onChangeLang(lang) {
 //     console.log('Selected language on change');
 //     console.log(lang);

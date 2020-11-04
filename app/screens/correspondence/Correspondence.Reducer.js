@@ -3,6 +3,7 @@ import ActionTypes from '../../redux/ActionTypes';
 const initialState = {
     correspondenceInbox: [],
     cooreSenderAndRecipent: [],
+    correspondenceInboxCount: null
 }
 export const CorrespondenceReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -11,6 +12,12 @@ export const CorrespondenceReducer = (state = initialState, action) => {
                 ...state,
                 //correspondenceInbox: action.payload,
                 correspondenceInbox: state.correspondenceInbox.concat(action.payload)
+            };
+         case ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_COUNT:
+            return {
+                ...state,
+                //correspondenceInbox: action.payload,
+                correspondenceInboxCount: action.payload
             };
         case ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_SENDERANDRECIPENT:
                 return {

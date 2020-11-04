@@ -17,6 +17,7 @@ const mapStateToProps = state => {
         loggedInUser: state.loginReducer.loggedInUser,
         correspondenceInbox: state.CorrespondenceReducer.correspondenceInbox,
         cooreSenderAndRecipent: state.CorrespondenceReducer.cooreSenderAndRecipent,
+        correspondenceInboxCount: state.CorrespondenceReducer.correspondenceInboxCount
     }
 }
 

@@ -619,17 +619,7 @@ _renderRFICard = () => {
   _distributeData = () => {
   
   this.props.searchCorrespondenceWrokFlowSteps.forEach(element => {
-    console.log('Correspondecne properties data filter in side for each');
-    
-    // let entities = [];
-    // if (this.props.searchCorrespondenceProperties){
-      // const entities = Object.values(this.props.searchCorrespondenceProperties).filter((data) => {
-      //   return data.ridWorkflowstep === element.ridWorkflowstep
-      // });
-    // }
-    
-     console.log('Filter data function in distribute data');
-     //console.log(entities);
+  
     if (element.stepname==='DISTRIBUTE'){
 
       if (this.state.distributeData != undefined) 
@@ -640,8 +630,7 @@ _renderRFICard = () => {
           distributeData: this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep)
 
         });
-        console.log('Correspondecne properties data filter inside if condition');
-        console.log(this.state.distributeData);
+       
     } else if (element.sequence === 2 ) {
       if (this.state.distributeData != undefined)
       // setdistributeData(push(props.distributeProperties.filter(data => data.ridWorkflowstep === element.ridWorkflowstep)));
@@ -650,14 +639,12 @@ _renderRFICard = () => {
         distributeData: this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep)
 
       })
-      console.log('Correspondecne properties data filter inside if condition sequence data');
-      console.log(this.state.distributeData);
+      
     }
     if (element.sequence === 2 ) {
       if (this.state.reviewerData != undefined)
         // this.reviewerData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
       // else
-      console.log('Correspondecne Reviewer properties data filter inside if condition sequence data');
 
       this.setState({
         distributeData: this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep)
@@ -668,7 +655,6 @@ _renderRFICard = () => {
       if (this.state.ApproverData != undefined)
         // this.ApproverData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
       // else
-      console.log('Correspondecnce Approver properties data filter inside if condition sequence data');
 
       this.setState({
         distributeData: this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep)

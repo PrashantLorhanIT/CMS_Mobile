@@ -67,6 +67,49 @@ _renderCard =() => {
             }
           </Content>
     );
+//     return (
+//       < FlatList
+//       data = {
+//         this.state.correspondenceData
+//       }
+//       extraData = {
+//         this.state
+//       }
+//       refreshControl = {
+//         <
+//         RefreshControl
+//         refreshing = {
+//           this.state.isRefreshing
+//         }
+//         onRefresh = {
+//           this.onRefresh.bind(this)
+//         }
+//         />
+//       }
+//       renderItem = {
+//         ({
+//           item
+//         }) => ( <
+//           CorrespondenceCard isCorrespondenceInbox = {
+//             true
+//           }
+//           correspondence = {
+//             item
+//           }
+//           /> 
+//         )
+//       }
+//       keyExtractor = {
+//         (item, index) => index.toString()
+//       }
+//       // onEndReachedThreshold = {
+//       //   0.4
+//       // }
+//       onEndReached = {
+//           this.handleLoadMore.bind(this)
+//       }
+// / >
+// );
 }
 
   render() {

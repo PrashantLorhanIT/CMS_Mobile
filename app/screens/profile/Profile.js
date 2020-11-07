@@ -82,6 +82,14 @@ class profile extends Component {
             ],
             { cancelable: false }
         );
+        _navigateLogin = () => {
+          console.log('Logout ');
+          console.log(this.props);
+  
+         // if (props.isManualLogout == true){
+            this.props.navigation.navigate('Auth');
+         // }
+        }
     _renderProfileImage =() => {
         if (config.fallback == 'en'){
           return (
@@ -219,10 +227,17 @@ class profile extends Component {
                
                <ScrollView>
               <Container>
-              { 
+{/*               
                  isChangePasswordVisible && <ChangePassword token = {this.props.loggedInUser.token} onModalClose={() => { this.setState({ isChangePasswordVisible: false }) }} /> 
-              }
-              
+              } */}
+              {
+              isChangePasswordVisible && <ChangePassword token = {this.props.loggedInUser.token}  onModalClose={() => { this.setState({ isChangePasswordVisible: false }) }} getLogoutValues={(logout) => {
+                
+                if (logout == true) {
+                  this.props.performLogout(() => this._navigateLogin());
+                }
+                 }} /> 
+                }
                 <View style={{backgroundColor:'Gray',width:'100%',height:'60%'}}>
                 {this._renderProfileImage()}
                 

@@ -716,7 +716,7 @@ _renderOutboxSelectValuesDropDwon = () => {
             {/* <ScrollView horizontal={false} showsHorizontalScrollIndicator={false} >  */}
                  <PieCharts name={t('DashboardScreeen:Summary')} pieChartData ={this.props.dashboardSummaryData} overdueCount = {this.props.dashboardSummary.overDue}/> 
                  <StackBarCharts name={t('DashboardScreeen:MonthlyTrend')} barchartsData = {this.props.dashboardMonthlyTrend}/> 
-                 <BarCharts name={t('DashboardScreeen:OverdueMonthlyTrend')} barchartsData = {this.props.dashboardMonthlyOverdueTrend}/> 
+                 <BarCharts name={t('DashboardScreeen:OverdueMonthlyTrend')} barchartsData = {this.props.dashboardMonthlyOverdueTrend} docId = {this.props.dashboardDocumentType}/> 
             {/* </ScrollView> */}
           </View>
         </View>
@@ -730,7 +730,7 @@ _renderOutboxSelectValuesDropDwon = () => {
             {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >  */}
                <PieCharts name={t('DashboardScreeen:Summary')} pieChartData ={this.props.dashboardSummaryData} overdueCount = {this.props.dashboardSummary.overDue}/>
                 <StackBarCharts name={t('DashboardScreeen:MonthlyTrend')} barchartsData = {this.props.dashboardMonthlyTrend}/> 
-                <BarCharts name={t('DashboardScreeen:OverdueMonthlyTrend')} barchartsData = {this.props.dashboardMonthlyOverdueTrend}/> 
+                <BarCharts name={t('DashboardScreeen:OverdueMonthlyTrend')} barchartsData = {this.props.dashboardMonthlyOverdueTrend} docId = {this.state.dashboardDocumentType}/> 
             {/* </ScrollView> */}
           </View>
   

@@ -2546,7 +2546,6 @@ _renderSearchList =() => {
         this.props.getQuickSearchMomRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId);
        } else {
          this.alertWithMessage('Please select at least one search parameter');
-
       }
      } else if (this.state.searchType == "RFI") {
       this.props.setSearchDetailEmpty()
@@ -2557,7 +2556,6 @@ _renderSearchList =() => {
          this.alertWithMessage('Please select at least one search parameter');
        }
      } else {
-
      }  
   }
   goCorrespondenceAdvaceSearchList() {

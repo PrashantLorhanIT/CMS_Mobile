@@ -21,7 +21,7 @@ export const getCorrespondeceList = (userId) => {
             console.log('Correspondence action parameter');
             console.log(params);
             dispatch(isAppLoading(true));
-            dispatch(setCorrespondenceInbox([]));
+           // dispatch(setCorrespondenceInbox([]));
             const newLocal = await networkManager.getRequestHandler(constants.webService.methods.common.correspondenceList, params, token);
             const response = newLocal;
             console.log('Correspondence list response');
@@ -61,7 +61,7 @@ export const getCorrespondeceLoadMoreList = (userId, PageNumber) => {
             console.log(response);
             const jsonArray = response['data'];
             // if (jsonArray.length > 0) {   
-            dispatch(setCorrespondenceInbox(jsonArray));
+            dispatch(setCorrespondenceInboxNextPage(jsonArray));
             // dispatch(isAppLoading(false));
             // } else {
             dispatch(isAppLoading(false));
@@ -125,12 +125,14 @@ export const setCorrespondenceInbox = (payload) => {
     }
 }
 
-export const setCorrespondenceUpdateCorrespondence = (payload) => {
+export const setCorrespondenceInboxNextPage = (payload) => {
     return {
-        type: ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX,
+        type: ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_NEXTPAGE,
         payload: payload,
     }
 }
+
+
 export const setDropDwonSenderAndRecioent = (payload) => {
     return {
         type: ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_SENDERANDRECIPENT,

@@ -47,6 +47,7 @@ class Correspondence extends Component {
        corrRecipent: '',
        corrType: '',
        Overdue: '',
+       isLoadingDisable: false,
     };
 }
 
@@ -163,7 +164,10 @@ clear = () => {
 };
 
 searchFilterRefernceNumberFunction = text => {    
-
+ let flag =  false;
+   if (text){
+     flag = true
+   }
   const newData = this.state.inMemorycorrespondenceData.filter(item => {   
     
     const itemData = `${item.correspondenceReferenceNumber.toUpperCase()} || ${item.subject.toUpperCase()} || ${item.workflowName.toUpperCase()}`
@@ -173,6 +177,7 @@ searchFilterRefernceNumberFunction = text => {
   this.setState({
     correspondenceData: newData,
     search: text,
+    isLoadingDisable: flag,
   });
 }
 
@@ -253,7 +258,8 @@ _renderCard =() => {
     //     </Content>
     // );
     return (
-            < FlatList
+      
+      this.state.correspondenceData &&   this.state.correspondenceData ?< FlatList
             data = {
               this.state.correspondenceData
             }
@@ -293,21 +299,22 @@ _renderCard =() => {
             onEndReached = {
                 this.handleLoadMore.bind(this)
             }
-/ >
+/ > :  < Text style = {styles.noRecordsText} > No Record Found </Text >
     );
 }
 
 handleLoadMore = () => {
 
- const userId = this.props.userProfile.ridUsermaster;
- this.page = this.page + 1; // increase page by 1
- let pageSize = this.calculatePageSize();
- console.log('Total Page Size', pageSize);
- if (pageSize > this.page){
-  this.props.getCorrespondeceLoadMoreList(userId, this.page);
- }
-  // method for API call 
-
+  if (this.state.isLoadingDisable == false){
+    const userId = this.props.userProfile.ridUsermaster;
+    this.page = this.page + 1; // increase page by 1
+    let pageSize = this.calculatePageSize();
+    console.log('Total Page Size', pageSize);
+    if (pageSize > this.page){
+     this.props.getCorrespondeceLoadMoreList(userId, this.page);
+    }
+  }
+  // method for API call
 };
 calculatePageSize = () => {
   return this.props.correspondenceInboxCount / 25

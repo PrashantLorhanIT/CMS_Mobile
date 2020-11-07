@@ -63,8 +63,8 @@ import * as config from '../../utils/localization/config/i18n';
          
                       <View style={{margin:5,flexDirection:'column'}}>
                       {
-           isApproveModalVisible && <ApproveModelPopup userId = {this.props.userId} workFTID = {this.props.workFTID} token = {this.props.token} onModalClose={() => { this.setState({ isApproveModalVisible: false }) }} getApproveValuesrefersh={(isRefersh) => {
-              console.log('Go back approve popup')
+                        isApproveModalVisible && <ApproveModelPopup userId = {this.props.userId} workFTID = {this.props.workFTID} token = {this.props.token} onModalClose={() => { this.setState({ isApproveModalVisible: false }) }} getApproveValuesrefersh={(isRefersh) => {
+                     console.log('Go back approve popup')
             
              if (isRefersh == true) {
                     this.props.getApproveValuesrefersh(true)

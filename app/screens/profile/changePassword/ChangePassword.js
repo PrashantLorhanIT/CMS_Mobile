@@ -21,7 +21,7 @@ import { Reachability } from '../../../services/netInfo/Rechability';
 import axios from 'axios';
 import i18n, { t } from '../../../utils/localization/servicesi18n/index';
 import * as config from '../../../utils/localization/config/i18n';
-
+import {isManualLogout} from '../../../componets/sideBarMenu/SidebarMenu.Action';
 // import { ScrollView } from 'react-native-gesture-handler';
 
 const ChangePassword = (props) => {
@@ -35,6 +35,7 @@ const ChangePassword = (props) => {
     const onButtonCancelClick = () => {
         props.onModalClose(); 
         setVisible(false);
+        props.getLogoutValues(true);
       };
       
      const handleOnUserNameChange = (e) => {
@@ -54,7 +55,6 @@ const ChangePassword = (props) => {
        setConfirmPassword(e.nativeEvent.text);   
      }
     const  onButtonSubmitClick = () => {
-
         if (userName == '') {
             alertWithMessage('Please enter usename');
         } else if (oldPassword == newPassword) {

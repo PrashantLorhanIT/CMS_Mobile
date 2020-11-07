@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         fontWeight: FONT_WEIGHT_BOLD,
         fontFamily:FONT_FAMILY_PT_REGULAR,
         textAlign: 'center',
-        marginTop:30
+        marginTop:60
    }
 })
 export default styles;

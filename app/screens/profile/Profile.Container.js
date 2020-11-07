@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import profile from './Profile';
 import { getProfileDetails } from './Profile.Action';
 import withLoader from '../../componets/loder/withLoader';
-
+import {performLogout} from '../../componets/sideBarMenu/SidebarMenu.Action';
 const mapStateToProps = state => {
     return {
         // authToken: state.loginReducer.authToken,
@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
         isAppLoading: (isLoading) => dispatch(isAppLoading(isLoading)),
         appHasError: (error) => dispatch(appHasError(error)),
         getProfileDetails: (userID) => dispatch(getProfileDetails(userID)),
+        performLogout: (props) => dispatch(performLogout(props))
     }
 }
 

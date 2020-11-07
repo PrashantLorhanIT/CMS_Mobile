@@ -72,7 +72,7 @@ const ChangeLanguage = (props) => {
           const handleClick = () => {
                 Alert.alert(
                         '',
-                        'Are you sure You want to Restart App change language?',
+                        'For the language changes to be applied, the app needs to restarted.',
                         [
                           {
                             text: 'Cancel',
@@ -81,7 +81,7 @@ const ChangeLanguage = (props) => {
                             },
                           },
                           {
-                            text: 'Confirm',
+                            text: 'Continue',
                             onPress: () => {
                                 storelanguage(language);
                                 props.onModalClose(); 
@@ -170,6 +170,7 @@ const ChangeLanguage = (props) => {
                                                                    <CheckBox selected={checkedArabic}  onPress={() => handleCheckBoxArabic()}/> 
 
                                                                    </View>
+                
                                                            </View>
                 
                                                    </Body>
@@ -186,8 +187,7 @@ const ChangeLanguage = (props) => {
                                 </View>
                            <View style={{marginTop:5}}>
                                    <Text style={{margin:10,fontSize:15, color:'drakgray'}}>
-                                           Language options can be changed anytime. we'll translate information to help you browse, shop, and communicate.
-                                           we are continuosly improving the language experience on Etihad Rail if you have feedback on these translations, Please contact customer support. please note that transalations are provided for convenience only.
+                                   Language options can be changed anytime. We'll translate information to help you browse. We are continously improving the language experience on Etihad Rail. Please note that translations are provided for convenience only.
                                   </Text>
                            </View>  
                    </View>

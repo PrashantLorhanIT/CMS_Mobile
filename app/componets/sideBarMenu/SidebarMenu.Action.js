@@ -37,6 +37,7 @@ export const performLogout = (callback) => {
                 await AsyncStorage.removeItem('token');
                 await AsyncStorage.removeItem('refershToken');
                 //props.navigation.navigate('Auth');
+                console.log('Check callback', callback);
                 callback();
             }
         } catch (error) {

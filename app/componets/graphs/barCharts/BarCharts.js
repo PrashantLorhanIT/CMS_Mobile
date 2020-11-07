@@ -70,10 +70,26 @@ class BarCharts extends Component {
    // console.log('Bar charts value Array');
    // console.log(tempCountArr_Open);
     //console.log(tempChartLabels);
-    var jobs = this.props.barchartsData.map(item => {
-            return item.documenttypename;
-      });
-      console.log(jobs[0]);
+    // var jobs = this.props.barchartsData.map(item => {
+    //         return item.documenttypename;
+    //   });
+      if (this.props.docId == 1){
+        this.setState({
+          documenttypename: 'Letter'
+        });
+      } else if (this.props.docId == 2) {
+        this.setState({
+          documenttypename: 'Circular'
+        });
+      } else if (this.props.docId == 3) {
+        this.setState({
+          documenttypename: 'Memo'
+        });
+      }else {
+        this.setState({
+          documenttypename: 'Letter'
+        });
+      }
   this.setState({
     xAxis:{
       enabled: true,
@@ -98,7 +114,6 @@ class BarCharts extends Component {
             }],
           },
          
-          documenttypename: jobs[0]
     })
   }
 
@@ -118,10 +133,24 @@ componentDidUpdate = (prevProps) => {
       //console.log('Bar charts value Array');
       //console.log(tempCountArr_Open);
       //console.log(tempChartLabels);
-      var jobs = this.props.barchartsData.map(item => {
-              return item.documenttypename;
-        });
-
+      
+        if (this.props.docId == 1){
+          this.setState({
+            documenttypename: 'Letter'
+          });
+        } else if (this.props.docId == 2) {
+          this.setState({
+            documenttypename: 'Circular'
+          });
+        } else if (this.props.docId == 3) {
+          this.setState({
+            documenttypename: 'Memo'
+          });
+        }else {
+          this.setState({
+            documenttypename: 'Letter'
+          });
+        }
         this.setState({
           xAxis:{
             enabled: true,
@@ -162,7 +191,7 @@ componentDidUpdate = (prevProps) => {
               }],
             },
             stack_barChartLabels_overdue: tempChartLabels,
-            documenttypename: jobs[0]
+            // documenttypename: jobs[0]
       })
   }
 }
@@ -179,8 +208,8 @@ componentDidUpdate = (prevProps) => {
             <Text style={{fontSize:20,fontFamily:FONT_FAMILY_PT_REGULAR,marginLeft:20,marginTop:10,marginBottom:20}}>{this.props.name}</Text>
             <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center' }}>
                 <View style={{width:30,height:10,backgroundColor:'#ff8373'}}/>
-                {/* <Text style={{marginLeft:5}}>{documenttypename}</Text> */}
-                <Text style={{marginLeft:5}}>Letter</Text>
+                <Text style={{marginLeft:5}}>{this.state.documenttypename}</Text>
+                {/* <Text style={{marginLeft:5}}>Letter</Text> */}
 
             </View>
             <BarChart
@@ -211,8 +240,8 @@ componentDidUpdate = (prevProps) => {
             <Text style={{fontSize:20,fontFamily:FONT_FAMILY_PT_REGULAR,marginRight:20,marginTop:10,marginBottom:20, textAlign:'right'}}>{this.props.name}</Text>
             <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center' }}>
                
-                {/* <Text style={{marginLeft:5}}>{documenttypename}</Text> */}
-                <Text style={{marginRight:5}}>Letter</Text>
+                <Text style={{marginLeft:5}}>{this.state.documenttypename}</Text>
+                {/* <Text style={{marginRight:5}}>Letter</Text> */}
                 <View style={{width:30,height:10,backgroundColor:'#ff8373'}}/>
             </View>
             <BarChart

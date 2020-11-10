@@ -219,7 +219,7 @@ const CorrespondenceFilter = (props) => {
             </View>
             </View>
             
-        <View style={{margin:5, marginBottom:0, width:screenWidth ,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
+        {/* <View style={{margin:5, marginBottom:0, width:screenWidth ,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
         <View  style = {{ backgroundColor:'#ffffff',flexDirection:'column',justifyContent:'flex-start', marginTop:7, borderWidth: 1,
           borderRadius:5,borderColor: 'lightgray', width:screenWidth-90, height: 35}}>
              <Picker style={{marginTop:-5}}
@@ -242,7 +242,7 @@ const CorrespondenceFilter = (props) => {
                                           </Picker>
           
             </View>
-            </View>
+            </View> */}
             <View style={{marginTop:10, marginBottom:0,marginLeft:-15,marginRight:5,width:screenWidth,flexDirection:'row',height:40,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
                   <TouchableOpacity  onPress={() => { setCalendaerVisible(true) }}>
   
@@ -461,7 +461,7 @@ const CorrespondenceFilter = (props) => {
             </View>
             </View>
             
-        <View style={{margin:5, marginBottom:0, width:screenWidth ,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
+        {/* <View style={{margin:5, marginBottom:0, width:screenWidth ,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
         <View  style = {{ backgroundColor:'#ffffff',flexDirection:'column',justifyContent:'flex-start', marginTop:7, borderWidth: 1,
           borderRadius:5,borderColor: 'lightgray', width:screenWidth-90, height: 35}}>
              <Picker style={{marginTop:-5, textAlign:'right', flexDirection:'row-reverse'}}
@@ -484,7 +484,7 @@ const CorrespondenceFilter = (props) => {
                                           </Picker>
           
             </View>
-            </View>
+            </View> */}
             <View style={{marginTop:10, marginBottom:0,marginLeft:-15,marginRight:5,width:screenWidth,flexDirection:'row',height:40,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
                   <TouchableOpacity  onPress={() => { setCalendaerVisible(true) }}>
   

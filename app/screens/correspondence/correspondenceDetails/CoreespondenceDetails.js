@@ -82,21 +82,21 @@ class CoreespondenceDetails extends Component {
          const entityId = this.props.userProfile.ridEntityList;
          const workFlowTransactionId = this.props.navigation.state.params.ridWorkflowtransaction;
          this.props.getCorrespondenceCategory(token);
-         this.props.getCorrespondenceDetailsDelegateUserMasters(entityId,token);
-         //this.props.getRFIDetailsForwardUserMasters(token);
-        // this.props.getCorrespondenceDetailsForwardUserMasters(entityId, corrId, token);
+         this.props.getCorrespondenceDetailsDelegateUserMasters(entityId);
+         this.props.getRFIDetailsForwardUserMasters();
+         this.props.getCorrespondenceDetailsForwardUserMasters(entityId, corrId);
 
          if (this.props.navigation.state.params.workflowName == 'Task'){
-          this.props.getTaskDetails(userId, corrId, token);
+          this.props.getTaskDetails(userId, corrId);
          } else if (this.props.navigation.state.params.workflowName == 'MOM') {
-           this.props.getMomDetails(userId, corrId, token);
+           this.props.getMomDetails(userId, corrId);
          } else if (this.props.navigation.state.params.workflowName == 'Outgoing RFI' || this.props.navigation.state.params.workflowName == 'Incoming RFI') {
-           this.props.getRFIDetails(userId, corrId, entityId,workFlowTransactionId, token);
-           this.props.getRFIDetailsForwardUserMasters(token);
+           this.props.getRFIDetails(userId, corrId, entityId,workFlowTransactionId);
+          // this.props.getRFIDetailsForwardUserMasters();
          } else{
-          this.props.getCorrespondenceDetails(userId, corrId, token);
+          this.props.getCorrespondenceDetails(userId, corrId);
         //  this.props.getCorrespondenceDetailsDelegateUserMasters(entityId,token);
-          this.props.getCorrespondenceDetailsForwardUserMasters(entityId, corrId, token);
+          //this.props.getCorrespondenceDetailsForwardUserMasters(entityId, corrId);
          }     
     }
     
@@ -1629,8 +1629,7 @@ if (config.fallback == 'en'){
               if (isRefersh == true) {
                   const corrId = this.props.navigation.state.params.ridInOutCorr;
                   const userId = this.props.userProfile.ridUsermaster;
-                  const token = this.props.loggedInUser.token;
-                  this.props.getMomDetails(userId, corrId, token);
+                  this.props.getMomDetails(userId, corrId);
                   }
                }} />
             }
@@ -1691,8 +1690,7 @@ if (config.fallback == 'en'){
                  if (isRefresh == true) {
                   const corrId = this.props.navigation.state.params.ridInOutCorr;
                   const entityId = this.props.userProfile.ridEntityList;
-                  const token = this.props.loggedInUser.token;
-                  this.props.getCorrespondenceDetailsForwardUserMasters(entityId, corrId, token);
+                  this.props.getCorrespondenceDetailsForwardUserMasters(entityId, corrId);
                      }
                   }} />   
                 }
@@ -1702,10 +1700,9 @@ if (config.fallback == 'en'){
                  if (isRefresh == true) {
                   const corrId = this.props.navigation.state.params.ridInOutCorr;
                   const userId = this.props.userProfile.ridUsermaster;
-                  const token = this.props.loggedInUser.token;
                   const entityId = this.props.userProfile.ridEntityList;
                   const workFlowTransactionId = this.props.navigation.state.params.ridWorkflowtransaction;
-                  this.props.getRFIDetails(userId, corrId, entityId, workFlowTransactionId, token);
+                  this.props.getRFIDetails(userId, corrId, entityId, workFlowTransactionId);
                      }
                   }}  /> 
                 }
@@ -1727,8 +1724,7 @@ if (config.fallback == 'en'){
                 isRFIForwardModelVisible && <RFIForwardModelPopup  userMasterData = {this.props.rfiDetailForwardUserMater}  userId = {this.props.userProfile.ridUsermaster} workFTID = {this.props.correspondenceDetailData.ridWorkflowTransaction} token ={ this.props.loggedInUser.token} onModalClose={() => { this.setState({ isRFIForwardModelVisible: false }) }}  getForwardDetailsRefreshValues={(isRefresh) => {
                  
                  if (isRefresh == true) {
-                  const token = this.props.loggedInUser.token;
-                  this.props.getRFIDetailsForwardUserMasters(token);
+                  this.props.getRFIDetailsForwardUserMasters();
                      }
                   }} />   
                 }
@@ -1740,8 +1736,7 @@ if (config.fallback == 'en'){
                  if (isRefresh == true) {
                   const corrId = this.props.navigation.state.params.ridInOutCorr;
                   const userId = this.props.userProfile.ridUsermaster;
-                  const token = this.props.loggedInUser.token;
-                  this.props.getMomDetails(userId, corrId, token);
+                  this.props.getMomDetails(userId, corrId);
                      }
                   }}  /> 
                 }

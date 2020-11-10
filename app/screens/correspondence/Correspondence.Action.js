@@ -15,7 +15,7 @@ export const getCorrespondeceList = (userId) => {
         try {
             const params = {
                 UserID: userId,
-                PageSize: 25,
+                PageSize: 500,
                 PageNumber: 1
             }
             console.log('Correspondence action parameter');

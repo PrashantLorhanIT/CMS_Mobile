@@ -2,7 +2,7 @@ export const constants = {
     webService: {
         // baseURL: 'http://cms.lorhanit.com/ERCMS/api/',
          baseURL: 'https://cmstest.etihadrail.ae/ERCMSAPI_QA/api/',
-        documentBaseUrl: 'https://cmstest.etihadrail.ae/ERCMSAPI_QA/',
+         documentBaseUrl: 'https://cmstest.etihadrail.ae/ERCMSAPI_QA/',
        // documentBaseUrl: 'http://cms.lorhanit.com/ERCMS/',
 
         methods: {

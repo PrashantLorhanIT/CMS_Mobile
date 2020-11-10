@@ -172,10 +172,10 @@ const DashBoard_StackNavigator = createStackNavigator({
       drawerOpenRoute: 'DrawerOpen',
       drawerCloseRoute: 'DrawerClose',
       drawerToggleRoute: 'DrawerToggle',
-    
-      drawerPosition: language == 'en' ? 'left' : 'right'
+      //drawerPosition: language == "en" ? 'right' : 'left'
 
     }
   );
+
  
   export default DrawerNavigatorRoutes;

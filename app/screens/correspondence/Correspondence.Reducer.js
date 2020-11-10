@@ -40,7 +40,7 @@ export const CorrespondenceReducer = (state = initialState, action) => {
                     }
                 }
                 arr.splice(deletedEle, 1);
-              //  console.log('Deleted correspondence element', arr);
+                console.log('Deleted correspondence element', arr);
                 return {
                     ...state,
                     correspondenceInbox: [...arr],

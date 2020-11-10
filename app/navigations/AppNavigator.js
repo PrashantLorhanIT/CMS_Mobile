@@ -8,6 +8,7 @@ import LoginScreen from '../screens/login/Login.Container';
 import CorrespondenceDetail from '../screens/correspondence/correspondenceDetails/CoreespondenceDetails'
 import DrawerNavigationRoutes from '../navigations/DrawerNavigationRoutes';
 // import i18n, { t } from '../utils/localization/servicesi18n/i18n';
+import * as config from '../utils/localization/config/i18n';
 
 //import { translate } from 'react-i18next';
  //import i18n from '../utils/localization/index';
@@ -35,6 +36,7 @@ const Auth = createStackNavigator({
      /* Auth Navigator which includer Login Signup will come once */
      screen: Auth,
    },
+   
    
    DrawerNavigationRoutes: {
      /* Navigation Drawer as a landing page */

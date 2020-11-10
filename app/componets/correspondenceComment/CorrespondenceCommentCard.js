@@ -50,7 +50,7 @@ import {
                   <View style={styles.container}>
                    <View style={styles.userContainer}>
                      <Text style={styles.nameText}>{t('InboxScreen:Sender')}:</Text>
-                       <Text style={styles.dateText}>               {this.props.correspondenceComment.from}</Text>
+                       <Text style={styles.dateText}>              {this.props.correspondenceComment.from}</Text>
                    </View> 
                    <View style={styles.userContainer}>
                      <Text style={styles.nameText}>{t('InboxScreen:Recipient')}:</Text>

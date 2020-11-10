@@ -164,10 +164,10 @@ clear = () => {
 };
 
 searchFilterRefernceNumberFunction = text => {    
- let flag =  false;
-   if (text){
-     flag = true
-   }
+//  let flag =  false;
+//    if (text){
+//      flag = true
+//    }
   const newData = this.state.inMemorycorrespondenceData.filter(item => {   
     
     const itemData = `${item.correspondenceReferenceNumber.toUpperCase()} || ${item.subject.toUpperCase()} || ${item.workflowName.toUpperCase()}`
@@ -176,13 +176,16 @@ searchFilterRefernceNumberFunction = text => {
   });
   this.setState({
     correspondenceData: newData,
-    search: text,
-    isLoadingDisable: flag,
+    search: text
+   // isLoadingDisable: flag,
   });
 }
 
 filterFunction = (refernceNumber,subject, corrType, sender, recipent, overdue, fromdate, todate) => {    
-
+  // let flag =  false;
+  // if (refernceNumber || subject || corrType || sender || recipent || fromdate || todate){
+  //   flag = true
+  // }
   console.log('.................................................');
   console.log('Filter function array values', this.state.inMemorycorrespondenceData);
   const selectedFromDate = moment(fromdate).format('yyyy-MM-DD');
@@ -214,6 +217,7 @@ filterFunction = (refernceNumber,subject, corrType, sender, recipent, overdue, f
   });
   this.setState({
     correspondenceData: newData,
+    //isLoadingDisable: flag,
   });
 }
 
@@ -240,67 +244,67 @@ handleFilterTap = () => {
 }
 
 _renderCard =() => {
-    // return (
-    //     <Content
-    //         refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} title='Loading...' />}>
-    //         {
-    //           this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => < CorrespondenceCard isCorrespondenceInbox = {
-    //              true
-    //             }
-    //             key = {
-    //              index
-    //             }
-    //             correspondence = {
-    //              ele
-    //             }
-    //             />): < Text style = {styles.noRecordsText} > No Record Found </Text >
-    //         }
-    //     </Content>
-    // );
     return (
-      
-      this.state.correspondenceData &&   this.state.correspondenceData ?< FlatList
-            data = {
-              this.state.correspondenceData
-            }
-            extraData = {
-              this.state
-            }
-            refreshControl = {
-              <
-              RefreshControl
-              refreshing = {
-                this.state.isRefreshing
-              }
-              onRefresh = {
-                this.onRefresh.bind(this)
-              }
-              />
-            }
-            renderItem = {
-              ({
-                item
-              }) => ( <
-                CorrespondenceCard isCorrespondenceInbox = {
-                  true
+        <Content
+            refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} title='Loading...' />}>
+            {
+              this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => < CorrespondenceCard isCorrespondenceInbox = {
+                 true
+                }
+                key = {
+                 index
                 }
                 correspondence = {
-                  item
+                 ele
                 }
-                /> 
-              )
+                />): < Text style = {styles.noRecordsText} > No Record Found </Text >
             }
-            keyExtractor = {
-              (item, index) => index.toString()
-            }
-            // onEndReachedThreshold = {
-            //   0.4
-            // }
-            onEndReached = {
-                this.handleLoadMore.bind(this)
-            }
-/ > :  < Text style = {styles.noRecordsText} > No Record Found </Text >
+        </Content>
     );
+//     return (
+      
+//       this.state.correspondenceData &&   this.state.correspondenceData ?< FlatList
+//             data = {
+//               this.state.correspondenceData
+//             }
+//             extraData = {
+//               this.state
+//             }
+//             refreshControl = {
+//               <
+//               RefreshControl
+//               refreshing = {
+//                 this.state.isRefreshing
+//               }
+//               onRefresh = {
+//                 this.onRefresh.bind(this)
+//               }
+//               />
+//             }
+//             renderItem = {
+//               ({
+//                 item
+//               }) => ( <
+//                 CorrespondenceCard isCorrespondenceInbox = {
+//                   true
+//                 }
+//                 correspondence = {
+//                   item
+//                 }
+//                 /> 
+//               )
+//             }
+//             keyExtractor = {
+//               (item, index) => index.toString()
+//             }
+//             // onEndReachedThreshold = {
+//             //   0.4
+//             // }
+//             onEndReached = {
+//                 this.handleLoadMore.bind(this)
+//             }
+// / > :  < Text style = {styles.noRecordsText} > No Record Found </Text >
+//     );
 }
 
 handleLoadMore = () => {

@@ -61,9 +61,13 @@ class Dashboard extends Component {
     };
   }
 
+  // componentWillMount = () => {
+  //   this.props.getExternalSenderAndRecipent();
+  //   this.onSegmentCorrespondenceInboxClick();
+  // }
  componentDidMount = () => {
 
-  this.onSegmentCorrespondenceInboxClick();
+  
    if (this.state.isCorrespondenceInbox == true) {
       AsyncStorage.getItem('userId').then((value1) => {
             console.log('Dashboard get userId ',value1);
@@ -75,6 +79,7 @@ class Dashboard extends Component {
       console.log('Dashboard get userId ',this.state.userid);
       this.props.getDocumenttypes(this.state.userId, this.state.corrcategory);
       this.props.getExternalSenderAndRecipent();
+      this.onSegmentCorrespondenceInboxClick();
     //   this.setState({
     //     dashboardEntitiesInBoxRecipent: this.state.userid,
     // });

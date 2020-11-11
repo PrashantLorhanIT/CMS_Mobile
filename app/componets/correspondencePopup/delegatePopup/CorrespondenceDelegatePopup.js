@@ -53,7 +53,7 @@ const CorrespondenceDelegatePopup = (props) => {
         const workFlowTransactionId = props.workFTID;
         const comments = comment;
         AsyncStorage.getItem('token').then((token) => {
-          submitCorrespondenceDetailDelegate(userId, delegateUserID,workFlowTransactionId,comments, token);
+          submitCorrespondenceDetailDelegate(userId, delegateUserID, workFlowTransactionId,comments, token);
         });
       }
     };
@@ -62,7 +62,7 @@ const CorrespondenceDelegatePopup = (props) => {
             setuserMasterId(value);
     }
    
-    const  submitCorrespondenceDetailDelegate =  (userid,wftId, delegateUserId, comment, token) => {
+    const  submitCorrespondenceDetailDelegate =  (userid,delegateUserId,wftId,comment, token) => {
       console.log('Correspondence details Action method  Approve');
       // return async (dispatch) => {
           try {

@@ -19,6 +19,22 @@ class NetworkManager {
             }
         });
     }
+    getRequestHandlerRefershToken = (requestMethod, params) => {
+
+        return new Promise(async (resolve, reject) => {
+            try {
+                const options = {
+                    headers: {
+                        "ApiKey": "MySecretAPI123Key"
+                    }
+                };
+                const response = await axios.post(`${this.baseUrl}${requestMethod}`, params, options);
+                resolve(response.data);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
 
     getRequestHandler = (requestMethod, params, token) => {
               // console.log(token);

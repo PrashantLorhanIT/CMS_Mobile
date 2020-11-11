@@ -1173,7 +1173,7 @@ class CoreespondenceDetails extends Component {
             <View style={{marginLeft:10,marginRight:10,backgroundColor:'#ffffff',paddingBottom:20, alignSelf: 'stretch'}}>
                  { this.props.correspondenceDetailData.transactionComments != null &&
                    <ScrollView>
-                    <Text style={{margin:10,marginTop:0,fontSize:14}}>{this.props.correspondenceDetailData.transactionComments && this.props.correspondenceDetailData.transactionComments}</Text>
+                    <Text style={{margin:10,marginTop:0,fontSize:14, marginLeft: 20}}>{this.props.correspondenceDetailData.transactionComments && this.props.correspondenceDetailData.transactionComments}</Text>
                    </ScrollView>
                  }
                  

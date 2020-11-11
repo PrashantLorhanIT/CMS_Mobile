@@ -29,7 +29,7 @@ const CorrespondenceCommentPopup = (props) => {
                                   <Text style={{marginLeft:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:15, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff'}}>{t('InboxScreen:CorrespondenceComment')}</Text>
                                   </ImageBackground>
                                   </View>
-                                  <View style={{paddingTop:0,backgroundColor:'white',marginBottom:40,height:200}}>
+                                  <View style={{paddingTop:0,backgroundColor:'white',marginBottom:40,height:250}}>
                                     <Content>
                                     {
                                       props.correspondenceComments && props.correspondenceComments.length > 0 ? props.correspondenceComments.map((ele, index) => <CorrespondenceCommentCard  key={index} correspondenceComment={ele}/>) : <Text style={{fontSize:16, marginTop:30,fontWeight:'600',textAlign:'center'}}>No Record Found</Text>
@@ -37,7 +37,7 @@ const CorrespondenceCommentPopup = (props) => {
                                     }
                                   </Content>
                                   </View>
-                                   <View style={{marginTop:10, flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+                                   <View style={{marginTop:5, flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
                                       <Button style={{margin:5,marginLeft:20,marginBottom:20,backgroundColor:'#373d38',width:100,height:35,justifyContent:'center'}} onPress={() => { onButtonCancelClick() }}>
                                        <Text uppercase={false} style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Cancel')}</Text>
                                       </Button>

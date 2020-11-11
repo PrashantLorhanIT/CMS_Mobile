@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
         isAppLoading: (isLoading) => dispatch(isAppLoading(isLoading)),
         appHasError: (error) => dispatch(appHasError(error)),
         checkIfAlreadyAuthenticated: (isLoading) => dispatch(checkIfAlreadyAuthenticated(isLoading)),
-        getProfileDetails: (userID, token) => dispatch(getProfileDetails(userID, token)),
+        getProfileDetails: (userID) => dispatch(getProfileDetails(userID)),
     }
 }
 

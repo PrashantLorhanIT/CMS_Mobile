@@ -26,7 +26,7 @@ class Splash extends Component {
 
       const { isLodaing } = this.state; 
       if (isLodaing == false) {
-        console.log('user token in get for saved', this.props.usertoken);
+      
         if (this.props.usertoken && this.props.usertoken != '') {
          
           console.log('user token in get for saved', this.props.userProfile);
@@ -53,7 +53,7 @@ class Splash extends Component {
     };
   }
   
-    export default Splash;
+ export default Splash;
 
     const styles = StyleSheet.create({
         container: {

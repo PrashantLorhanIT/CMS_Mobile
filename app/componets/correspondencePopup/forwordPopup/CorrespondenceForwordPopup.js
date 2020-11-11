@@ -33,6 +33,7 @@ const CorrespondenceForwordPopup = (props) => {
    const [userMasterIds, setuserMasterIds] = useState([]);
    const [comment, setcomment] =  useState('');
    const [ isUserModalVisible, setisUserModalVisible] = useState(false);
+   const [isforward, setIsforward] = useState(false);
   //  const masterIds = [],
    const onButtonCancelClick = () => {
         props.onModalClose(); 
@@ -49,7 +50,7 @@ const CorrespondenceForwordPopup = (props) => {
       var length = userMasterIds.length;
       userMasterIds.map(id =>{
         const userId = props.userId;
-        const toUserID = userMasterIds; 
+        const toUserID = id; 
         const workFlowTransactionId = props.workFTID;
         const comments = comment
         AsyncStorage.getItem('token').then((token) => {
@@ -57,7 +58,9 @@ const CorrespondenceForwordPopup = (props) => {
         });
         --length;
         if(length == 0){
+          if (isforward == true) {
           alertWithMessage("Forwarded sucessfully");
+          }
         }
          });
       };
@@ -88,7 +91,7 @@ const CorrespondenceForwordPopup = (props) => {
           try {
             const params = {
               byUserId: userid,
-              toUserId:toUserID,
+              toUserId: toUserID,
               workflowtransactionID:wftId,
               comments :comment
           }
@@ -103,7 +106,8 @@ const CorrespondenceForwordPopup = (props) => {
                   console.log(res.data.statusCode)
                   if (res.data.statusCode == "200") {
                    
-                   // alertWithMessage("Forwarded sucessfully");
+                    setIsforward(true);
+                 //  alertWithMessage("Forwarded sucessfully");
                     
                   }   
                   

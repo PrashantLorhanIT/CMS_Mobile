@@ -35,6 +35,11 @@ const ChangePassword = (props) => {
     const onButtonCancelClick = () => {
         props.onModalClose(); 
         setVisible(false);
+      };
+
+    const onButtonOkClick = () => {
+        props.onModalClose(); 
+        setVisible(false);
         props.getLogoutValues(true);
       };
       
@@ -70,8 +75,6 @@ const ChangePassword = (props) => {
       };
 
     const  submitChangePassword =  (userName, oldPassword, newPassword, token) => {
-        console.log('Change Password Action method  Approve');
-        // return async (dispatch) => {
             try {
                 const params = {
                     username: userName,
@@ -83,22 +86,18 @@ const ChangePassword = (props) => {
                // <Loader isLoading = {true} />
                 axios.post(`${constants.webService.baseURL}${constants.webService.methods.auth.changePassword}`, params,  axios.defaults.headers.Authorization = `Bearer ${token}`)
                 .then(res => {
-                  console.log('Change Passwordresponse inside');
-                    console.log(res);
-                    console.log(res.data)
+                //   console.log('Change Passwordresponse inside');
+                //     console.log(res);
+                //     console.log(res.data)
                     if (res.data.statusCode == "200") {
                         if (res.data.data === "Password changed successfully") {
                             alertWithMessage('Password changed successfully');
                         }
-                        // props.onModalClose(); 
-                        // setVisible(false); 
                     }    
                 })
                 .catch(error => console.log(error));  
             } catch (error) {
-                //dispatch(isAppLoading(false));
             }
-      //  }
     }
 
    const alertWithMessage = (message) =>
@@ -106,10 +105,11 @@ const ChangePassword = (props) => {
             "",        
             message,
             [
-                { text: "OK", onPress: () => {onButtonCancelClick()} }
+                { text: "OK", onPress: () => {onButtonOkClick()} }
             ],
             { cancelable: false }
         );
+
         if (config.fallback == "en") {
       return(
         <Modal transparent animated visible={visible}  animationIn="slideInLeft" animationOut="slideOutRight"onRequestClose={() => { console.log('onRequestClose'); }}>
@@ -237,10 +237,10 @@ const ChangePassword = (props) => {
         return(
             <Modal transparent animated visible={visible}  animationIn="slideInLeft" animationOut="slideOutRight"onRequestClose={() => { console.log('onRequestClose'); }}>
                 {/* <BlurView style={{position: 'absolute', top: 0,left: 0, height: '100%',width: '100%'}} blurType='light' blurRadius={1} /> */}
-                   <SafeAreaView style={{flex:1, backgroundColor:'white',backgroundColor: 'rgba(128, 128, 128, 0.5)'}}>
-                       <ScrollView>
-                       <Container style={{width:'100%',height:'100%',backgroundColor: 'rgba(128,128, 128, 0.5)', paddingTop:0}} >
-                            <View style={{marginTop:200,width:screenWidth-40, height:350,marginLeft:20, marginRight:20, borderRadius:10,backgroundColor:'white'}}>
+                   <SafeAreaView style={{flex:1}}>
+                       <ScrollView style={{width:'100%',height:'100%'}}>
+                       <Container style={{width:'100%',height:'100%', paddingTop:0}} >
+                            <View style={{marginTop:180,width:screenWidth-40, height:360,marginLeft:20, marginRight:20, borderRadius:10,backgroundColor:'white'}}>
                             <View style={{marginTop:0, marginLeft:0, marginRight:0, width:'100%', height:70, flexDirection:'column',marginBottom:-10}}>
                                     <ImageBackground source={HeaderTilte} style={{width:'100%', height:50, borderTopRightRadius:10,borderTopLeftRadius:10, overflow: 'hidden'}} >
                                     <Text style={{marginLeft:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:15, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff',textAlign:'right'}}>{t('ProfileScreen:ChangePasswordTitle')}</Text>

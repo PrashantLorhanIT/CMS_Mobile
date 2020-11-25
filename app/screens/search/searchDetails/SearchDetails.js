@@ -619,9 +619,9 @@ _renderRFICard = () => {
   _distributeData = () => {
   
   this.props.searchCorrespondenceWrokFlowSteps.forEach(element => {
-  
+  console.log('distributed data');
     if (element.stepname==='DISTRIBUTE'){
-
+      console.log('distributed data DISTRIBUTE');
       if (this.state.distributeData != undefined) 
         // distributeData.push(props.distributeProperties.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
         // else
@@ -632,6 +632,7 @@ _renderRFICard = () => {
         });
        
     } else if (element.sequence === 2 ) {
+      console.log('distributed data  else 2');
       if (this.state.distributeData != undefined)
       // setdistributeData(push(props.distributeProperties.filter(data => data.ridWorkflowstep === element.ridWorkflowstep)));
       // else
@@ -642,6 +643,7 @@ _renderRFICard = () => {
       
     }
     if (element.sequence === 2 ) {
+      console.log('distributed data 2');
       if (this.state.reviewerData != undefined)
         // this.reviewerData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
       // else
@@ -652,6 +654,7 @@ _renderRFICard = () => {
       })
     }
     if (element.sequence === 3 ) {
+      console.log('distributed data 2');
       if (this.state.ApproverData != undefined)
         // this.ApproverData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
       // else
@@ -662,6 +665,7 @@ _renderRFICard = () => {
       })
     }
    });
+   console.log('Distributed Data before set value',this.state.distributeData);
    this.setState({
    mdl: this.state.distributeData.filter(element => element.mdlname != null && element.ridCommunicationtype===1).map(element => element.mdlname).join(', '),
    adHoc: this.state.distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===1).map(element => element.firstname + ' ' + element.lastname).join(', '),

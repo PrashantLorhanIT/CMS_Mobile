@@ -3,6 +3,7 @@ import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions,StyleShee
 import { Container, Content, Button, Text, Icon, Input, Label, Textarea,Segment,Card,CardItem, Body,} from 'native-base';
 import HeaderTilte from '../../../assets/image/popup/popup.jpg';
 import { FONT_SIZE_12, FONT_SIZE_16,FONT_WEIGHT_BOLD, FONT_SIZE_14, FONT_FAMILY_PT_REGULAR, FONT_WEIGHT_REGULAR, FONT_FAMILY_PT_BOLD} from '../../../utils/styles/typography';
+import { WHITE, TEMP_THEME_PRIMARY, TEMP_THEME_SECONDARY } from '../../../utils/styles/colors';
 const screenWidth = Dimensions.get("window").width;
 import { BlurView } from "@react-native-community/blur";
 import AttendeesCard from './AttendeesCard';
@@ -236,7 +237,7 @@ const MomPropertiesPopup = (props) => {
           <View style={{margin:5,marginLeft:10,marginRight:10,height:300}}>
               <Content>
                 {
-               props.taskComment.map((ele, index) => <TaskCommentCard  key={index} taskComment={ele} />) 
+              props.taskComment && props.taskComment.length> 0 ? props.taskComment.map((ele, index) => <TaskCommentCard  key={index} taskComment={ele} />) : <Text style={styles.noRecordsText}>No Record Found</Text>
                 }
               </Content>
         </View>
@@ -401,5 +402,13 @@ textContainerArabic: {
  alignSelf:'flex-end'
   
 },
+noRecordsText: {
+  color: TEMP_THEME_PRIMARY,
+  fontSize: FONT_SIZE_16,
+  fontWeight: FONT_WEIGHT_BOLD,
+  fontFamily:FONT_FAMILY_PT_REGULAR,
+  textAlign: 'center',
+  marginTop:60
+}
   });
 export default MomPropertiesPopup;

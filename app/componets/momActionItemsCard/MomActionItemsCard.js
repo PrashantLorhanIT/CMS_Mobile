@@ -66,14 +66,14 @@ import * as config from '../../utils/localization/config/i18n';
                         isApproveModalVisible && <ApproveModelPopup userId = {this.props.userId} workFTID = {this.props.workFTID} token = {this.props.token} onModalClose={() => { this.setState({ isApproveModalVisible: false }) }} getApproveValuesrefersh={(isRefersh) => {
                      console.log('Go back approve popup')
             
-             if (isRefersh == true) {
+                     if (isRefersh == true) {
                     this.props.getApproveValuesrefersh(true)
-                 }
-                }} />
-                 }
+                        }
+                      }} />
+                    }
                         <View style={{}}>
                            <Text style={{fontSize:13,fontFamily:FONT_FAMILY_PT_REGULAR, fontWeight:'600', margin:3}}>{this.props.correspondenceActionItems.name ? this.props.correspondenceActionItems.name: 'N/A'}</Text>
-                           <Text style={{fontSize:12, fontFamily:FONT_FAMILY_PT_REGULAR,margin:3}}>{t('InboxScreen:ApprovalCommment')}: {this.props.correspondenceActionItems.comments ? this.props.correspondenceActionItems.comments : 'N/A'}</Text>
+                           <Text style={{fontSize:12, fontFamily:FONT_FAMILY_PT_REGULAR, margin:3}}>{t('InboxScreen:ApprovalCommment')}: {this.props.correspondenceActionItems.comments ? this.props.correspondenceActionItems.comments : 'N/A'}</Text>
                            {/* <Text style={{fontSize:12, margin:3}}>{this.props.correspondenceTask.taskStatus && this.props.correspondenceTask.taskStatus}</Text> */}
                            <Text style={{fontSize:12,fontFamily:FONT_FAMILY_PT_REGULAR, margin:3}}>{t('InboxScreen:ApprovalDueDate')}: {moment(this.props.correspondenceActionItems.approvedTstmp).format('MMM DD, YYYY HH:mm')}</Text>
                            { this.props.correspondenceActionItems.isapproved == 'N' &&

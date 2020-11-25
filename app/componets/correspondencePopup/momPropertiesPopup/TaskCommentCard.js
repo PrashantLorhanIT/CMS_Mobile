@@ -47,10 +47,10 @@ import {
       if(config.fallback == 'en'){
         return (
           <>
-              {/* <View style={{marginLeft:10, marginRight:10,marginTop:5,backgroundColor:'white',height:60}}> */}
-                {/* <View style={styles.mainContainer}> 
-                  <View style={styles.container}> */}
-                  <Card>
+              <View style={{marginLeft:10, marginRight:10,marginTop:5,backgroundColor:'white',height:60}}> 
+                <View style={styles.mainContainer}> 
+                  <View style={styles.container}>
+                  {/* //<Card> */}
                   <View style={styles.textContainer}>
             <Text style={styles.nameText}>{t('InboxScreen:ActionBy')}:</Text>
             <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:6,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{`${this.props.taskComment.assigneeFirstName} ${this.props.taskComment.assigneeLastName}` && `${this.props.taskComment.assigneeFirstName} ${this.props.taskComment.assigneeLastName}`}</Text>
@@ -68,11 +68,11 @@ import {
             <Text style={styles.nameText}>{t('InboxScreen:DueDate')}:</Text>
             <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.completionDate ? moment(this.props.taskComment.completionDate && this.props.taskComment.completionDate).format('DD-MMM-YYYY') : 'N/A'}</Text>
           </View>
-                 {/* </View>
-              </View>  */}
+                 </View>
+              </View> 
                {this.FlatListItemSeparator()}  
-           {/* </View>    */}
-           </Card>
+           </View>   
+           {/* </Card> */}
          
          </> 
       );

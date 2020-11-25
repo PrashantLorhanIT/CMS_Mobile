@@ -1116,7 +1116,7 @@ class CoreespondenceDetails extends Component {
           return(
             <View style={{marginLeft:10,marginRight:10,marginTop:0,backgroundColor:'#ffffff',paddingBottom:10,alignSelf: 'stretch'}}>
                  <ScrollView>
-                   <View style={{marginLeft:10,marginTop:10, flexDirection:'row',marginRight:10}}>
+                   <View style={{marginLeft:20,marginTop:10, flexDirection:'row',marginRight:10}}>
                     <Text style={{fontFamily:FONT_FAMILY_PT_BOLD, fontSize:14}}>Meeting Details: </Text><Text style={{marginRight:0,fontSize:14, fontFamily:FONT_FAMILY_PT_REGULAR,flexWrap: 'wrap', flexShrink:1}}> {this.props.correspondenceDetailData.bodyContent && this.props.correspondenceDetailData.bodyContent}</Text>
                    </View>  
                                     
@@ -1141,12 +1141,14 @@ class CoreespondenceDetails extends Component {
           return(
             <View style={{marginLeft:10,marginRight:10,marginTop:0,backgroundColor:'#ffffff',paddingBottom:10,alignSelf: 'stretch'}}>
                  <ScrollView>
-                   <View style={{marginLeft:20,marginTop:10, flexDirection:'row',marginRight:45}}>
+                   <View style={{marginLeft:20,marginTop:10, flexDirection:'row',marginRight:20}}>
                     <Text style={{fontFamily:FONT_FAMILY_PT_BOLD, fontSize:14}}>{t('InboxScreen:Query')}: </Text><Text style={{marginRight:15,fontSize:14, fontFamily:FONT_FAMILY_PT_REGULAR,flexWrap: 'wrap', flexShrink:1}}> {this.props.correspondenceDetailData.transactionComments && this.props.correspondenceDetailData.transactionComments}</Text>
                    </View>  
-                   <View style={{marginLeft:20, marginTop:10, flexDirection:'row',marginRight:45}}>
+                   <View style={{marginLeft:20, marginTop:10, flexDirection:'row',marginRight:60}}>
                      <Text style={{fontFamily:FONT_FAMILY_PT_BOLD, fontSize:14}}>{t('InboxScreen:Response')}: </Text> 
-                      <HTML  style={{fontSize:14,marginRight:15, fontFamily:FONT_FAMILY_PT_REGULAR}} html={this.props.correspondenceDetailData.bodyContent} imagesMaxWidth={Dimensions.get('window').width-100} />
+                     { this.props.correspondenceDetailData.bodyContent ?
+                      <HTML  style={{fontSize:14,marginRight:45, fontFamily:FONT_FAMILY_PT_REGULAR}} html={this.props.correspondenceDetailData.bodyContent} imagesMaxWidth={Dimensions.get('window').width-110} /> : <Text style={{marginRight:15,fontSize:14, fontFamily:FONT_FAMILY_PT_REGULAR}}>N/A</Text>
+                     }
                    </View>                   
                </ScrollView>
             </View>

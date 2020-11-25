@@ -100,10 +100,11 @@ export const getTaskDetails = (userId, taskId) => {
                     MomID:momId,
                 }
                 const responseProperties = await networkManager.getRequestHandler(constants.webService.methods.common.momDetailProperties, Propertiesparam, token);
-                // console.log('User response mom properties');
-                // console.log(responseProperties);
+                console.log('User response mom properties');
+                console.log(responseProperties);
                 const jsonProperties = responseProperties['data'];
                 dispatch(setCorrespondenceDetailProperties(jsonProperties));
+                
                 const AttendesPropertiesparam = {
                     MomID:momId,
                 }
@@ -157,14 +158,7 @@ export const getMomDetails = (userId, momId) => {
             console.log(responseComment);
             const jsonArrayComment = responseComment['data'];
             dispatch(setCorrespondenceDetailComments(jsonArrayComment));
-            const Tparam = {
-                MomID:momId,
-            }
-            const responseTask = await networkManager.getRequestHandler(constants.webService.methods.common.momDetailTaskList, Tparam, token);
-            // console.log('User response mom responseTask');
-            // console.log(responseTask);
-            const jsonTask = responseTask['data'];
-            dispatch(setCorrespondenceDetailTasks(jsonTask))
+            
             const ATparam = {
                 MomID:momId,
             }
@@ -177,8 +171,8 @@ export const getMomDetails = (userId, momId) => {
                 MomID:momId,
             }
             const responseProperties = await networkManager.getRequestHandler(constants.webService.methods.common.momDetailProperties, Propertiesparam, token);
-            // console.log('User response mom properties');
-            // console.log(responseProperties);
+            console.log('User response mom properties');
+            console.log(responseProperties);
             const jsonProperties = responseProperties['data'];
             dispatch(setCorrespondenceDetailProperties(jsonProperties));
             const AttendesPropertiesparam = {
@@ -189,6 +183,15 @@ export const getMomDetails = (userId, momId) => {
             // console.log(responseAttendeesProperties);
             const jsonAttendessProperties = responseAttendeesProperties['data'];
             dispatch(setCorrespondenceMomDetailPropertiesAttendees(jsonAttendessProperties));
+            const Tparam = {
+                MomID:momId,
+               // UserID: userId
+            }
+            const responseTask = await networkManager.getRequestHandler(constants.webService.methods.common.momDetailTaskList, Tparam, token);
+            console.log('User response mom responseTask');
+            console.log(responseTask);
+            const jsonTask = responseTask['data'];
+            dispatch(setCorrespondenceDetailTasks(jsonTask))
             dispatch(isAppLoading(false));
         } catch (error) {
             dispatch(isAppLoading(false));

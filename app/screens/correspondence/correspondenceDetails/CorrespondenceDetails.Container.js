@@ -43,6 +43,7 @@ const mapStateToProps = state => {
         categoryList : state.CorrespondenceDetailsReducer.categoryList,
         correspondenceDetailActionItem: state.CorrespondenceDetailsReducer.correspondenceDetailActionItem,
         momDetailsPropertiesAttendees: state.CorrespondenceDetailsReducer.momDetailsPropertiesAttendees,
+        momDetailsPropertiesTaskComment: state.CorrespondenceDetailsReducer.momDetailsPropertiesTaskComment,
     }
 }
 

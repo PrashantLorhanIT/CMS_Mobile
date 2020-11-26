@@ -47,32 +47,32 @@ import {
       if(config.fallback == 'en'){
         return (
           <>
-              <View style={{marginLeft:10, marginRight:10,marginTop:5,backgroundColor:'white',height:60}}> 
+              {/* <View style={{marginLeft:10, marginRight:10,marginTop:5,backgroundColor:'white',height:85}}> 
                 <View style={styles.mainContainer}> 
-                  <View style={styles.container}>
-                  {/* //<Card> */}
+                  <View style={styles.container}> */}
+                  <Card>
                   <View style={styles.textContainer}>
             <Text style={styles.nameText}>{t('InboxScreen:ActionBy')}:</Text>
-            <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:6,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{`${this.props.taskComment.assigneeFirstName} ${this.props.taskComment.assigneeLastName}` && `${this.props.taskComment.assigneeFirstName} ${this.props.taskComment.assigneeLastName}`}</Text>
+            <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:6,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{ this.props.taskComment.name && this.props.taskComment.name}</Text>
           </View>
               <View style={styles.textContainer}>
               <Text style={styles.nameText}>{t('InboxScreen:SubjectDetails')}:</Text>
-              <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:18,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.tasksubject && this.props.taskComment.tasksubject}</Text>
+              <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:18,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.subject && this.props.taskComment.subject}</Text>
           </View>
           <View style={styles.textContainer}>
             <Text style={styles.nameText}>{t('InboxScreen:Comment')}:</Text>
-            <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:6,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.completionComment && this.props.taskComment.completionComment}</Text>
+            <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:6,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.comments && this.props.taskComment.comments}</Text>
           </View>
           
           <View style={styles.textContainer}>
             <Text style={styles.nameText}>{t('InboxScreen:DueDate')}:</Text>
-            <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.completionDate ? moment(this.props.taskComment.completionDate && this.props.taskComment.completionDate).format('DD-MMM-YYYY') : 'N/A'}</Text>
+            <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.dueDate ? moment(this.props.taskComment.dueDate && this.props.taskComment.dueDate).format('DD-MMM-YYYY') : 'N/A'}</Text>
           </View>
-                 </View>
-              </View> 
+                 {/* </View>
+              </View>  */}
                {this.FlatListItemSeparator()}  
-           </View>   
-           {/* </Card> */}
+           {/* </View>    */}
+           </Card>
          
          </> 
       );
@@ -84,15 +84,15 @@ import {
                   <View style={styles.container}> */}
                   <Card>
                   <View style={styles.textContainerArabic}>
-                    <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:15,flexWrap: 'wrap', flexShrink:1}}>{`${this.props.taskComment.assigneeFirstName} ${this.props.taskComment.assigneeLastName}` && `${this.props.taskComment.assigneeFirstName} ${this.props.taskComment.assigneeLastName}`}</Text>
+                <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:15,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.name && this.props.taskComment.name}</Text>
                     <Text style={styles.nameText}>{t('InboxScreen:ActionBy')}:</Text>
                 </View>
                   <View style={styles.textContainerArabic}>
-                   <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:45,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.tasksubject && this.props.taskComment.tasksubject}</Text>
+                   <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:45,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.subject && this.props.taskComment.subject}</Text>
                   <Text style={styles.nameText}>{t('InboxScreen:SubjectDetails')}:</Text>
                </View>
            <View style={styles.textContainerArabic}>
-            <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:40,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.completionComment && this.props.taskComment.completionComment}</Text>
+            <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:40,flexWrap: 'wrap', flexShrink:1}}>{this.props.taskComment.comments && this.props.taskComment.comments}</Text>
             <Text style={styles.nameText}>{t('InboxScreen:Comment')}:</Text>
           </View>
           <View style={styles.textContainerArabic}>

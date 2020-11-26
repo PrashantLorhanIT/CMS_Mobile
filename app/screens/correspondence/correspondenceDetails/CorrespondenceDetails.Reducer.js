@@ -14,6 +14,7 @@ const initialState = {
     correspondenceDetailTasks:[],
     correspondenceDetailActionItem: [],
     momDetailsPropertiesAttendees:[],
+    momDetailsPropertiesTaskComment: [],
     corresponseApproveReject: false,
     categoryList:[],
     
@@ -90,6 +91,11 @@ export const CorrespondenceDetailsReducer = (state = initialState, action) => {
                 return {
                     ...state,
                     momDetailsPropertiesAttendees: action.payload,
+            }; 
+         case ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_MOMTASKCOMMENT:
+                return {
+                    ...state,
+                    momDetailsPropertiesTaskComment: action.payload,
             }; 
 
      case ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_RFIFORWARDUSERMSTER:

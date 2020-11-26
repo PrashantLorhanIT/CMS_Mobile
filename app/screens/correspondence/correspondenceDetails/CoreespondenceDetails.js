@@ -1359,7 +1359,7 @@ if (config.fallback == 'en'){
                         </View>
                        <Content>
                       {
-                        this.props.correspondenceDetailActionItem &&  this.props.correspondenceDetailActionItem.length > 0 && this.props.correspondenceDetailActionItem.map((ele, index) => <MOMActionItemsCard key={index} correspondenceActionItems ={ele}  userId = {this.props.userProfile.ridUsermaster} workFTID = {this.props.correspondenceDetailData.ridWorkflowTransaction} token ={this.props.loggedInUser.token} corrId = {this.props.navigation.state.params.ridInOutCorr}/>)
+                        this.props.correspondenceDetailActionItem &&  this.props.correspondenceDetailActionItem.length > 0 && this.props.correspondenceDetailActionItem.map((ele, index) => <MOMActionItemsCard key={index} correspondenceActionItems ={ele}  userId = {this.props.userProfile.ridUsermaster} workFTID = {this.props.correspondenceDetailActionItem.ridWorkflowTransaction} token ={this.props.loggedInUser.token} corrId = {this.props.navigation.state.params.ridInOutCorr}/>)
                       }
               </Content>
             </Body>
@@ -1731,7 +1731,7 @@ if (config.fallback == 'en'){
                   }} />   
                 }
                 {
-                 isMomPropertiesModelVisible && <MomPropertiesModelPopup  momProperties = {this.props.correspondenceDetailCorrespondenceProperties} attendees={this.props.momDetailsPropertiesAttendees} taskComment = {this.props.correspondenceDetailTasks}  onModalClose={() => { this.setState({ isMomPropertiesModelVisible: false }) }} /> 
+                 isMomPropertiesModelVisible && <MomPropertiesModelPopup  momProperties = {this.props.correspondenceDetailCorrespondenceProperties} attendees={this.props.momDetailsPropertiesAttendees} taskComment = {this.props.momDetailsPropertiesTaskComment}  onModalClose={() => { this.setState({ isMomPropertiesModelVisible: false }) }} /> 
                 }
                  {
                  isMomCommentModelVisible && <MomCommentModelPopup  momComment = {this.props.correspondenceDetailComment}  attendees={this.props.momDetailsPropertiesAttendees} token ={ this.props.loggedInUser.token} onModalClose={() => { this.setState({ isMomCommentModelVisible: false }) }} getMomDetailsRefreshValues={(isRefresh) => {

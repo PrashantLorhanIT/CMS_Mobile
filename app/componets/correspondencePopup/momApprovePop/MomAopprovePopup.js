@@ -40,6 +40,7 @@ const MomAopprovePopup = (props) => {
       };
 
       const onButtonApproveClick = () => {
+        console.log('Correspondence details Action method  Approve', props.mom);
         const wrokFlowTransactionId = props.workFTID;
         const Approve = "Y";
         const comments = comment
@@ -50,7 +51,7 @@ const MomAopprovePopup = (props) => {
       };
       
       const  submitCorrespondenceDetailApproveReject =  (wftId, approve, comment, token) => {
-        console.log('Correspondence details Action method  Approve');
+        
         // return async (dispatch) => {
           // useEffect(() => {
             try {

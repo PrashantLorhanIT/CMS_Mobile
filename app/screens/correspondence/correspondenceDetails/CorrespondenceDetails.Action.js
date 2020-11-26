@@ -192,6 +192,15 @@ export const getMomDetails = (userId, momId) => {
             console.log(responseTask);
             const jsonTask = responseTask['data'];
             dispatch(setCorrespondenceDetailTasks(jsonTask))
+            const TCparam = {
+                MomID:momId,
+               // UserID: userId
+            }
+            const responseTaskcommet = await networkManager.getRequestHandler(constants.webService.methods.common.momDetailTaskCommet, TCparam, token);
+            console.log('User response mom responseTaskCommet');
+            console.log(responseTaskcommet);
+            const jsonTaskCommet = responseTaskcommet['data'];
+            dispatch(setMomDetailTasksComment(jsonTaskCommet))
             dispatch(isAppLoading(false));
         } catch (error) {
             dispatch(isAppLoading(false));
@@ -554,6 +563,12 @@ export const setCorrespondenceDetailWrokFlowSteps = (payload) => {
 export const setCorrespondenceDetailTasks = (payload) => {
     return {
         type: ActionTypes.correspondence.SET_CORRESPONDENCE_DETAIL_TASKS,
+        payload: payload,
+    }
+}
+export const setMomDetailTasksComment = (payload) => {
+    return {
+        type: ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_MOMTASKCOMMENT,
         payload: payload,
     }
 }

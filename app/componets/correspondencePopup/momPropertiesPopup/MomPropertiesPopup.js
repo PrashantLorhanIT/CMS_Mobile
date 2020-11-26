@@ -237,7 +237,7 @@ const MomPropertiesPopup = (props) => {
           <View style={{margin:5,marginLeft:10,marginRight:10,height:300}}>
               <Content>
                 {
-              props.taskComment && props.taskComment.length> 0 ? props.taskComment.map((ele, index) => <TaskCommentCard  key={index} taskComment={ele} />) : <Text style={styles.noRecordsText}>No Record Found</Text>
+              props.taskComment && props.taskComment.length > 0 ? props.taskComment.map((ele, index) => <TaskCommentCard  key={index} taskComment={ele} />) : <Text style={styles.noRecordsText}>No Record Found</Text>
                 }
               </Content>
         </View>

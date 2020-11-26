@@ -42,6 +42,7 @@ export const constants = {
                 momDetailsAttachment:'Attachment/GetAttachmentsByMomID',
                 momDetailComments: 'Mom/GetCommentsByMomID',
                 momDetailTaskList: 'UserTask/GetUserTasksByMomID',
+                momDetailTaskCommet: 'Mom/GetMinutesTasksByMomID',
                 momDetailAprovals: 'Mom/GetReviewDetails',
                 momDetailProperties: 'Mom',
                 momDetailPropertiesAttendes: 'Mom/GetAttendeesByMomID',

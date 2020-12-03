@@ -197,7 +197,7 @@ const CorrespondencePropertiesPopup = (props) => {
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.nameText}>{t('InboxScreen:Contract')}:</Text>
-                  <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:80,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{props.correspondenceProperties.referencenumber}</Text>
+                  <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:80,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{`${props.correspondenceProperties.contractcode}-${props.correspondenceProperties.contractname}`}</Text>
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.nameText}>{t('InboxScreen:Template')}:</Text>
@@ -244,7 +244,7 @@ const CorrespondencePropertiesPopup = (props) => {
                  <Text style={styles.nameText}>{t('InboxScreen:Sender')}:</Text>
                </View>
                <View style={styles.textContainerArabic}>
-                 <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:90,flexWrap: 'wrap', flexShrink:1}}>{props.correspondenceProperties.referencenumber}</Text>
+                 <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:90,flexWrap: 'wrap', flexShrink:1}}>{`${props.correspondenceProperties.contractcode}-${props.correspondenceProperties.contractname}`}</Text>
                  <Text style={styles.nameText}>{t('InboxScreen:Contract')}:</Text>
                </View>
                <View style={styles.textContainerArabic}>

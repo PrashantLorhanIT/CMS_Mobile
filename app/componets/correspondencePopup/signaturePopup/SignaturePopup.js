@@ -114,6 +114,14 @@ const SignaturePopup = (props) => {
            
             <Header style={{backgroundColor:'#aa182c',height:33}}>
                                     <Left style={{margin:0,marginTop:-20}}> 
+                                    <Button transparent onPress={() => {
+                            props.onModalClose();
+                            setVisible(false);
+                        }} >
+                                            {/* <Icon name='arrow-back' /> */}
+                                            <Image source={back} />
+                                            <Text style={{color:'white', fontFamily:FONT_FAMILY_PT_REGULAR}}>Back</Text>
+                                        </Button>
                                     </Left>
                                      <Title style={styles.title}>Signature</Title>
                                     <Right></Right>

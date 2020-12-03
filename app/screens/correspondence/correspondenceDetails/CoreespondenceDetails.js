@@ -1283,7 +1283,7 @@ class CoreespondenceDetails extends Component {
           </CardItem>
         </Card>
         }
-            </View>
+        </View>
         );
         }else {
           return (
@@ -1425,7 +1425,7 @@ if (config.fallback == 'en'){
              } 
            }else {
             if (approve == 'Approve') {
-              if (singingUrl == ''){
+              if (singingUrl == '' || singingUrl == 'N'){
              this.setState((state) => {
                return {
                  isApproveModalVisible: true,
@@ -1439,7 +1439,6 @@ if (config.fallback == 'en'){
              });
             }
            } else if (buttonText== 'Initiate') {
-            // {"workFlowTransactionID":1100,"approve":"Y","comment":"Initiated"} isInitiateModalVisible
             this.setState((state) => {
               return {
                 isInitiateModalVisible: true,
@@ -1493,6 +1492,7 @@ if (config.fallback == 'en'){
           };
         });
       }
+
       handleCommentsTap = () => {
         this.setState((state) => {
           return {
@@ -1500,6 +1500,7 @@ if (config.fallback == 'en'){
           };
         });
       }
+
       handleRFICommentsTap = () => {
         this.setState((state) => {
           return {
@@ -1507,6 +1508,7 @@ if (config.fallback == 'en'){
           };
         });
       }
+
       handleRFIPropertiesTap = () => {
         this.setState((state) => {
           return {
@@ -1514,6 +1516,7 @@ if (config.fallback == 'en'){
           };
         });
       }
+
       handleMomPropertiesTap = () => {
         this.setState((state) => {
           return {
@@ -1521,6 +1524,7 @@ if (config.fallback == 'en'){
           };
         });
       }
+
       handleMomCommentTap = () => {
         this.setState((state) => {
           return {
@@ -1528,6 +1532,7 @@ if (config.fallback == 'en'){
           };
         });
       }
+
       alertWithMessage = (message) =>
       Alert.alert(
           "ETIHADRAIL",
@@ -1564,15 +1569,14 @@ if (config.fallback == 'en'){
                       setIsback(false);
                     }   
                 })
-                .catch(error => console.log(error));
-                
-                
+                .catch(error => console.log(error));   
             } catch (error) {
                 //dispatch(isAppLoading(false));
             }
           // });
       //  }
     }
+
     submitMomTaskComplete =  (taskId, actonType, comment,token) => {
           try {
               const params = {

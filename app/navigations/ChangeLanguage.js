@@ -94,9 +94,9 @@ const ChangeLanguage = (props) => {
                       );
           }
         const storelanguage = async (language) => {
-               // config.fallback = language
-               // ChangeLanguagemethod(language);
-        //       console.log('Change language store method');
+                config.fallback = language
+                ChangeLanguagemethod(language);
+               console.log('Change language store method');
                await AsyncStorage.setItem(STORAGE_KEY, language);
               
         }

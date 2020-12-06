@@ -67,7 +67,7 @@ const CorrespondenceDocumentViewer = (props) => {
                    <WebView 
                       onLoadEnd={() => setisLoadingVisible(false)}
                       source={{ uri: `${constants.webService.documentBaseUrl}${finalurl}`}}
-                      style={{ marginLeft:6,marginTop:0,width:'115%',height:'100%' }}
+                      style={{ marginLeft:6,marginTop:0,width:'124%',height:'100%' }}
                       javaScriptEnabled={true}
                       domStorageEnabled={true}
                    />

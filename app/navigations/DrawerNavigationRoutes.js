@@ -2,7 +2,6 @@ import React from 'react';
 
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-
 import Dashboard from '../screens/dashboard/Dashboard.Container';
 import Correspondence from '../screens/correspondence/Correspondence.Container';
 import SidebarMenu from '../componets/sideBarMenu/SidebarMenu.Container';
@@ -173,7 +172,6 @@ const DashBoard_StackNavigator = createStackNavigator({
       drawerCloseRoute: 'DrawerClose',
       drawerToggleRoute: 'DrawerToggle',
       drawerPosition: language == "en" ? 'left' : 'right'
-
     }
   );
 

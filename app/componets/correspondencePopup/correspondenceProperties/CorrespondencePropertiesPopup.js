@@ -63,45 +63,33 @@ const CorrespondencePropertiesPopup = (props) => {
 
   
     const _distributeData = () => {
-      console.log('Correspondecne properties data filter');
-      console.log(props.worlflowSteps);
-      console.log('Correspondecne distributeProperties data filter');
-      console.log(props.distributeProperties);
+     
       props.worlflowSteps.forEach(element => {
-        console.log('Correspondecne properties data filter in side for each');
-        console.log(element);
-
+      
         if (element.stepname==='DISTRIBUTE'){
 
           if (distributeData != undefined) 
-            // distributeData.push(props.distributeProperties.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
-            // else
             setdistributeData(props.distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
-            console.log('Correspondecne properties data filter inside if condition');
-            console.log(distributeData);
+            
         } else if (element.sequence === 2 ) {
           if (distributeData != undefined)
-          // setdistributeData(push(props.distributeProperties.filter(data => data.ridWorkflowstep === element.ridWorkflowstep)));
-          // else
-          setdistributeData(props.distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
-          console.log('Correspondecne properties data filter inside if condition sequence data');
-          console.log(distributeData);
+          setdistributeData(props.distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep)); 
         }
         if (element.sequence === 2 ) {
           if (reviewerData != undefined)
-            // this.reviewerData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
-          // else
             setreviewerData(props.distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
         }
         if (element.sequence === 3 ) {
           if (ApproverData != undefined)
-            // this.ApproverData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
-          // else
             setApproverData(props.distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
         }
        });
   
-   
+       console.log('Distributed Data before set value',distributeData);
+       console.log('Reviewr Data before set value' , reviewerData);
+    
+       console.log('Approval Data before set value',ApproverData);
+    
   
       setmdl(distributeData.filter(element => element.mdlname != null && element.ridCommunicationtype===1).map(element => element.mdlname).join(', '));
       setadHoc(distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===1).map(element => element.firstname + ' ' + element.lastname).join(', '));

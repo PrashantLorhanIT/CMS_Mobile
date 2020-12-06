@@ -619,25 +619,30 @@ _renderRFICard = () => {
   _distributeData = () => {
   
   this.props.searchCorrespondenceWrokFlowSteps.forEach(element => {
-  console.log('distributed data');
+  
     if (element.stepname==='DISTRIBUTE'){
-      console.log('distributed data DISTRIBUTE');
+
       if (this.state.distributeData != undefined) 
         // distributeData.push(props.distributeProperties.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
         // else
-        
-        this.setState({
-          distributeData: this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep)
+        console.log('Distribute State check value array or dictionary');
+        console.log(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
+        this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
+        // this.setState({
+        //   distributeData: this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
 
-        });
+        // });
        
     } else if (element.sequence === 2 ) {
       console.log('distributed data  else 2');
       if (this.state.distributeData != undefined)
       // setdistributeData(push(props.distributeProperties.filter(data => data.ridWorkflowstep === element.ridWorkflowstep)));
       // else
+      //this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
+        console.log('Distribute else condition State check value array or dictionary');
+        console.log(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
       this.setState({
-        distributeData: this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep)
+        distributeData: this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep))
 
       })
       
@@ -647,9 +652,9 @@ _renderRFICard = () => {
       if (this.state.reviewerData != undefined)
         // this.reviewerData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
       // else
-
+      //this.state.reviewerData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
       this.setState({
-        distributeData: this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep)
+        distributeData: this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep))
 
       })
     }
@@ -658,30 +663,37 @@ _renderRFICard = () => {
       if (this.state.ApproverData != undefined)
         // this.ApproverData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
       // else
+      this.state.ApproverData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
+      // this.setState({
+      //   distributeData: this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep))
 
-      this.setState({
-        distributeData: this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep)
-
-      })
+      // })
     }
    });
    console.log('Distributed Data before set value',this.state.distributeData);
-   this.setState({
-   mdl: this.state.distributeData.filter(element => element.mdlname != null && element.ridCommunicationtype===1).map(element => element.mdlname).join(', '),
-   adHoc: this.state.distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===1).map(element => element.firstname + ' ' + element.lastname).join(', '),
-   to: this.state.distributeData.filter(element => element.to != null && element.ridCommunicationtype===2).map(element => element.to).join(', '),
-   cc:  this.state.distributeData.filter(element => element.cc != null && element.ridCommunicationtype===2).map(element => element.cc).join(', '),
-   recipient:   this.state.distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===3).map(element => element.firstname + ' ' + element.lastname).join(', ')
+   console.log('Reviewr Data before set value',this.state.reviewerData);
 
-   });
+   console.log('Approval Data before set value',this.state.ApproverData);
+
+
+
+  //  this.setState({
+  //  mdl: this.state.distributeData.filter(element => element.mdlname != null && element.ridCommunicationtype===1).map(element => element.mdlname).join(', '),
+  //  adHoc: this.state.distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===1).map(element => element.firstname + ' ' + element.lastname).join(', '),
+  //  to: this.state.distributeData.filter(element => element.to != null && element.ridCommunicationtype===2).map(element => element.to).join(', '),
+  //  cc:  this.state.distributeData.filter(element => element.cc != null && element.ridCommunicationtype===2).map(element => element.cc).join(', '),
+  //  recipient:   this.state.distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===3).map(element => element.firstname + ' ' + element.lastname).join(', '),
+
+  //  reviewer: this.state.reviewerData.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', '),
+  //  approver: this.state.ApproverData.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', ')
+  //  });
     
-  if (this.category == 1) {
-    this.setState({
-      reviewer: this.state.reviewerData.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', '),
-      approver: this.state.ApproverData.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', ')
+//  // if (this.category == 1) {
+//     this.setState({
+     
 
-    })
-  }
+//   })
+  //}
 }
      componentDidUpdate = (prevProps, prevState) => {
      if (this.props.navigation.state.params.searchType == "Correspondence") {

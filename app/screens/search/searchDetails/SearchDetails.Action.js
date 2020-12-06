@@ -110,7 +110,7 @@ export const getQuickSearchRecordsMomDetailsProperties = (momId) => {
             const Tparam = {
                 MomID:momId,
             }
-            const responseTask = await networkManager.getRequestHandler(constants.webService.methods.common.momDetailTaskList, Tparam, token);
+            const responseTask = await networkManager.getRequestHandler(constants.webService.methods.common.momDetailTaskCommet, Tparam, token);
             console.log('search response mom responseTask');
             console.log(responseTask);
             const jsonTask = responseTask['data'];

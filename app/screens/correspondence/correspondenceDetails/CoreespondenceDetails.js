@@ -1649,7 +1649,7 @@ if (config.fallback == 'en'){
                     isApproveModalVisible: true,
                   };
                 });
-                  }
+              }
                }} />
             }
                   {

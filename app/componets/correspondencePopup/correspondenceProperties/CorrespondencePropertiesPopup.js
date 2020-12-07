@@ -32,29 +32,24 @@ const CorrespondencePropertiesPopup = (props) => {
   
     }, [correspondence,distribute, approval]);
 
-    const  onButtonCancelClick = () => {
+    const onButtonCancelClick = () => {
         props.onModalClose(); 
         setVisible(false);
       };
 
-      const  onSegmentCorrespondenceClick = () => {
-   console.log(`onSegmentCabClick - onSegmentCorrespondenceClick`);
-  // _distributeData();
-   setCorrespondence(true);
-   setDistibute(false);
-   setApproval(false);
+  const  onSegmentCorrespondenceClick = () => {
+    setCorrespondence(true);
+    setDistibute(false);
+    setApproval(false);
   }
 
 
   const onSegmentDistributeClick = () => {
-  console.log(`onSegmentCabClick - onSegmentDistributeClick`);
- // _distributeData();
-   setCorrespondence(false);
-   setDistibute(true);
-   setApproval(false);
+    setCorrespondence(false);
+    setDistibute(true);
+    setApproval(false);
   }
   const onSegmentApprovalClick = () => {
-    console.log(`onSegmentCabClick - onSegmentDistributeClick`);
     setCorrespondence(false);
     setDistibute(false);
     setApproval(true);
@@ -85,11 +80,6 @@ const CorrespondencePropertiesPopup = (props) => {
         }
        });
   
-       console.log('Distributed Data before set value',distributeData);
-       console.log('Reviewr Data before set value' , reviewerData);
-    
-       console.log('Approval Data before set value',ApproverData);
-    
   
       setmdl(distributeData.filter(element => element.mdlname != null && element.ridCommunicationtype===1).map(element => element.mdlname).join(', '));
       setadHoc(distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===1).map(element => element.firstname + ' ' + element.lastname).join(', '));
@@ -243,7 +233,6 @@ const CorrespondencePropertiesPopup = (props) => {
                  <Text  style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:55,flexWrap: 'wrap', flexShrink:1}}>{props.correspondenceProperties.recipientName}</Text>
                  <Text style={styles.nameText}>{t('InboxScreen:Recipient')}:</Text>
                </View>
-               
                <View style={styles.textContainerArabic}>
                  <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:4,marginRight:60,flexWrap: 'wrap', flexShrink:1}}>{props.correspondenceProperties.isreplyrequired}</Text>
                  <Text style={styles.nameText}>{t('InboxScreen:ReplyRequired')}:</Text>
@@ -324,7 +313,7 @@ const CorrespondencePropertiesPopup = (props) => {
        }
         
       }  else if (approval == true) {
-        if (config.fallback == 'en'){
+        if (config.fallback == 'en') {
           return (
             <Card style={{marginTop:0,marginLeft:15,marginRight:15}}>
             <CardItem>

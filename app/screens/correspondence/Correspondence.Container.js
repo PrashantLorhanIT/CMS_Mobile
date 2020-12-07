@@ -5,7 +5,8 @@ import {
     getCorrespondeceList,
     getCorrespondeceUpdateList,
     getSenderAndRecipentList,
-    getCorrespondeceLoadMoreList
+    getCorrespondeceLoadMoreList,
+    setUpdateCorrepondenceRecord
 } from './Correspondence.Action';
 import withLoader from '../../componets/loder/withLoader';
 import {isAppLoading} from '../../redux/index';
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch) => {
         getCorrespondeceUpdateList: (correspondece) => dispatch(getCorrespondeceUpdateList(correspondece)),
         getSenderAndRecipentList: () => dispatch(getSenderAndRecipentList()),
             getCorrespondeceLoadMoreList: (userId, PageNumber) => dispatch(getCorrespondeceLoadMoreList(userId, PageNumber)),
+            setUpdateCorrepondenceRecord: (id) => dispatch(setUpdateCorrepondenceRecord(id))
      }
 }
 

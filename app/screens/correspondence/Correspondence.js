@@ -186,12 +186,11 @@ filterFunction = (refernceNumber,subject, corrType, sender, recipent, overdue, f
   // if (refernceNumber || subject || corrType || sender || recipent || fromdate || todate){
   //   flag = true
   // }
-  console.log('.................................................');
-  console.log('Filter function array values', this.state.inMemorycorrespondenceData);
-  const selectedFromDate = moment(fromdate).format('yyyy-MM-DD');
-  const selectedToDate = moment(todate).format('yyyy-MM-DD');
+  
+    const selectedFromDate = moment(fromdate).format('yyyy-MM-DD');
+    const selectedToDate = moment(todate).format('yyyy-MM-DD');
 
-   const newData = this.state.inMemorycorrespondenceData.filter(item => {
+    const newData = this.state.inMemorycorrespondenceData.filter(item => {
 
     const itemDataCorrType = `${item.workflowName}`
     const itemDataSender = `${item.senderEntityID}`;
@@ -244,23 +243,14 @@ handleFilterTap = () => {
 }
 
 _renderCard =() => {
-    return (
-        <Content
-            refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} title='Loading...' />}>
-            {
-              this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => < CorrespondenceCard isCorrespondenceInbox = {
-                 true
-                }
-                key = {
-                 index
-                }
-                correspondence = {
-                 ele
-                }
-                />): < Text style = {styles.noRecordsText} > No Record Found </Text >
-            }
-        </Content>
-    );
+  return (
+    <Content
+        refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} title='Loading...' />}>
+        {
+          this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => < CorrespondenceCard isCorrespondenceInbox = {true} key = {index} correspondence = {ele} setUpdateCorrepondenceRecord = {this.props.setUpdateCorrepondenceRecord} />): < Text style = {styles.noRecordsText} > No Record Found </Text >
+        }
+    </Content>
+);
 //     return (
       
 //       this.state.correspondenceData &&   this.state.correspondenceData ?< FlatList

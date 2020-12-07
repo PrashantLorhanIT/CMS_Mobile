@@ -140,13 +140,18 @@ export const setDropDwonSenderAndRecioent = (payload) => {
     }
 }
 export const setDeleteCorrepondenceRecord = (id) => {
-    console.log('correspondece action deleted record');
     return {
         type : ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_DELETERECORD,
         id: id,
     }
 }
-
+export const setUpdateCorrepondenceRecord = (id) => {
+    console.log('Correspondence update Value', id);
+    return {
+        type : ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_UPDATERECORD,
+        id: id,
+    }
+}
 export const setCorrepondenceInboxCount = (payload) => {
     return {
         type : ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_COUNT,

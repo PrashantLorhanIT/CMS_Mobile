@@ -164,7 +164,7 @@ const CorrespondenceForwordPopup = (props) => {
                                      console.log(user);
                                     return (
                                     
-                                      <Label style={{fontSize: 13,height:15,marginLeft:0,marginRight:15,fontFamily:FONT_FAMILY_PT_REGULAR,color:'black'}}>{`${user.firstname} ${user.lastname}`}</Label> 
+                                      <Label style={{fontSize: 13,height:15,marginLeft:0,marginRight:15,fontFamily:FONT_FAMILY_PT_REGULAR,color:'black'}}>{`${user.username} (${user.entityName})`}</Label> 
                                      
                                       );
                                       }  else{
@@ -214,7 +214,7 @@ const CorrespondenceForwordPopup = (props) => {
                                                 <ListItem selected={selected} key={index} onPress={() => onUserMasterChange(user)}>
                                                     
                                                       <Left>
-                                                          <Text>{`${user.firstname} ${user.lastname}`}</Text>          
+                                                          <Text>{`${user.username} (${user.entityName})`}</Text>          
                                                       </Left>
                                                       <Right>
                                                           <Icon active={selected} name="checkmark" />
@@ -281,7 +281,7 @@ const CorrespondenceForwordPopup = (props) => {
                                      console.log(user);
                                     return (
                                     
-                                      <Label style={{fontSize: 13,height:15,marginRight:0,marginLeft:15,fontFamily:FONT_FAMILY_PT_REGULAR,color:'black',textAlign:'right'}}>{`${user.firstname} ${user.lastname}`}</Label> 
+                                      <Label style={{fontSize: 13,height:15,marginRight:0,marginLeft:15,fontFamily:FONT_FAMILY_PT_REGULAR,color:'black',textAlign:'right'}}>{`${user.username} (${user.entityName})`}</Label> 
                                      
                                       );
                                       }  else{
@@ -334,7 +334,7 @@ const CorrespondenceForwordPopup = (props) => {
                                                 <ListItem selected={selected} key={index} onPress={() => onUserMasterChange(user)}>
                                                     
                                                       <Left>
-                                                          <Text>{`${user.firstname} ${user.lastname}`}</Text>          
+                                                          <Text>{`${user.username} (${user.entityName})`}</Text>          
                                                       </Left>
                                                       <Right>
                                                           <Icon active={selected} name="checkmark" />

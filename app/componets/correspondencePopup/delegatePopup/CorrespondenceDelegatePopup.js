@@ -150,7 +150,7 @@ const CorrespondenceDelegatePopup = (props) => {
   
   {props.userMasterData && props.userMasterData.map((user, index) => {
       return (
-        <Picker.Item label= {`${user.firstname} ${user.lastname}`} value={user.ridUsermaster} key={index} />
+        <Picker.Item label= {`${user.username}`} value={user.ridUsermaster} key={index} />
         );
   })}
 </Picker>
@@ -210,7 +210,7 @@ const CorrespondenceDelegatePopup = (props) => {
   
   {props.userMasterData && props.userMasterData.map((user, index) => {
       return (
-        <Picker.Item label= {`${user.firstname} ${user.lastname}`} value={user.ridUsermaster} key={index} />
+        <Picker.Item label= {`${user.username}`} value={user.ridUsermaster} key={index} />
         );
   })}
 </Picker>

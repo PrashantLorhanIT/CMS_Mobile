@@ -90,12 +90,14 @@ const styles = StyleSheet.create({
     fontWeight: FONT_WEIGHT_BOLD,
     fontFamily:FONT_FAMILY_PT_BOLD,
     color:'#4d4f5c',
+    marginTop:3
    },
    dateText: {
     fontSize:12,
     fontWeight: FONT_WEIGHT_REGULAR,
     fontFamily:FONT_FAMILY_PT_REGULAR,
     color:'#43425d',
+    marginTop:3
    },
 //    contentText: {
 //     fontSize:FONT_SIZE_12,

@@ -24,7 +24,8 @@ import AttendeesCard from '../../../componets/correspondencePopup/momPropertiesP
 const screenWidth = Dimensions.get("window").width;
 import i18n, { t } from '../../../utils/localization/servicesi18n/index';
 import * as config from '../../../utils/localization/config/i18n';
-
+import CorrespondenceDistributeCard from '../../../componets/correspondenceSearchDetails/CorrespondenceSearchDitributeCard';
+import CorrespondenceApprovalCard from '../../../componets/correspondenceSearchDetails/CorrespondenceSearchApprovalCard';
 class SearchDetails extends Component {
 
     constructor(props) {
@@ -182,32 +183,7 @@ class SearchDetails extends Component {
        <View style={{marginLeft:10,marginRight:10,marginTop:10,height:40,backgroundColor:'#383d38',alignContent:'center',justifyContent:'center'}}>
                <Text style={{fontSize:15,fontFamily:FONT_FAMILY_PT_BOLD,alignItems:'center',marginLeft:20,color:'white'}}>{this.state.searchType}{t('SearchScreen:Distribute')}</Text>   
           </View>
-          <Card style={{margin:10,marginLeft:15,marginRight:15}}>
-                 <CardItem>
-                   <Body>
-                     <View style={styles.textContainer}>
-                     <Text style={styles.nameText}>{t('SearchScreen:MDL')}:</Text>
-                     <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:42,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.state.mdl ? this.state.mdl : 'N/A'}</Text>
-                   </View>
-                   <View style={styles.textContainer}>
-                     <Text style={styles.nameText}>{t('SearchScreen:AdHoc')}:</Text>
-                     <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:28,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.state.adHoc ? this.state.adHoc : 'N/A'}</Text>
-                   </View>
-                   <View style={styles.textContainer}>
-                     <Text style={styles.nameText}>{t('SearchScreen:To')}:</Text>
-                     <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:55,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.state.to ? this.state.to : 'N/A'}</Text>
-                   </View>
-                   <View style={styles.textContainer}>
-                     <Text style={styles.nameText}>{t('SearchScreen:CC')}:</Text>
-                     <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:50,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.state.cc ? this.state.cc : 'N/A'}</Text>
-                   </View>
-                   <View style={styles.textContainer}>
-                     <Text style={styles.nameText}>{t('SearchScreen:Recipient')}:</Text>
-                     <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.state.recipient ? this.state.recipient : 'N/A'}</Text>
-                   </View>
-                   </Body>
-                 </CardItem>
-               </Card>
+        <CorrespondenceDistributeCard distributeProperties = {this.props.searchCorrespondenceDistribute} worlflowSteps = {this.props.searchCorrespondenceWrokFlowSteps}/>
       </>
       );
   } else {
@@ -216,32 +192,7 @@ class SearchDetails extends Component {
     <View style={{marginLeft:10,marginRight:10,marginTop:10,height:40,backgroundColor:'#383d38',alignContent:'center',justifyContent:'center',alignItems:'flex-end'}}>
             <Text style={{fontSize:15,fontFamily:FONT_FAMILY_PT_BOLD,alignItems:'center',marginRight:20,color:'white'}}>{this.state.searchType}{t('SearchScreen:Distribute')}</Text>   
        </View>
-       <Card style={{margin:10,marginLeft:15,marginRight:15}}>
-              <CardItem>
-                <Body>
-                  <View style={styles.textContainerArabic}>
-                   <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginRight:5,marginRight:32,flexWrap: 'wrap', flexShrink:1}}>{this.state.mdl ? this.state.mdl : 'N/A'}</Text>
-                   <Text style={styles.nameText}>:{t('SearchScreen:MDL')}</Text>
-                </View>
-                <View style={styles.textContainerArabic}>
-                  <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:5,flexWrap: 'wrap', flexShrink:1, textAlign:'right'}}>{this.state.adHoc ? this.state.adHoc : 'N/A'}</Text>
-                  <Text style={styles.nameText}>{t('SearchScreen:AdHoc')}:</Text>
-                </View>
-                <View style={styles.textContainerArabic}>
-                  <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:40,flexWrap: 'wrap', flexShrink:1}}>{this.state.to ? this.state.to : 'N/A'}</Text>
-                  <Text style={styles.nameText}>{t('SearchScreen:To')}:</Text>
-                </View>
-                <View style={styles.textContainerArabic}>
-                   <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:45,flexWrap: 'wrap', flexShrink:1}}>{this.state.cc ? this.state.cc : 'N/A'}</Text>
-                   <Text style={styles.nameText}>:{t('SearchScreen:CC')}</Text>
-                </View>
-                <View style={styles.textContainerArabic}>
-                   <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:25,flexWrap: 'wrap', flexShrink:1}}>{this.state.recipient ? this.state.recipient : 'N/A'}</Text>
-                   <Text style={styles.nameText}>{t('SearchScreen:Recipient')}:</Text>
-                </View>
-                </Body>
-              </CardItem>
-            </Card>
+       <CorrespondenceDistributeCard distributeProperties = {this.props.searchCorrespondenceDistribute} worlflowSteps = {this.props.searchCorrespondenceWrokFlowSteps}/>
    </>
    );
   }
@@ -255,20 +206,7 @@ class SearchDetails extends Component {
       <View style={{marginLeft:10,marginRight:10,marginTop:10,height:40,backgroundColor:'#383d38',alignContent:'center',justifyContent:'center'}}>
              <Text style={{fontSize:15,fontFamily:FONT_FAMILY_PT_BOLD,alignItems:'center',marginLeft:20, color:'white'}}>{this.state.searchType}{t('SearchScreen:Approval')}</Text>   
         </View>
-        <Card style={{margin:10,marginLeft:15,marginRight:15}}>
-            <CardItem>
-              <Body>
-                <View style={styles.textContainer}>
-                <Text style={styles.nameText}>{t('SearchScreen:Reviewer')}:</Text>
-                <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.state.reviewer ? this.state.reviewer : 'N/A'}</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.nameText}>{t('SearchScreen:Approver')}:</Text>
-                <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.state.approver ? this.state.approver: 'N/A'}</Text>
-              </View>
-              </Body>
-            </CardItem>
-          </Card>
+        <CorrespondenceApprovalCard distributeProperties = {this.props.searchCorrespondenceDistribute} worlflowSteps = {this.props.searchCorrespondenceWrokFlowSteps}/>
         </>
     );
 
@@ -278,20 +216,7 @@ class SearchDetails extends Component {
       <View style={{marginLeft:10,marginRight:10,marginTop:10,height:40,backgroundColor:'#383d38',alignContent:'center',justifyContent:'center',alignItems:'flex-end'}}>
              <Text style={{fontSize:15,fontFamily:FONT_FAMILY_PT_BOLD,alignItems:'center',marginRight:20, color:'white'}}>{this.state.searchType}{t('SearchScreen:Approval')}</Text>   
         </View>
-        <Card style={{margin:10,marginLeft:15,marginRight:15}}>
-            <CardItem>
-              <Body>
-                <View style={styles.textContainerArabic}>
-                <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.state.reviewer ? this.state.reviewer : 'A/N'}</Text>
-                <Text style={styles.nameText}>{t('SearchScreen:Reviewer')}:</Text>
-              </View>
-              <View style={styles.textContainerArabic}>
-                <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:5,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{this.state.approver ? this.state.approver: 'A/N'}</Text>
-                <Text style={styles.nameText}>{t('SearchScreen:Approver')}:</Text>
-              </View>
-              </Body>
-            </CardItem>
-          </Card>
+        <CorrespondenceApprovalCard distributeProperties = {this.props.searchCorrespondenceDistribute} worlflowSteps = {this.props.searchCorrespondenceWrokFlowSteps}/>
         </>
     );
   }
@@ -616,92 +541,14 @@ _renderRFICard = () => {
   );
   }
 }
-  _distributeData = () => {
-  
-  this.props.searchCorrespondenceWrokFlowSteps.forEach(element => {
-  
-    if (element.stepname==='DISTRIBUTE'){
 
-      if (this.state.distributeData != undefined) 
-        // distributeData.push(props.distributeProperties.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
-        // else
-        console.log('Distribute State check value array or dictionary');
-        console.log(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
-        this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
-        // this.setState({
-        //   distributeData: this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
-
-        // });
-       
-    } else if (element.sequence === 2 ) {
-      console.log('distributed data  else 2');
-      if (this.state.distributeData != undefined)
-      // setdistributeData(push(props.distributeProperties.filter(data => data.ridWorkflowstep === element.ridWorkflowstep)));
-      // else
-      //this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
-        console.log('Distribute else condition State check value array or dictionary');
-        console.log(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
-      this.setState({
-        distributeData: this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep))
-
-      })
-      
-    }
-    if (element.sequence === 2 ) {
-      console.log('distributed data 2');
-      if (this.state.reviewerData != undefined)
-        // this.reviewerData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
-      // else
-      //this.state.reviewerData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
-      this.setState({
-        distributeData: this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep))
-
-      })
-    }
-    if (element.sequence === 3 ) {
-      console.log('distributed data 2');
-      if (this.state.ApproverData != undefined)
-        // this.ApproverData.push(this.data.inOutCorrDetails.filter(data => data.ridWorkflowstep === element.ridWorkflowstep));
-      // else
-      this.state.ApproverData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep === element.ridWorkflowstep))
-      // this.setState({
-      //   distributeData: this.state.distributeData.push(this.props.searchCorrespondenceDistribute.filter(data => data.ridWorkflowstep===element.ridWorkflowstep))
-
-      // })
-    }
-   });
-   console.log('Distributed Data before set value',this.state.distributeData);
-   console.log('Reviewr Data before set value',this.state.reviewerData);
-
-   console.log('Approval Data before set value',this.state.ApproverData);
-
-
-
-  //  this.setState({
-  //  mdl: this.state.distributeData.filter(element => element.mdlname != null && element.ridCommunicationtype===1).map(element => element.mdlname).join(', '),
-  //  adHoc: this.state.distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===1).map(element => element.firstname + ' ' + element.lastname).join(', '),
-  //  to: this.state.distributeData.filter(element => element.to != null && element.ridCommunicationtype===2).map(element => element.to).join(', '),
-  //  cc:  this.state.distributeData.filter(element => element.cc != null && element.ridCommunicationtype===2).map(element => element.cc).join(', '),
-  //  recipient:   this.state.distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===3).map(element => element.firstname + ' ' + element.lastname).join(', '),
-
-  //  reviewer: this.state.reviewerData.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', '),
-  //  approver: this.state.ApproverData.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', ')
-  //  });
-    
-//  // if (this.category == 1) {
-//     this.setState({
-     
-
-//   })
-  //}
-}
-     componentDidUpdate = (prevProps, prevState) => {
-     if (this.props.navigation.state.params.searchType == "Correspondence") {
-      if (prevProps.searchCorrespondenceDistribute !== this.props.searchCorrespondenceDistribute && this.props.searchCorrespondenceDistribute != null && this.props.searchCorrespondenceDistribute.length > 0){
-       this._distributeData();
-      }
-    }
-  }  
+  //    componentDidUpdate = (prevProps, prevState) => {
+  //    if (this.props.navigation.state.params.searchType == "Correspondence") {
+  //     if (prevProps.searchCorrespondenceDistribute !== this.props.searchCorrespondenceDistribute && this.props.searchCorrespondenceDistribute != null && this.props.searchCorrespondenceDistribute.length > 0){
+  //      //this._distributeData();
+  //     }
+  //   }
+  // }  
 
 render () {
       if (this.props.navigation.state.params.searchType == "Correspondence") {

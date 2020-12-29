@@ -107,7 +107,9 @@ handleOnPasswordChange = (e) => {
             this.alertWithMessage("Please enter Password");
         } else if (this.state.userName != '' && this.state.password != '') {
             if (this.state.password.length >= 6) {
-                this.props.performLogin(this.state.userName, this.state.password, this.state.checked); 
+                this.props.performLogin(this.state.userName, this.state.password, this.state.checked, (error) => {
+                 
+                }); 
              } else{
                 this.alertWithMessage("Please enter correct password");
     

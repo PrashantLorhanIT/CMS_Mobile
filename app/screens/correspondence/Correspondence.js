@@ -48,7 +48,8 @@ class Correspondence extends Component {
        corrType: '',
        Overdue: '',
        isLoadingDisable: false,
-       categoryType: 'Corr'
+       categoryType: 'Corr',
+       categoryTypeName: 'Correspondence',
     };
 }
 
@@ -127,7 +128,6 @@ onRefresh = () => {
     });
 }
 _renderCategoryCount =() => {
-  var dict = this.props.dashboardInboxCount;
   var arr = [{category:'Correspondence', value: this.props.dashboardInboxCount.correspondenceCount},{category:'Task', value: this.props.dashboardInboxCount.taskCount},{category:'MOM', value: this.props.dashboardInboxCount.momCount},{category:'RFI', value: this.props.dashboardInboxCount.rfiCount}];
   if (config.fallback == 'en') {
     return(
@@ -143,7 +143,7 @@ _renderCategoryCount =() => {
                                                 placeholderTextColor='#afafaf'
                                                 //placeholder= {t('DashboardScreeen:Recipient')}
                                                 note={false}
-                                                selectedValue={this.state.categoryType}
+                                                selectedValue={this.state.categoryTypeName}
                                                 onValueChange={this.onIncategoryTypeChange}
                                                 underlineColorAndroid = 'transparent'
                                              >
@@ -214,32 +214,37 @@ clear = () => {
 
 onIncategoryTypeChange = (value) => {
   // if (value != -1) {
+    console.log(value);
     const userId = this.props.userProfile.ridUsermaster;
        if (value == 'Correspondence'){
         this.setState({  
           categoryType: 'Corr',
-        }, this.props.getCorrespondeceList(userId, 'Corr'));
+          categoryTypeName: 'Correspondence'
+        },() => this.props.getCorrespondeceList(userId, 'Corr'));
        } else if (value == 'Task'){
         this.setState({  
           categoryType: 'Task',
-        },this.props.getCorrespondeceList(userId, 'Task'));
+          categoryTypeName: 'Task'
+        }, () => this.props.getCorrespondeceList(userId, 'Task'));
        } else if (value == 'MOM'){
         this.setState({  
           categoryType: 'Mom',
-        }, this.props.getCorrespondeceList(userId, 'Mom'));
+          categoryTypeName: 'MOM'
+        }, () => this.props.getCorrespondeceList(userId, 'Mom'));
        } else if(value == 'RFI') {
         this.setState({  
           categoryType: 'Rfi',
-        }, this.props.getCorrespondeceList(userId, 'Rfi'));
+          categoryTypeName: 'RFI'
+        }, () => this.props.getCorrespondeceList(userId, 'Rfi'));
        }
         
   //}
 }
 searchFilterRefernceNumberFunction = text => {    
-//  let flag =  false;
-//    if (text){
-//      flag = true
-//    }
+ let flag =  false;
+   if (text){
+     flag = true
+   }
   const newData = this.state.inMemorycorrespondenceData.filter(item => {   
     
     const itemData = `${item.correspondenceReferenceNumber.toUpperCase()} || ${item.subject.toUpperCase()} || ${item.workflowName.toUpperCase()}`
@@ -248,16 +253,16 @@ searchFilterRefernceNumberFunction = text => {
   });
   this.setState({
     correspondenceData: newData,
-    search: text
-   // isLoadingDisable: flag,
+    search: text,
+    isLoadingDisable: flag,
   });
 }
 
 filterFunction = (refernceNumber,subject, corrType, sender, recipent, overdue, fromdate, todate) => {    
-  // let flag =  false;
-  // if (refernceNumber || subject || corrType || sender || recipent || fromdate || todate){
-  //   flag = true
-  // }
+  let flag =  false;
+  if (refernceNumber || subject  || sender || recipent || fromdate || todate){
+    flag = true
+  }
   
     const selectedFromDate = moment(fromdate).format('yyyy-MM-DD');
     const selectedToDate = moment(todate).format('yyyy-MM-DD');
@@ -315,58 +320,17 @@ handleFilterTap = () => {
 }
 
 _renderCard =() => {
-  return (
-    <Content
-        refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} title='Loading...' />}>
-        {
-          this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => < CorrespondenceCard isCorrespondenceInbox = {true} key = {index} correspondence = {ele} setUpdateCorrepondenceRecord = {this.props.setUpdateCorrepondenceRecord} />): < Text style = {styles.noRecordsText} > No Record Found </Text >
-        }
-    </Content>
-);
-//     return (
-      
-//       this.state.correspondenceData &&   this.state.correspondenceData ?< FlatList
-//             data = {
-//               this.state.correspondenceData
-//             }
-//             extraData = {
-//               this.state
-//             }
-//             refreshControl = {
-//               <
-//               RefreshControl
-//               refreshing = {
-//                 this.state.isRefreshing
-//               }
-//               onRefresh = {
-//                 this.onRefresh.bind(this)
-//               }
-//               />
-//             }
-//             renderItem = {
-//               ({
-//                 item
-//               }) => ( <
-//                 CorrespondenceCard isCorrespondenceInbox = {
-//                   true
-//                 }
-//                 correspondence = {
-//                   item
-//                 }
-//                 /> 
-//               )
-//             }
-//             keyExtractor = {
-//               (item, index) => index.toString()
-//             }
-//             // onEndReachedThreshold = {
-//             //   0.4
-//             // }
-//             onEndReached = {
-//                 this.handleLoadMore.bind(this)
-//             }
-// / > :  < Text style = {styles.noRecordsText} > No Record Found </Text >
-//     );
+//   return (
+//     <Content
+//         refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} title='Loading...' />}>
+//         {
+//           this.state.correspondenceData && this.state.correspondenceData.length > 0 ? this.state.correspondenceData.map((ele, index) => < CorrespondenceCard isCorrespondenceInbox = {true} key = {index} correspondence = {ele} setUpdateCorrepondenceRecord = {this.props.setUpdateCorrepondenceRecord} />): < Text style = {styles.noRecordsText} > No Record Found </Text >
+//         }
+//     </Content>
+// );
+    return (
+      this.state.correspondenceData &&   this.state.correspondenceData ?< FlatList data = { this.state.correspondenceData} extraData = {this.state} refreshControl = { <RefreshControl refreshing = { this.state.isRefreshing } onRefresh = { this.onRefresh.bind(this) } />} renderItem = { ({ item }) => ( < CorrespondenceCard isCorrespondenceInbox = { true } correspondence = {  item }  setUpdateCorrepondenceRecord = {this.props.setUpdateCorrepondenceRecord} />) } keyExtractor = { (item, index) => index.toString() } onEndReached = { this.handleLoadMore.bind(this)} /> :  < Text style = {styles.noRecordsText} > No Record Found </Text >
+    );
 }
 
 handleLoadMore = () => {

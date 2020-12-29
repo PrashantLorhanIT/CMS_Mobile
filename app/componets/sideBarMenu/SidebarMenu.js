@@ -12,9 +12,15 @@ import logoutmenu from '../../assets/image/logoutmenu/logoutmenu.png';
 import profile from '../../assets/image/profileByDefault/profile.png';
 import { Icon } from 'native-base';
 import * as config from '../../utils/localization/config/i18n';
+import { AsyncStorage } from 'react-native';
 
 const SidebarMenu = props => {
   let items = [];
+  let inboxCount = 0;
+//   AsyncStorage.getItem('inboxCount').then((value) => {
+//     console.log('Side menu bar inbox total count', value);
+//      inboxCount = value
+// });
   if (config.fallback == 'en'){
      items = [
 
@@ -24,7 +30,7 @@ const SidebarMenu = props => {
         navOptionThumb: dashboardmenu,
       },
       {
-        navOptionName: 'Inbox',
+        navOptionName: `${'Inbox'} (${inboxCount})`,
         screenToNavigate: 'Correspondence',
         navOptionThumb: inboxmenu
       },
@@ -55,7 +61,7 @@ const SidebarMenu = props => {
         navOptionThumb: dashboardmenu,
       },
       {
-        navOptionName: 'صندوق الوارد',
+        navOptionName:`${'صندوق الوارد'} (${inboxCount})`,
         screenToNavigate: 'Correspondence',
         navOptionThumb: inboxmenu
       },

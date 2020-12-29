@@ -13,7 +13,6 @@ export const constants = {
                 getRefershToken: 'Usermaster/RefreshToken'
             },
             common: {
-
                 userProfile:'Usermaster',
                 correspondenceList: 'Inbox',
                 correspondenceListCount: 'Inbox/GetInboxCount',

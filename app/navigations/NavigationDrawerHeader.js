@@ -1,5 +1,5 @@
-import React, {useState}from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
+import React, {useState, useEffect}from 'react';
+import { View, Image, TouchableOpacity, Alert } from 'react-native';
 import drawerImage from '../assets/image/drawerImage/drawerWhite.png';
 import headerLogo from '../assets/image/headerLogo/logo.png';
 import language from '../assets/image/language/language.png';
@@ -7,9 +7,17 @@ import { withNavigation } from 'react-navigation';
 import ChangeLanguage from '../navigations/ChangeLanguage';
 import {Container} from 'native-base';
 import * as config from '../utils/localization/config/i18n';
+import { connect } from 'react-redux';
+import Reachability from '../services/netInfo/Rechability';
 
 const NavigationDrawerHeader = props => {
   const [visible, setVisible] = useState(false);
+  const [isInternetRecheble, setIsInternetRecheble] = useState(true);
+ useEffect ( () => {
+
+  //Reachability.checkReachability( (isInternetAvailable) => {setIsInternetRecheble(isInternetAvailable)})
+
+ }, [])
 
     const toggleDrawer = () => {
       props.navigationProps.toggleDrawer();
@@ -19,10 +27,21 @@ const NavigationDrawerHeader = props => {
         setVisible(true)
 
   };
-
+  const alertWithMessage = (message) =>
+  Alert.alert(
+      "",
+      message,
+      [
+          { text: "OK", onPress: () => {} }
+      ],
+      { cancelable: false }
+  );
   if (config.fallback == 'en'){
     return (
       <>
+      {/* {
+        !isInternetRecheble  &&  alertWithMessage('Network not aviable')
+      } */}
       {
       visible &&  <ChangeLanguage onModalClose={() => { setVisible(false)  }} /> 
 
@@ -99,4 +118,10 @@ const NavigationDrawerHeader = props => {
   }
     
     };
+    // const mapStateToProps = state => {
+    //   return {
+    //     isInternetReachable:state.globalReducer.isInternetReachable,
+    //   }
+    // }
     export default NavigationDrawerHeader;
+    

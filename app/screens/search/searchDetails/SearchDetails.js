@@ -190,7 +190,7 @@ class SearchDetails extends Component {
    return (
    <>
     <View style={{marginLeft:10,marginRight:10,marginTop:10,height:40,backgroundColor:'#383d38',alignContent:'center',justifyContent:'center',alignItems:'flex-end'}}>
-            <Text style={{fontSize:15,fontFamily:FONT_FAMILY_PT_BOLD,alignItems:'center',marginRight:20,color:'white'}}>{this.state.searchType}{t('SearchScreen:Distribute')}</Text>   
+       <Text style={{fontSize:15,fontFamily:FONT_FAMILY_PT_BOLD,alignItems:'center',marginRight:20,color:'white'}}>{this.state.searchType}{t('SearchScreen:Distribute')}</Text>   
        </View>
        <CorrespondenceDistributeCard distributeProperties = {this.props.searchCorrespondenceDistribute} worlflowSteps = {this.props.searchCorrespondenceWrokFlowSteps}/>
    </>

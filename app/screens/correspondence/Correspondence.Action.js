@@ -29,11 +29,11 @@ export const getCorrespondeceList = (userId, category) => {
             console.log(response);
           
             const jsonArray = response['data'];
-            const jsonCount = response['totalCount'];
-            console.log(jsonCount);
+            //const jsonCount = response['totalCount'];
+           // console.log(jsonCount);
             // if (jsonArray.length > 0) {   
             dispatch(setCorrespondenceInbox(jsonArray));
-            dispatch(setCorrepondenceInboxCount(jsonCount));
+           // dispatch(setCorrepondenceInboxCount(jsonCount));
             // } else {
             dispatch(isAppLoading(false));
             // }
@@ -57,6 +57,7 @@ export const getCorrespondeceLoadMoreList = (userId, PageNumber, category) => {
             console.log('Correspondence action parameter');
             console.log(params);
             // dispatch(isAppLoading(true));
+            dispatch(setCorrespondenceInbox([]));
             const newLocal = await networkManager.getRequestHandler(constants.webService.methods.common.correspondenceList, params, token);
             const response = newLocal;
             console.log('Correspondence list response');
@@ -179,6 +180,15 @@ export const setUpdateCorrepondenceRecord = (id) => {
         id: id,
     }
 }
+
+export const setUpdateInboxCount = (payload) => {
+    console.log('Correspondence update Value inbox count', payload);
+    return {
+        type : ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_UPDATEINBOXCOUNT,
+        id: payload,
+    }
+}
+
 export const setCorrepondenceInboxCount = (payload) => {
     return {
         type : ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_COUNT,

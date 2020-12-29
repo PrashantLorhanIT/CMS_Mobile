@@ -86,7 +86,7 @@ const CorrespondenceFilter = (props) => {
                           handleOnSearchfromandToDateChangeValue(startDate, endDate);
                       }} />
                       }
-                          <View style={{marginTop:150,width:screenWidth-40, height:530,marginLeft:20, marginRight:20, borderRadius:10,backgroundColor:'white'}}>
+                          <View style={{marginTop:200,width:screenWidth-40, height:430,marginLeft:20, marginRight:20, borderRadius:10,backgroundColor:'white'}}>
                           <View style={{marginTop:0, marginLeft:0, marginRight:0, width:'100%', height:70, flexDirection:'column',marginBottom:-10}}>
                                   <ImageBackground source={HeaderTilte} style={{width:'100%', height:50, borderTopRightRadius:10,borderTopLeftRadius:10, overflow: 'hidden'}} >
                                   <Text style={{marginLeft:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:15, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff'}}>{t('InboxScreen:Filter')}</Text>
@@ -138,7 +138,7 @@ const CorrespondenceFilter = (props) => {
                                 />
                                       </View>
                                   </View>
-                                  <View style={{margin:5, marginBottom:0, width:screenWidth,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
+                                  {/* <View style={{margin:5, marginBottom:0, width:screenWidth,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
         <View  style = {{ backgroundColor:'#ffffff',flexDirection:'column',justifyContent:'flex-start', marginTop:7, borderWidth: 1,
           borderRadius:5,borderColor: 'lightgray', width:screenWidth-90, height: 35}}>
              <Picker style={{marginTop:-5}}
@@ -166,7 +166,7 @@ const CorrespondenceFilter = (props) => {
                                           <Picker.Item label="Task" value="Task" />
                                           </Picker>
                                       </View>
-                                  </View>
+                                  </View> */}
                                   <View style={{margin:5, marginBottom:0 ,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
         <View  style = {{flexDirection:'column',justifyContent:'flex-start',marginTop:7, borderWidth: 1,
           borderRadius:5,borderColor: 'lightgray', width:screenWidth-90, height: 35}}>
@@ -327,7 +327,7 @@ const CorrespondenceFilter = (props) => {
                           handleOnSearchfromandToDateChangeValue(startDate, endDate);
                       }} />
                       }
-                          <View style={{marginTop:150,width:screenWidth-40, height:530,marginLeft:20, marginRight:20, borderRadius:10,backgroundColor:'white'}}>
+                          <View style={{marginTop:200,width:screenWidth-40, height:430,marginLeft:20, marginRight:20, borderRadius:10,backgroundColor:'white'}}>
                           <View style={{marginTop:0, marginLeft:0, marginRight:0, width:'100%', height:70, flexDirection:'column',marginBottom:-10}}>
                                   <ImageBackground source={HeaderTilte} style={{width:'100%', height:50, borderTopRightRadius:10,borderTopLeftRadius:10, overflow: 'hidden'}} >
                                   <Text style={{marginRight:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:15, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff',textAlign:'right'}}>{t('InboxScreen:Filter')}</Text>
@@ -380,7 +380,7 @@ const CorrespondenceFilter = (props) => {
                                 />
                                       </View>
                                   </View>
-                                  <View style={{margin:5, marginBottom:0, width:screenWidth,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
+                                  {/* <View style={{margin:5, marginBottom:0, width:screenWidth,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
         <View  style = {{ backgroundColor:'#ffffff',flexDirection:'column',justifyContent:'flex-start', marginTop:7, borderWidth: 1,
           borderRadius:5,borderColor: 'lightgray', width:screenWidth-90, height: 35}}>
              <Picker style={{marginTop:-5, textAlign:'right', flexDirection:'row-reverse'}}
@@ -408,7 +408,7 @@ const CorrespondenceFilter = (props) => {
                                           <Picker.Item label="Task" value="Task" />
                                           </Picker>
                                       </View>
-                                  </View>
+                                  </View> */}
                                   <View style={{margin:5, marginBottom:0 ,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
         <View  style = {{flexDirection:'column',justifyContent:'flex-start',marginTop:7, borderWidth: 1,
           borderRadius:5,borderColor: 'lightgray', width:screenWidth-90, height: 35}}>

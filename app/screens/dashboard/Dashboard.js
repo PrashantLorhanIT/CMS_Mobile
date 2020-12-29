@@ -154,7 +154,6 @@ onOutgoingDocumentTypeChange = (value) => {
 }
 
 onEntitiesInboxSenderChange = (value) => {
-  console.log('Entities value', value);
       this.setState({
           dashboardEntitiesInboxSender: value,
           dashboardContract:''
@@ -681,6 +680,7 @@ _renderOutboxSelectValuesDropDwon = () => {
 
     if (this.state.isCorrespondenceInbox == true){
       const inboxtotal = this.props.dashboardInboxCount.correspondenceCount + this.props.dashboardInboxCount.taskCount + this.props.dashboardInboxCount.momCount + this.props.dashboardInboxCount.rfiCount;
+     // AsyncStorage.setItem('inboxCount', inboxtotal);
       return(
         <View style = {{ backgroundColor:'#f2f2f2', paddingTop: 0 }}>
            <View style={{height:125,marginTop:10}}>
@@ -706,7 +706,8 @@ _renderOutboxSelectValuesDropDwon = () => {
                 <DashboardCard  name= {t('DashboardScreeen:TotalOpen')} count= {this.props.dashboardSummary.open && this.props.dashboardSummary.open} image={totalOpen} red = {false}/>
                 <DashboardCard  name= {t('DashboardScreeen:ResponseOverdue')} count= {this.props.dashboardSummary.overDue && this.props.dashboardSummary.overDue} image={incoming} red = {true}/>
                 <DashboardCard  name= {t('DashboardScreeen:TotalClosed')} count= {this.props.dashboardSummary.closed && this.props.dashboardSummary.closed} image={outgoing} red = {false} /> 
-                <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator}  red = {false}/>   
+                <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator}  red = {false}/> 
+                <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal && inboxtotal} image={calculator} red = {false} />     
              </ScrollView>
            </View>
          </View>

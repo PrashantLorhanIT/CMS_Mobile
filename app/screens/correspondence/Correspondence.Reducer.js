@@ -35,8 +35,6 @@ export const CorrespondenceReducer = (state = initialState, action) => {
         case ActionTypes.correspondence.SET_CORRESPONDENCE_INBOX_UPDATERECORD:
            
             let updateArr = [...state.correspondenceInbox];
-            console.log('Inside the Reducer Update the value Find'); 
-            
             for(let i = 0; i < updateArr.length; i++) {
                 const id  = action.id;
                 if(updateArr[i].ridInOutCorr === id) {

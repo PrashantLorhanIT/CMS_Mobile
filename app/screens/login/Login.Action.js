@@ -6,7 +6,7 @@ import { Reachability } from '../../services/netInfo/Rechability';
 import { AsyncStorage } from 'react-native';
 import { setUserId } from '../splash/Splash.Action';
 
-export const performLogin = (username, password, checked) => {
+export const performLogin = (username, password, checked, callback) => {
     console.log('Login action method ')
     return async (dispatch) => {
         dispatch(isAppLoading(true));
@@ -54,6 +54,7 @@ export const performLogin = (username, password, checked) => {
         } catch (error) {
             console.log('Error In Action performLogin.');
             console.log(error);
+            callback(error);
             dispatch(isAppLoading(false));
             dispatch(appHasError(error));
         }

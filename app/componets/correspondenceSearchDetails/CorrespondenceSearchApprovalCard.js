@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions,StyleSheet } from 'react-native';
 import { Container, Content, Button, Text, Icon, Input, Label, Textarea,Segment,Card,CardItem, Body,} from 'native-base';
 import { FONT_SIZE_12, FONT_SIZE_16,FONT_WEIGHT_BOLD, FONT_SIZE_14, FONT_FAMILY_PT_REGULAR, FONT_WEIGHT_REGULAR, FONT_FAMILY_PT_BOLD} from '../../utils/styles/typography';
@@ -7,36 +7,42 @@ import * as config from '../../utils/localization/config/i18n';
 import i18n, { t } from '../../utils/localization/servicesi18n/index';
 
 const CorrespondenceSearchApprovalCard = (props) => {
-  const [approval, setApproval] = useState(false);
+ // const [approval, setApproval] = useState(false);
   const [reviewerData, setreviewerData]= useState([]);
   const [ApproverData , setApproverData]= useState([]);
   const [rev, setrev] = useState('');
   const [app, setapp] = useState('');
 
-
+const { worlflowSteps, distributeProperties } = props
   useEffect(() => {
+    let reviwer = [];
+    let approveer = [];
+    worlflowSteps.forEach(element => {
     
-    _distributeData();
-}, [approval]);
+      if (element.sequence === 2 ) {
+          if (reviewerData != undefined) {
+          reviwer = (distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
+          setreviewerData(reviwer)
+          }
+        }
+      if (element.sequence === 3 ) {
+          if (ApproverData != undefined){
+          approveer = (distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
+          setApproverData(approveer)
+          }
+        }
+    
+   });
+   setrev(reviwer.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', '));
+   setapp(approveer.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', '));
+}, [ worlflowSteps,distributeProperties, setrev, setapp, setreviewerData, setApproverData]);
 
 
-  const _distributeData = () => {
-     console.log('Distributed Data inside for each');
-     props.worlflowSteps.forEach(element => {
-    
-        if (element.sequence === 2 ) {
-            if (reviewerData != undefined)
-              setreviewerData(props.distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
-          }
-        if (element.sequence === 3 ) {
-            if (ApproverData != undefined)
-              setApproverData(props.distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
-          }
-      
-     });
-     setrev(reviewerData.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', '));
-     setapp(ApproverData.filter(element => element.firstname != null || element.lastname != null).map(element => element.firstname + ' ' + element.lastname).join(', '));
-  }
+  // const _distributeData = () => {
+  //    console.log('Distributed Data inside for each',worlflowSteps);
+     
+  // }
+
   if (config.fallback == 'en') {
     return (
       <> 

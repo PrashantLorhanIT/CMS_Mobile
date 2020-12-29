@@ -6,7 +6,8 @@ import {
     getCorrespondeceUpdateList,
     getSenderAndRecipentList,
     getCorrespondeceLoadMoreList,
-    setUpdateCorrepondenceRecord
+    setUpdateCorrepondenceRecord,
+    getInboxCount
 } from './Correspondence.Action';
 import withLoader from '../../componets/loder/withLoader';
 import {isAppLoading} from '../../redux/index';
@@ -18,7 +19,9 @@ const mapStateToProps = state => {
         loggedInUser: state.loginReducer.loggedInUser,
         correspondenceInbox: state.CorrespondenceReducer.correspondenceInbox,
         cooreSenderAndRecipent: state.CorrespondenceReducer.cooreSenderAndRecipent,
-        correspondenceInboxCount: state.CorrespondenceReducer.correspondenceInboxCount
+        correspondenceInboxCount: state.CorrespondenceReducer.correspondenceInboxCount,
+        dashboardInboxCount: state.DashboardReducer.dashboardInboxCount
+
     }
 }
 
@@ -26,12 +29,13 @@ const mapDispatchToProps = (dispatch) => {
     return {
         isAppLoading: (isLoading) => dispatch(isAppLoading(isLoading)),
         appHasError: (error) => dispatch(appHasError(error)),
-        getCorrespondeceList: (userID) => dispatch(getCorrespondeceList(userID)),
+        getCorrespondeceList: (userID,category) => dispatch(getCorrespondeceList(userID, category)),
         // getCorrespondeceTaskList: (userID) => dispatch(getCorrespondeceTaskList(userID)),
         getCorrespondeceUpdateList: (correspondece) => dispatch(getCorrespondeceUpdateList(correspondece)),
         getSenderAndRecipentList: () => dispatch(getSenderAndRecipentList()),
-            getCorrespondeceLoadMoreList: (userId, PageNumber) => dispatch(getCorrespondeceLoadMoreList(userId, PageNumber)),
-            setUpdateCorrepondenceRecord: (id) => dispatch(setUpdateCorrepondenceRecord(id))
+        getCorrespondeceLoadMoreList: (userId, PageNumber, category) => dispatch(getCorrespondeceLoadMoreList(userId, PageNumber, category)),
+        setUpdateCorrepondenceRecord: (id) => dispatch(setUpdateCorrepondenceRecord(id)),
+        getInboxCount:(userId) => dispatch(getInboxCount(userId))
      }
 }
 

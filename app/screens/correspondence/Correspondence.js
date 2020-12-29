@@ -48,6 +48,7 @@ class Correspondence extends Component {
        corrType: '',
        Overdue: '',
        isLoadingDisable: false,
+       categoryType: 'Corr'
     };
 }
 
@@ -58,7 +59,8 @@ componentDidMount = () => {
  
   if (this.props.correspondenceInbox.length == 0) {
    
-    this.props.getCorrespondeceList(userId);
+    this.props.getCorrespondeceList(userId, 'Corr');
+    this.props.getInboxCount(userId);
       this.setState({
           isRefreshing: true,
           correspondenceData: this.props.correspondenceInbox,
@@ -124,6 +126,53 @@ onRefresh = () => {
       isRefreshing: true,
     });
 }
+_renderCategoryCount =() => {
+  var dict = this.props.dashboardInboxCount;
+  var arr = [{category:'Correspondence', value: this.props.dashboardInboxCount.correspondenceCount},{category:'Task', value: this.props.dashboardInboxCount.taskCount},{category:'MOM', value: this.props.dashboardInboxCount.momCount},{category:'RFI', value: this.props.dashboardInboxCount.rfiCount}];
+  if (config.fallback == 'en') {
+    return(
+      <View style={{margin:5, backgroundColor:'white',flexDirection:'row',height:35}}>
+        <Text style={{fontSize:18, fontFamily:FONT_FAMILY_PT_BOLD, marginLeft:10,textAlign:'center', alignSelf:'center'}}>Category</Text>
+     <View  style = {{ backgroundColor:'white',flexDirection:'column',justifyContent:'flex-start',marginTop:0,borderWidth: 1,
+            borderRadius:5,borderColor: 'gray',marginLeft:10, marginRight:10, height: 35, width: '70%'}}>
+              
+              <Picker style={{marginTop:-5}}
+                                                mode="dropdown"
+                                                iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
+                                                placeholderStyle={{ color: '#afafaf',fontFamily:FONT_FAMILY_PT_REGULAR, fontSize: FONT_SIZE_14 }}
+                                                placeholderTextColor='#afafaf'
+                                                //placeholder= {t('DashboardScreeen:Recipient')}
+                                                note={false}
+                                                selectedValue={this.state.categoryType}
+                                                onValueChange={this.onIncategoryTypeChange}
+                                                underlineColorAndroid = 'transparent'
+                                             >
+                                               {/* <Picker.Item color={'gray'} label= {t('DashboardScreeen:Recipient')} value={-1} key={-1} /> */}
+                                               
+                                           { arr && arr.map((car, index) => {
+         return (
+    <Picker.Item label= {`${car.category} (${car.value})`} value={car.category} key={index} />
+    );
+    })}
+                                            </Picker>
+                                            </View>
+  </View>
+    );
+  } else {
+    return(
+      <View style={{margin:5, backgroundColor:'#f2f2f2',flexDirection:'row',height:50}}>
+    <SearchBar  style={{flex:1,textAlign:'right', flexDirection:'row-reverse'}}
+    ref="SearchBar"
+    placeholder= {t('InboxScreen:SearchReferenceNumber')}
+    autoCorrect={false}             
+    onChangeText={text => this.searchFilterRefernceNumberFunction(text)}
+    value={this.state.search}
+   // textAlign= 'right'
+    />
+  </View>
+    );
+  }
+}
 
 _renderSearch =() => {
   if (config.fallback == 'en'){
@@ -163,6 +212,29 @@ clear = () => {
   this.search.clear();
 };
 
+onIncategoryTypeChange = (value) => {
+  // if (value != -1) {
+    const userId = this.props.userProfile.ridUsermaster;
+       if (value == 'Correspondence'){
+        this.setState({  
+          categoryType: 'Corr',
+        }, this.props.getCorrespondeceList(userId, 'Corr'));
+       } else if (value == 'Task'){
+        this.setState({  
+          categoryType: 'Task',
+        },this.props.getCorrespondeceList(userId, 'Task'));
+       } else if (value == 'MOM'){
+        this.setState({  
+          categoryType: 'Mom',
+        }, this.props.getCorrespondeceList(userId, 'Mom'));
+       } else if(value == 'RFI') {
+        this.setState({  
+          categoryType: 'Rfi',
+        }, this.props.getCorrespondeceList(userId, 'Rfi'));
+       }
+        
+  //}
+}
 searchFilterRefernceNumberFunction = text => {    
 //  let flag =  false;
 //    if (text){
@@ -305,13 +377,13 @@ handleLoadMore = () => {
     let pageSize = this.calculatePageSize();
     console.log('Total Page Size', pageSize);
     if (pageSize > this.page){
-     this.props.getCorrespondeceLoadMoreList(userId, this.page);
+     this.props.getCorrespondeceLoadMoreList(userId, this.page, this.state.categoryType);
     }
   }
   // method for API call
 };
 calculatePageSize = () => {
-  return this.props.correspondenceInboxCount / 25
+  return this.props.correspondenceInboxCount / 100;
 }; 
 handleOnSearchfromandToDateChangeValue(fromDates, toDates) { 
   console.log('Indise Calendar before method');
@@ -353,6 +425,7 @@ componentDidUpdate(prevProps, prevState) {
         <Text style={{marginLeft:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:14, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff'}}>{t('InboxScreen:title')}</Text>
             </ImageBackground>
            </View>
+           {this._renderCategoryCount()}
           {this._renderSearch()}
           {this._renderCard()}
         </Container>
@@ -371,6 +444,7 @@ componentDidUpdate(prevProps, prevState) {
         <Text style={{marginRight:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:14, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff',textAlign:'right'}}>{t('InboxScreen:title')}</Text>
             </ImageBackground>
            </View>
+          {this._renderCategoryCount()}
           {this._renderSearch()}
           {this._renderCard()}
         </Container>

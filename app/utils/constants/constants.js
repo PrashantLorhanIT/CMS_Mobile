@@ -16,6 +16,7 @@ export const constants = {
 
                 userProfile:'Usermaster',
                 correspondenceList: 'Inbox',
+                correspondenceListCount: 'Inbox/GetInboxCount',
                 getCategoryList: 'Corrcategory/GetCorrcategories',
                 // Correspondence 
                 correspondenceDetails: 'Workflowtransaction/GetCorrTransactionStatusByUserId',

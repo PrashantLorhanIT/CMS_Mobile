@@ -26,6 +26,7 @@ import HeaderTilte from '../../assets/image/headerTitle/HeaderTilte.jpg';
 import styles from './Dashboard.style';
 import i18n, { t } from '../../utils/localization/servicesi18n/index';
 import * as config from '../../utils/localization/config/i18n';
+import networkUtils from '../../services/netInfo/Rechability';
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -53,7 +54,7 @@ class Dashboard extends Component {
          dashboardEntitiesOutBoxRecipent: 0,
          dashboardEntitiesOutRecipentName:'',
          dashboardContract:1,
-         corrcategory: 2, 
+         corrcategory: 1, 
          onSelectSenderRecipientModel:'', 
          token: '',
          userid: ''
@@ -67,17 +68,20 @@ class Dashboard extends Component {
   // }
  componentDidMount = () => {
 
-  
+  //const checkNetwork = ;
+ // console.log('Check network for dashboard', networkUtils.checkReachability());
+
    if (this.state.isCorrespondenceInbox == true) {
       AsyncStorage.getItem('userId').then((value1) => {
             console.log('Dashboard get userId ',value1);
             this.props.getDocumenttypes(value1, this.state.corrcategory);
             this.props.getExternalSenderAndRecipent();
             this.onSegmentCorrespondenceInboxClick();
+            this.props.getInboxCount(value1);
               this.setState({
                 userid: value1,
                 dashboardEntitiesInBoxRecipent: value1,
-      });
+         });
     });
       console.log('Dashboard get userId ',this.state.userid);
      
@@ -110,7 +114,7 @@ class Dashboard extends Component {
     dashboardContract: '',
     dashboardEntitiesInBoxRecipent: ridEntityList,
     dashboardEntitiesOutBoxSender: '',
-  }, () => this.props.getDocumenttypes(ridEntityList, 2), this.props.getDashboardSummaryDetailsData(this.props.userProfile.ridEntityList, 0, 2, this.state.dashboardDocumentType, 0));
+  }, () => this.props.getDocumenttypes(ridEntityList, 2), this.props.getDashboardSummaryDetailsData(this.props.userProfile.ridEntityList, 0, 2, this.state.dashboardDocumentType, 0), this.props.getInboxCount(ridEntityList));
   
 }
 
@@ -125,7 +129,7 @@ onSegmentCorrespondenceOutboxClick = (isActive) => {
     dashboardDocumentType: this.state.dashboardDocumentType,
     dashboardEntitiesOutBoxSender: ridEntityList,
     dashboardEntitiesInBoxRecipent: ''
-  }, () => this.props.getDocumenttypes(ridEntityList, 1), this.props.getDashboardSummaryDetailsData(0, this.props.userProfile.ridEntityList, 1, this.state.dashboardDocumentType, 0));
+  }, () => this.props.getDocumenttypes(ridEntityList, 1), this.props.getDashboardSummaryDetailsData(0, this.props.userProfile.ridEntityList, 1, this.state.dashboardDocumentType, 0), this.props.getInboxCount(ridEntityList));
   
 }
 
@@ -676,6 +680,7 @@ _renderOutboxSelectValuesDropDwon = () => {
   _renderCard =()=> {
 
     if (this.state.isCorrespondenceInbox == true){
+      const inboxtotal = this.props.dashboardInboxCount.correspondenceCount + this.props.dashboardInboxCount.taskCount + this.props.dashboardInboxCount.momCount + this.props.dashboardInboxCount.rfiCount;
       return(
         <View style = {{ backgroundColor:'#f2f2f2', paddingTop: 0 }}>
            <View style={{height:125,marginTop:10}}>
@@ -686,6 +691,7 @@ _renderOutboxSelectValuesDropDwon = () => {
                 <DashboardCard  name= {t('DashboardScreeen:ResponseOverdue')} count= {this.props.dashboardSummary.overDue && this.props.dashboardSummary.overDue} image={incoming} red = {true}/>
                 <DashboardCard  name= {t('DashboardScreeen:TotalClosed')} count= {this.props.dashboardSummary.closed && this.props.dashboardSummary.closed} image={outgoing} red = {false} /> 
                 <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator} red = {false} />   
+                <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal && inboxtotal} image={calculator} red = {false} />   
              </ScrollView>
            </View>
          </View>
@@ -701,7 +707,6 @@ _renderOutboxSelectValuesDropDwon = () => {
                 <DashboardCard  name= {t('DashboardScreeen:ResponseOverdue')} count= {this.props.dashboardSummary.overDue && this.props.dashboardSummary.overDue} image={incoming} red = {true}/>
                 <DashboardCard  name= {t('DashboardScreeen:TotalClosed')} count= {this.props.dashboardSummary.closed && this.props.dashboardSummary.closed} image={outgoing} red = {false} /> 
                 <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator}  red = {false}/>   
-  
              </ScrollView>
            </View>
          </View>

@@ -6,17 +6,18 @@ import { Reachability } from '../../services/netInfo/Rechability';
 import {
     AsyncStorage
 } from 'react-native';
+import {setDashboardInboxCount} from '../dashboard/Dashboard.Action';
 
-
-export const getCorrespondeceList = (userId) => {
+export const getCorrespondeceList = (userId, category) => {
     console.log('Correspondence Action method')
     return async (dispatch) => {
         const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 UserID: userId,
-                PageSize: 500,
-                PageNumber: 1
+                PageSize: 100,
+                PageNumber: 1,
+                Category: category
             }
             console.log('Correspondence action parameter');
             console.log(params);
@@ -42,15 +43,16 @@ export const getCorrespondeceList = (userId) => {
     }
 }
 
-export const getCorrespondeceLoadMoreList = (userId, PageNumber) => {
+export const getCorrespondeceLoadMoreList = (userId, PageNumber, category) => {
     console.log('Correspondence Action load more method')
     return async (dispatch) => {
         const token = await AsyncStorage.getItem('token');
         try {
             const params = {
                 UserID: userId,
-                PageSize: 25,
-                PageNumber: PageNumber
+                PageSize: 100,
+                PageNumber: PageNumber,
+                Category: category
             }
             console.log('Correspondence action parameter');
             console.log(params);
@@ -111,6 +113,31 @@ export const getCorrespondeceUpdateList = (correspondece) => {
             // console.log(response);
             // const jsonArray = response['data'];
             dispatch(setCorrespondenceUpdateCorrespondence(correspondece));
+            dispatch(isAppLoading(false));
+        } catch (error) {
+            dispatch(isAppLoading(false));
+        }
+    }
+}
+
+export const getInboxCount = (userId) => {
+    console.log('Inbox Action inbox count')
+    return async (dispatch) => { 
+        const token = await AsyncStorage.getItem('token');
+        try {
+            const params = {
+                UserID: userId,
+            }
+            console.log('Inbox Action inbox count');
+            console.log(params);
+            const inboxCount = await networkManager.getRequestHandler(constants.webService.methods.common.correspondenceListCount, params, token);
+            const responseInboxCount = inboxCount;
+            console.log('Inbox inboxTotalCount response');
+            console.log(inboxCount);
+            const jsonArrayInboxCount = responseInboxCount['data'];
+            console.log('Inbox Internal jsonArrayInboxCount Record Json');
+            console.log(jsonArrayInboxCount);
+            dispatch(setDashboardInboxCount(jsonArrayInboxCount));
             dispatch(isAppLoading(false));
         } catch (error) {
             dispatch(isAppLoading(false));

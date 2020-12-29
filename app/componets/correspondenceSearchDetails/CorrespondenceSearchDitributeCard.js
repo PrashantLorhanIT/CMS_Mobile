@@ -7,7 +7,7 @@ import * as config from '../../utils/localization/config/i18n';
 import i18n, { t } from '../../utils/localization/servicesi18n/index';
 
 const CorrespondenceSearchDitributeCard = (props) => {
-  const [distribute, setDistibute] = useState(false);
+  const [distribute, setDistibute] = useState(true);
   const [distributeData, setdistributeData] = useState([]);
   const [mdl, setmdl]= useState('');
   const [adHoc, setadHoc] = useState('');
@@ -15,7 +15,6 @@ const CorrespondenceSearchDitributeCard = (props) => {
   const [cc, setcc] = useState('');
   const [rec, setrec] = useState('');
 
-  
   useEffect(() => {
     _distributeData();
 }, [distribute]);
@@ -72,7 +71,7 @@ const CorrespondenceSearchDitributeCard = (props) => {
                </CardItem>
              </Card>
       </>
-  );
+      );
   } else{
     return(
       <> 

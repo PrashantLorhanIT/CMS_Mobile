@@ -10,6 +10,7 @@ import {
     getDashboardPieChartsGraphSummary,
     getDashboardGrapahMonthlyTrend,
     getDashboardGrapahonthlyOverdueTrend,
+    getInboxCount,
 } from './Dashboard.Action';
 import withLoader from '../../componets/loder/withLoader';
 
@@ -25,6 +26,7 @@ const mapStateToProps = state => {
         dashboardSummary: state.DashboardReducer.dashboardSummary,
         dashboardMonthlyTrend: state.DashboardReducer.dashboardMonthlyTrend,
         dashboardMonthlyOverdueTrend: state.DashboardReducer.dashboardMonthlyOverdueTrend,
+        dashboardInboxCount: state.DashboardReducer.dashboardInboxCount
     }
 }
 
@@ -40,6 +42,7 @@ const mapDispatchToProps = (dispatch) => {
             getDashboardPieChartsGraphSummary: (forEntitiy, fromEntity, corrcategory, doctype, ridcontract) => dispatch(getDashboardPieChartsGraphSummary(forEntitiy, fromEntity, corrcategory, doctype, ridcontract)),
             getDashboardGrapahMonthlyTrend: (forEntitiy, fromEntity, corrcategory, doctype, ridcontract) => dispatch(getDashboardGrapahMonthlyTrend(forEntitiy, fromEntity, corrcategory, doctype, ridcontract)),
             getDashboardGrapahonthlyOverdueTrend: (forEntitiy, fromEntity, corrcategory, doctype, ridcontract) => dispatch(getDashboardGrapahonthlyOverdueTrend(forEntitiy, fromEntity, corrcategory, doctype, ridcontract)),
+            getInboxCount:(userId) => dispatch(getInboxCount(userId)),
      }
 }
 

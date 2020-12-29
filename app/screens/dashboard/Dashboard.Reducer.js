@@ -8,6 +8,7 @@ const initialState = {
     dashboardSummary:[],
     dashboardMonthlyTrend:[],
     dashboardMonthlyOverdueTrend:[],
+    dashboardInboxCount:[],
 }
 export const DashboardReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -45,6 +46,11 @@ export const DashboardReducer = (state = initialState, action) => {
                 return {
                     ...state,
                     dashboardMonthlyOverdueTrend: action.payload,
+            };
+        case ActionTypes.dashboard.SET_DASHBOARD_INBOXCOUNT:
+                return {
+                    ...state,
+                    dashboardInboxCount: action.payload,
             };
     
         default:

@@ -13,10 +13,10 @@ const CorrespondenceSearchApprovalCard = (props) => {
   const [rev, setrev] = useState('');
   const [app, setapp] = useState('');
 
-  useEffect(() => {
-      
-    _distributeData();
 
+  useEffect(() => {
+    
+    _distributeData();
 }, [approval]);
 
 

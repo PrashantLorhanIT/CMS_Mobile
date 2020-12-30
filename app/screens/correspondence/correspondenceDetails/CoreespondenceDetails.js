@@ -72,6 +72,7 @@ class CoreespondenceDetails extends Component {
         distributeData:[],
         reviewerData:[],
         ApproverData:[],
+        singingUrl: '',
         };
     }
 
@@ -1398,7 +1399,7 @@ if (config.fallback == 'en'){
         const userId = this.props.userProfile.ridUsermaster;
         const workFTID = this.props.correspondenceDetailData.ridWorkflowTransaction;
         const singingUrl = this.props.correspondenceDetailData.signingURL;
-
+        const crn = this.props.correspondenceDetailData.crn
         if (buttonText == "Approve;Reject"){
             const approve = this.getFirstPartString(buttonText);
            if (this.props.navigation.state.params.workflowName == 'MOM'){
@@ -1432,13 +1433,20 @@ if (config.fallback == 'en'){
                };
              });
            } else {
-             this.setState((state) => {
+            for(const attachement of this.props.correspondenceDetailAttachment){
+              let attachementCrn = attachement.attachedfilename;
+              let attachCrn = attachementCrn.replace('.pdf','');
+              if (crn == attachCrn){
+               this.setState((state) => {
                return {
-                 isSignatureModelVisible: true,
-               };
-             });
+                singingUrl: attachement.documentumid,
+                isSignatureModelVisible: true,
+                 };
+               });
+              }
+             }
             }
-           } else if (buttonText== 'Initiate') {
+           } else if (buttonText == 'Initiate') {
             this.setState((state) => {
               return {
                 isInitiateModalVisible: true,
@@ -1640,7 +1648,7 @@ if (config.fallback == 'en'){
                }} />
             }
             {
-            isSignatureModelVisible && <SignatureModelPopup signingURL = {this.props.correspondenceDetailData.signingURL} ridCorrDetail = {this.props.correspondenceDetailData.ridCorrDetail} token ={ this.props.loggedInUser.token}  worlFlowName = {this.props.navigation.state.params.workflowName} onModalClose={() => { this.setState({ isSignatureModelVisible: false }) }} getApproveValues={(isSignature) => {
+            isSignatureModelVisible && <SignatureModelPopup signingURL = {this.state.singingUrl}  userId = {this.props.userProfile.ridUsermaster} corrId = {this.props.navigation.state.params.ridInOutCorr} ridCorrDetail = {this.props.correspondenceDetailData.ridCorrDetail} token ={ this.props.loggedInUser.token}  worlFlowName = {this.props.navigation.state.params.workflowName} onModalClose={() => { this.setState({ isSignatureModelVisible: false }) }} getApproveValues={(isSignature) => {
                console.log('Go Approve SignatureModelPopup popup')
                console.log(isSignature)
               if (isSignature == true) {

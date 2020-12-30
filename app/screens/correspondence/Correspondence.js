@@ -127,8 +127,54 @@ onRefresh = () => {
       isRefreshing: true,
     });
 }
+storeCount = async (count) => {
+  await AsyncStorage.setItem('InboxCount', count.toString());
+ 
+ }
+ removeCount = async (count) => {
+  await AsyncStorage.removeItem('InboxCount');
+ 
+ }
 _renderCategoryCount =() => {
+  console.log('Inbox total count', this.props.dashboardInboxCount);
   var arr = [{category:'Correspondence', value: this.props.dashboardInboxCount.correspondenceCount},{category:'Task', value: this.props.dashboardInboxCount.taskCount},{category:'MOM', value: this.props.dashboardInboxCount.momCount},{category:'RFI', value: this.props.dashboardInboxCount.rfiCount}];
+  if (this.state.categoryTypeName == 'Correspondence'){
+    let counter = 0;
+    for (const obj of this.props.correspondenceInbox) {
+      if (obj.isNew === true) counter++;
+    }    
+    var arr = [{category:'Correspondence', value: counter},{category:'Task', value: this.props.dashboardInboxCount.taskCount},{category:'MOM', value: this.props.dashboardInboxCount.momCount},{category:'RFI', value: this.props.dashboardInboxCount.rfiCount}];
+    const totalCount = counter + this.props.dashboardInboxCount.taskCount + this.props.dashboardInboxCount.momCount + this.props.dashboardInboxCount.rfiCount;
+    this.removeCount();
+    this.storeCount(totalCount);
+  } else if (this.state.categoryTypeName == 'Task') {
+    let counter = 0;
+    for (const obj of this.props.correspondenceInbox) {
+      if (obj.isNew === true) counter++;
+    }    
+    var arr = [{category:'Correspondence', value: this.props.dashboardInboxCount.correspondenceCount},{category:'Task', value: counter},{category:'MOM', value: this.props.dashboardInboxCount.momCount},{category:'RFI', value: this.props.dashboardInboxCount.rfiCount}];
+    const totalCount = this.props.dashboardInboxCount.correspondenceCount + counter + this.props.dashboardInboxCount.momCount + this.props.dashboardInboxCount.rfiCount;
+    this.removeCount();
+    this.storeCount(totalCount);
+  } else if  (this.state.categoryTypeName == 'MOM'){
+    let counter = 0;
+    for (const obj of this.props.correspondenceInbox) {
+      if (obj.isNew === true) counter++;
+    }    
+    var arr = [{category:'Correspondence', value: this.props.dashboardInboxCount.correspondenceCount},{category:'Task', value: this.props.dashboardInboxCount.taskCount},{category:'MOM', value: counter},{category:'RFI', value: this.props.dashboardInboxCount.rfiCount}];
+    const totalCount = this.props.dashboardInboxCount.correspondenceCount + this.props.dashboardInboxCount.taskCount + counter + this.props.dashboardInboxCount.rfiCount;
+    this.removeCount();
+    this.storeCount(totalCount);
+  } else if (this.state.categoryTypeName == 'RFI') {
+    let counter = 0;
+    for (const obj of this.props.correspondenceInbox) {
+      if (obj.isNew === true) counter++;
+    }    
+    var arr = [{category:'Correspondence', value: this.props.dashboardInboxCount.correspondenceCount},{category:'Task', value: this.props.dashboardInboxCount.taskCount},{category:'MOM', value: this.props.dashboardInboxCount.momCount},{category:'RFI', value: counter}];
+    const totalCount = this.props.dashboardInboxCount.correspondenceCount + this.props.dashboardInboxCount.taskCount + this.props.dashboardInboxCount.momCount + counter;
+    this.removeCount();
+    this.storeCount(totalCount);
+  }
   if (config.fallback == 'en') {
     return(
       <View style={{margin:5, backgroundColor:'white',flexDirection:'row',height:35}}>

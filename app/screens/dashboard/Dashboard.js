@@ -9,7 +9,7 @@ import {
   Content,
   Picker,
 } from 'native-base';
-import { ScrollView, Dimensions, ImageBackground, Animated, AsyncStorage } from 'react-native';
+import { ScrollView, Dimensions, ImageBackground, Animated } from 'react-native';
 import { WHITE, TEMP_THEME_PRIMARY, TEMP_THEME_SECONDARY } from '../../utils/styles/colors';
 import { FONT_SIZE_12, FONT_SIZE_16, FONT_WEIGHT_BOLD, FONT_FAMILY_PT_BOLD, FONT_FAMILY_PT_REGULAR, FONT_SIZE_14} from '../../utils/styles/typography';
 import DashboardCard from '../../componets/dashboardCard/DashboardCard';
@@ -27,7 +27,7 @@ import styles from './Dashboard.style';
 import i18n, { t } from '../../utils/localization/servicesi18n/index';
 import * as config from '../../utils/localization/config/i18n';
 import networkUtils from '../../services/netInfo/Rechability';
-
+import AsyncStorage from '@react-native-community/async-storage'
 const screenWidth = Dimensions.get("window").width;
 
 class Dashboard extends Component {
@@ -57,7 +57,8 @@ class Dashboard extends Component {
          corrcategory: 1, 
          onSelectSenderRecipientModel:'', 
          token: '',
-         userid: ''
+         userid: '',
+         inboxCount: ''
          
     };
   }
@@ -84,7 +85,7 @@ class Dashboard extends Component {
          });
     });
       console.log('Dashboard get userId ',this.state.userid);
-     
+      
     //   this.setState({
     //     dashboardEntitiesInBoxRecipent: this.state.userid,
     // });
@@ -676,10 +677,19 @@ _renderOutboxSelectValuesDropDwon = () => {
   }
   
 }
-  _renderCard =()=> {
 
+ storeCount = async (count) => {
+ await AsyncStorage.setItem('InboxCount', count.toString());
+
+}
+  _renderCard =()=> {
+    
+    //const inboxtotal = this.props.dashboardInboxCount.correspondenceCount + this.props.dashboardInboxCount.taskCount + this.props.dashboardInboxCount.momCount + this.props.dashboardInboxCount.rfiCount;
+    //this.storeCount(inboxtotal);
+   // let counts = 0;
+    
     if (this.state.isCorrespondenceInbox == true){
-      const inboxtotal = this.props.dashboardInboxCount.correspondenceCount + this.props.dashboardInboxCount.taskCount + this.props.dashboardInboxCount.momCount + this.props.dashboardInboxCount.rfiCount;
+      
      // AsyncStorage.setItem('inboxCount', inboxtotal);
       return(
         <View style = {{ backgroundColor:'#f2f2f2', paddingTop: 0 }}>
@@ -691,7 +701,7 @@ _renderOutboxSelectValuesDropDwon = () => {
                 <DashboardCard  name= {t('DashboardScreeen:ResponseOverdue')} count= {this.props.dashboardSummary.overDue && this.props.dashboardSummary.overDue} image={incoming} red = {true}/>
                 <DashboardCard  name= {t('DashboardScreeen:TotalClosed')} count= {this.props.dashboardSummary.closed && this.props.dashboardSummary.closed} image={outgoing} red = {false} /> 
                 <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator} red = {false} />   
-                <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal && inboxtotal} image={calculator} red = {false} />   
+                <DashboardCard  name= 'InboxTotalCount' count= {this.state.inboxCount && this.state.inboxCount} image={calculator} red = {false} />   
              </ScrollView>
            </View>
          </View>
@@ -707,7 +717,7 @@ _renderOutboxSelectValuesDropDwon = () => {
                 <DashboardCard  name= {t('DashboardScreeen:ResponseOverdue')} count= {this.props.dashboardSummary.overDue && this.props.dashboardSummary.overDue} image={incoming} red = {true}/>
                 <DashboardCard  name= {t('DashboardScreeen:TotalClosed')} count= {this.props.dashboardSummary.closed && this.props.dashboardSummary.closed} image={outgoing} red = {false} /> 
                 <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator}  red = {false}/> 
-                <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal && inboxtotal} image={calculator} red = {false} />     
+                {/* <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal && inboxtotal} image={calculator} red = {false} />      */}
              </ScrollView>
            </View>
          </View>
@@ -752,7 +762,12 @@ _renderOutboxSelectValuesDropDwon = () => {
   }
   
   render() {
-
+    AsyncStorage.getItem('InboxCount').then((value1) => {
+      console.log('Inbox count', value1);
+      this.setState({
+        inboxCount: value1,
+       });
+    });
     if (this.state.isCorrespondenceInbox == true) {
       if (config.fallback == 'en'){
         return (

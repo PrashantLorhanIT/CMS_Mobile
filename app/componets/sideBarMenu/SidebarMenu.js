@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useEffect} from 'react';
 import { View, StyleSheet, Text, Alert, Image } from 'react-native';
 import { isManualLogout } from './SidebarMenu.Action';
 import { withNavigation } from 'react-navigation';
@@ -16,11 +15,14 @@ import { AsyncStorage } from 'react-native';
 
 const SidebarMenu = props => {
   let items = [];
-  let inboxCount = 0;
-//   AsyncStorage.getItem('inboxCount').then((value) => {
-//     console.log('Side menu bar inbox total count', value);
-//      inboxCount = value
-// });
+  const [inboxCount, setInboxCount] = useState();
+
+useEffect (() => {
+  AsyncStorage.getItem('InboxCount').then((value) => {
+    setInboxCount(value);
+  });
+},[setInboxCount])
+
   if (config.fallback == 'en'){
      items = [
 
@@ -76,7 +78,7 @@ const SidebarMenu = props => {
         screenToNavigate: 'Profile',
         navOptionThumb: profilemenu,
       },
-      
+    
       {
         navOptionName: 'تسجيل خروج',
         screenToNavigate: 'logout',

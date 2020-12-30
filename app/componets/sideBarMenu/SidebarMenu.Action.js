@@ -34,6 +34,7 @@ export const performLogout = (callback) => {
                 dispatch(setDashboardMonthlyOverdueTrend([]));
                 dispatch(setProfile(null));
                 await AsyncStorage.removeItem('userId');
+                await AsyncStorage.removeItem('InboxCount');
                 await AsyncStorage.removeItem('token');
                 await AsyncStorage.removeItem('refershToken');
                 //props.navigation.navigate('Auth');

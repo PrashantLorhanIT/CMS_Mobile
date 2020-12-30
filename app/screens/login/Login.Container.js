@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
     console.log('Login action method mapDispatchprops ')
 
     return {
-        performLogin: (userName, password, checked) => dispatch(performLogin(userName, password, checked)),
+        performLogin: (userName, password, checked, callback) => dispatch(performLogin(userName, password, checked, callback)),
        // subscribeToReachibilityUpdates: () => dispatch(reachabilityUpdater()),
         //checkIfAlreadyAuthenticated: () => dispatch(checkIfAlreadyAuthenticated()),
     }

@@ -247,7 +247,12 @@ export const getInboxCount = (userId) => {
             const jsonArrayInboxCount = responseInboxCount['data'];
             console.log('Internal jsonArrayInboxCount Record Json');
             console.log(jsonArrayInboxCount);
+          //  dispatch(removeCount());
             dispatch(setDashboardInboxCount(jsonArrayInboxCount));
+            //storeCount(inboxtotal);
+            console.log('Inbox total count', jsonArrayInboxCount)
+            const inboxtotal = jsonArrayInboxCount.correspondenceCount + jsonArrayInboxCount.taskCount + jsonArrayInboxCount.momCount + jsonArrayInboxCount.rfiCount;
+            AsyncStorage.setItem('InboxCount', inboxtotal.toString());
             dispatch(isAppLoading(false));
         } catch (error) {
             dispatch(isAppLoading(false));

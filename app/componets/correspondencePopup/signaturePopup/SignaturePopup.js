@@ -32,33 +32,36 @@ const SignaturePopup = (props) => {
     StatusBar.setBarStyle('dark-content', true);
     const [visible, setVisible] = useState(true);
     const [isLoadingVisible, setisLoadingVisible] = useState(true);
+    const [token, settoken] = useState();
+
+    useEffect (() => {
+        AsyncStorage.getItem('token').then((token) => {
+            settoken(token);
+        });
+    },[settoken])
 
     const  onButtonOKClick = () => {
         if (props.worlFlowName == 'Outgoing RFI' || props.worlFlowName == 'Incoming RFI') {
-            const ridcorDetails = props.ridCorrDetail
-            AsyncStorage.getItem('token').then((token) => {
-                submitRFICheckSigned(ridcorDetails, token);
-            });
+            const userId = props.userId
+            submitRFICheckSigned(userId, token);
+         
         } else {
-            const ridcorDetails = props.ridCorrDetail
-            AsyncStorage.getItem('token').then((token) => {
-                submitCorrespondenceCheckSigned(ridcorDetails, token);
-            });
+            const userId = props.userId
+            submitCorrespondenceCheckSigned(userId, token); 
         }
     };
    
-    const submitCorrespondenceCheckSigned =  (ridCorDetails, token) => {
+    const submitCorrespondenceCheckSigned =  (userId, token) => {
   
             try {
                 const params = {
-                 RidCorrdetail: ridCorDetails
+                    CorrID: userId
                 }
                 axios.get(`${constants.webService.baseURL}${constants.webService.methods.common.CorrespondenceSignature}`, {params}, axios.defaults.headers.Authorization = `Bearer ${token}`)
                 .then(res => {
-                //   console.log('Correspondence Details Signature response inside');
-                //     console.log(res);
+               
                     console.log(res.data)
-                    if (res.data.data == true) {
+                    if (res.data.statusCode == '200') {
                        props.getApproveValues(true)
                        props.onModalClose();
                        setVisible(false);
@@ -68,12 +71,9 @@ const SignaturePopup = (props) => {
                         setVisible(false);
                     }   
                 })
-                .catch(error => console.log(error));
-                
-                
-            } catch (error) {
-                
-            }
+                .catch(error => console.log(error))   
+            } catch (error) {      
+         }
     }
     const submitRFICheckSigned =  (ridCorDetails, token) => {
   
@@ -130,9 +130,9 @@ const SignaturePopup = (props) => {
                     
                     <View style={{width:screenWidth,alignContent:'center',height:'90%',justifyContent:'center',marginBottom:10}}>
                    <WebView                   
-                      onLoadEnd={() => setisLoadingVisible(false)}
-                      source={{ uri: props.signingURL}}
-                      style={{marginTop:0,width:'100%',height:'90%' }}
+                      onLoadEnd={() => setisLoadingVisible(true)}
+                      source={{ uri: `${constants.webService.documentBaseUrl}${props.signingURL} &approvalmode=true&ridType=${props.corrId}&Type=RIDMOM&rfiApproval=false&apiUrl=${constants.webService.SignbaseURL}&auth=Bearer${token}&ridUsermaster=${props.userId}`}}
+                      style={{ marginLeft:6,marginTop:0,width:'124%',height:'100%' }}
                       javaScriptEnabled={true}
                       domStorageEnabled={true}
                    />

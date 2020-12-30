@@ -5,6 +5,7 @@ import  SecurityManager  from '../../services/Keychain/SecurityManager';
 import { Reachability } from '../../services/netInfo/Rechability';
 import { AsyncStorage } from 'react-native';
 import { setUserId } from '../splash/Splash.Action';
+import {  Alert} from 'react-native';
 
 export const performLogin = (username, password, checked, callback) => {
     console.log('Login action method ')
@@ -48,18 +49,30 @@ export const performLogin = (username, password, checked, callback) => {
             AsyncStorage.setItem('token', token);
             AsyncStorage.setItem('refershToken', refreshToken);
              //dispatch(saveUserIds(ridUsermaster.toString()));
-             dispatch(saveUserRefershToken(refreshToken));
+            dispatch(saveUserRefershToken(refreshToken));
             dispatch(appHasError(null));
            
         } catch (error) {
             console.log('Error In Action performLogin.');
             console.log(error);
-            callback(error);
             dispatch(isAppLoading(false));
             dispatch(appHasError(error));
+           // callback(error); 
+           alertWithMessage('Please check username password');
+            
         }
     };
 }
+
+export const alertWithMessage = (message) =>
+Alert.alert(
+    "",
+    message,
+    [
+        { text: "OK", onPress: () => {} }
+    ],
+    { cancelable: false }
+);
 
 export const checkIfAlreadyAuthenticated = () => {
     return async (dispatch) => {

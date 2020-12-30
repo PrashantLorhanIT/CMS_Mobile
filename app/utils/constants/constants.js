@@ -3,6 +3,7 @@ export const constants = {
         // baseURL: 'http://cms.lorhanit.com/ERCMS/api/',
          baseURL: 'https://cmstest.etihadrail.ae/ERCMSAPI_QA/api/',
          documentBaseUrl: 'https://cmstest.etihadrail.ae/ERCMSAPI_QA/',
+         SignbaseURL: 'https://cmstest.etihadrail.ae/ERCMSAPI_QA/api',
        // documentBaseUrl: 'http://cms.lorhanit.com/ERCMS/',
 
         methods: {
@@ -30,7 +31,7 @@ export const constants = {
                 correspondenceWorkFlow: 'Workflowstep/GetWorkflowstepsByWorkflowID',
                 correspondenceTaskList: 'UserTask/GetUserTasksByCorrID',
                 correspondenceForward: 'Inbox/ForwardCorrespondendce',
-                CorrespondenceSignature: 'Signature/GetCorrSignatureStatus',
+                CorrespondenceSignature: 'Corr/IsSignatureDone',
                 
                 //Task 
                 taskDetails: 'UserTask/GetUserTaskDetailByTaskID',

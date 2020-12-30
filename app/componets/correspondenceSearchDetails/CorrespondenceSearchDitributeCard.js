@@ -7,7 +7,7 @@ import * as config from '../../utils/localization/config/i18n';
 import i18n, { t } from '../../utils/localization/servicesi18n/index';
 
 const CorrespondenceSearchDitributeCard = (props) => {
-  const [distribute, setDistibute] = useState(true);
+  
   const [distributeData, setdistributeData] = useState([]);
   const [mdl, setmdl]= useState('');
   const [adHoc, setadHoc] = useState('');
@@ -15,32 +15,38 @@ const CorrespondenceSearchDitributeCard = (props) => {
   const [cc, setcc] = useState('');
   const [rec, setrec] = useState('');
 
-  useEffect(() => {
-    _distributeData();
-}, [distribute]);
+  const { worlflowSteps, distributeProperties } = props
 
-  const _distributeData = () => {
-    
-     console.log('Distributed Data inside for each');
-    props.worlflowSteps.forEach(element => {
+  useEffect(() => {
+    let distributed = [];
+    worlflowSteps.forEach(element => {
     
       if (element.stepname==='DISTRIBUTE'){
 
-        if (distributeData != undefined) 
-          setdistributeData(props.distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
+        if (distributeData != undefined) {
+        distributed = (distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep));
+        setdistributeData(distributeData)
+        }
           
       } else if (element.sequence === 2 ) {
-        if (distributeData != undefined)
-        setdistributeData(props.distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep)); 
+        if (distributeData != undefined) {
+          distributed = (distributeProperties.filter(data => data.ridWorkflowstep===element.ridWorkflowstep)); 
+          setdistributeData(distributed)
+        }
       }
       
      });
-    setmdl(distributeData.filter(element => element.mdlname != null && element.ridCommunicationtype===1).map(element => element.mdlname).join(', '));
-    setadHoc(distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===1).map(element => element.firstname + ' ' + element.lastname).join(', '));
-    setTo(distributeData.filter(element => element.to != null && element.ridCommunicationtype===2).map(element => element.to).join(', '));
-    setcc(distributeData.filter(element => element.cc != null && element.ridCommunicationtype===2).map(element => element.cc).join(', '));
-    setrec(distributeData.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===3).map(element => element.firstname + ' ' + element.lastname).join(', '));
-  }
+    setmdl(distributed.filter(element => element.mdlname != null && element.ridCommunicationtype===1).map(element => element.mdlname).join(', '));
+    setadHoc(distributed.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===1).map(element => element.firstname + ' ' + element.lastname).join(', '));
+    setTo(distributed.filter(element => element.to != null && element.ridCommunicationtype===2).map(element => element.to).join(', '));
+    setcc(distributed.filter(element => element.cc != null && element.ridCommunicationtype===2).map(element => element.cc).join(', '));
+    setrec(distributed.filter(element => (element.firstname != null || element.lastname != null) && element.ridCommunicationtype===3).map(element => element.firstname + ' ' + element.lastname).join(', '));
+}, [worlflowSteps,distributeProperties, setdistributeData, setmdl, setadHoc, setTo, setcc, setrec]);
+
+  // const _distributeData = () => {
+    
+   
+  // }
   if (config.fallback == 'en') {
     return (
       <> 

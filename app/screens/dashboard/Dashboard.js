@@ -678,14 +678,15 @@ _renderOutboxSelectValuesDropDwon = () => {
   
 }
 
- storeCount = async (count) => {
- await AsyncStorage.setItem('InboxCount', count.toString());
-
-}
   _renderCard =()=> {
-    
-    //const inboxtotal = this.props.dashboardInboxCount.correspondenceCount + this.props.dashboardInboxCount.taskCount + this.props.dashboardInboxCount.momCount + this.props.dashboardInboxCount.rfiCount;
-    //this.storeCount(inboxtotal);
+    // AsyncStorage.getItem('InboxCount').then((value1) => {
+    //   console.log('Inbox count', value1);
+    //   this.setState({
+    //     inboxCount: value1,
+    //    });
+    // });
+    const inboxtotal = this.props.dashboardInboxCount.correspondenceCount + this.props.dashboardInboxCount.taskCount + this.props.dashboardInboxCount.momCount + this.props.dashboardInboxCount.rfiCount;
+   // this.storeCount(inboxtotal);
    // let counts = 0;
     
     if (this.state.isCorrespondenceInbox == true){
@@ -701,7 +702,7 @@ _renderOutboxSelectValuesDropDwon = () => {
                 <DashboardCard  name= {t('DashboardScreeen:ResponseOverdue')} count= {this.props.dashboardSummary.overDue && this.props.dashboardSummary.overDue} image={incoming} red = {true}/>
                 <DashboardCard  name= {t('DashboardScreeen:TotalClosed')} count= {this.props.dashboardSummary.closed && this.props.dashboardSummary.closed} image={outgoing} red = {false} /> 
                 <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator} red = {false} />   
-                <DashboardCard  name= 'InboxTotalCount' count= {this.state.inboxCount && this.state.inboxCount} image={calculator} red = {false} />   
+                <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal && inboxtotal} image={calculator} red = {false} />   
              </ScrollView>
            </View>
          </View>
@@ -717,7 +718,7 @@ _renderOutboxSelectValuesDropDwon = () => {
                 <DashboardCard  name= {t('DashboardScreeen:ResponseOverdue')} count= {this.props.dashboardSummary.overDue && this.props.dashboardSummary.overDue} image={incoming} red = {true}/>
                 <DashboardCard  name= {t('DashboardScreeen:TotalClosed')} count= {this.props.dashboardSummary.closed && this.props.dashboardSummary.closed} image={outgoing} red = {false} /> 
                 <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator}  red = {false}/> 
-                {/* <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal && inboxtotal} image={calculator} red = {false} />      */}
+                <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal  && inboxtotal } image={calculator} red = {false} />     
              </ScrollView>
            </View>
          </View>
@@ -762,12 +763,7 @@ _renderOutboxSelectValuesDropDwon = () => {
   }
   
   render() {
-    AsyncStorage.getItem('InboxCount').then((value1) => {
-      console.log('Inbox count', value1);
-      this.setState({
-        inboxCount: value1,
-       });
-    });
+   
     if (this.state.isCorrespondenceInbox == true) {
       if (config.fallback == 'en'){
         return (

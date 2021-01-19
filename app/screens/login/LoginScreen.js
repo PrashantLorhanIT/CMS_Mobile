@@ -105,13 +105,22 @@ handleOnPasswordChange = (e) => {
             this.alertWithMessage("Please enter User Name");
         } else if (this.state.password  == '') {
             this.alertWithMessage("Please enter Password");
+
         } else if (this.state.userName != '' && this.state.password != '') {
+
             if (this.state.password.length >= 6) {
+                let count = 0; 
                 this.props.performLogin(this.state.userName, this.state.password, this.state.checked, (error) => {
                    
                     if ( error.response.status == 500){
-                        console.log('Invalid username and password');
-                      this.alertWithMessage('Invalid username and password');
+                        console.log('Invalid username and password'); 
+
+                      setInterval(() => {
+                          if (count == 0 ){
+                             count = count + 1;
+                            this.alertWithMessage('Invalid username and password');
+                          }
+                    }, 2000);
                     }
                 }); 
              } else{
@@ -121,6 +130,7 @@ handleOnPasswordChange = (e) => {
         }
         
      } else {
+
         this.alertWithMessage("Please enter User Name and Password");
      }
 }

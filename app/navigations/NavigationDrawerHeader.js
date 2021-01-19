@@ -13,11 +13,10 @@ import Reachability from '../services/netInfo/Rechability';
 const NavigationDrawerHeader = props => {
   const [visible, setVisible] = useState(false);
   const [isInternetRecheble, setIsInternetRecheble] = useState(true);
+
  useEffect ( () => {
-
-  //Reachability.checkReachability( (isInternetAvailable) => {setIsInternetRecheble(isInternetAvailable)})
-
- }, [])
+  checkInternetConnection();
+ }, [setIsInternetRecheble])
 
     const toggleDrawer = () => {
       props.navigationProps.toggleDrawer();
@@ -27,6 +26,11 @@ const NavigationDrawerHeader = props => {
         setVisible(true)
 
   };
+  const checkInternetConnection =()=> {
+    console.log('Check Internet Connection in checkInternetConnection');
+
+    Reachability.checkReachability( (isInternetAvailable) => {setIsInternetRecheble(isInternetAvailable)})
+  }
   const alertWithMessage = (message) =>
   Alert.alert(
       "",
@@ -40,7 +44,7 @@ const NavigationDrawerHeader = props => {
     return (
       <>
       {/* {
-        !isInternetRecheble  &&  alertWithMessage('Network not aviable')
+         !isInternetRecheble &&  alertWithMessage('Network not aviable')
       } */}
       {
       visible &&  <ChangeLanguage onModalClose={() => { setVisible(false)  }} /> 

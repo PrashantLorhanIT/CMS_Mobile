@@ -55,10 +55,11 @@ export const performLogin = (username, password, checked, callback) => {
         } catch (error) {
             console.log('Error In Action performLogin.');
             console.log(error);
-            dispatch(isAppLoading(false));
             dispatch(appHasError(error));
-           // callback(error); 
-           alertWithMessage('Please check username password');
+            dispatch(isAppLoading(false));
+            callback(error); 
+            
+          // alertWithMessage('Please check username password');
             
         }
     };

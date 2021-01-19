@@ -1,4 +1,4 @@
-import React, {useState}from 'react';
+import React, {useState, useEffect}from 'react';
 import {
         Form,
         Card,
@@ -28,36 +28,52 @@ const ChangeLanguage = (props) => {
         const [checkedEnglish, setcheckedEnglish] = useState();
         const [checkedArabic, setcheckedArabic] = useState();
         const [isI18nInitialized, SetisI18nInitialized] = useState();
-
-        // AsyncStorage.getItem('SelectedLanguage').then((value) => {
-        //         if (value == 'en'){
-        //                 setcheckedArabic(false);
-        //                 setcheckedEnglish(true);
-        //                 setLanguage('en');
-                
-        //         } else {
-        //                 setcheckedArabic(true);
-        //                 setcheckedEnglish(false);
-        //                 setLanguage('ar');
-                
-        //         }
-        // });
+        useEffect ( () => {
+  
+                AsyncStorage.getItem('SelectedLanguage').then((value) => {
+                        if (value == 'en'){
+                                setcheckedArabic(false);
+                                setcheckedEnglish(true);
+                                setLanguage('en');
+                        
+                        } else {
+                                setcheckedArabic(true);
+                                setcheckedEnglish(false);
+                                setLanguage('ar');
+                        
+                        }
+                });
+               }, [setcheckedArabic,setcheckedEnglish, setLanguage])
+        
        
 
         const handleCheckBoxEnglish = () => {
         
                console.log('Selected language is English');
+               if (checkedEnglish == true){
+                     setcheckedArabic(true);
+                     setcheckedEnglish(false);
+                     setLanguage('ar');
+               } else {
                      setcheckedArabic(false);
                      setcheckedEnglish(true);
                      setLanguage('en');
+               }
          }
 
          const handleCheckBoxArabic = () => {
         
                 console.log('Selected language is Arabic');
-                      setcheckedArabic(true);
-                      setcheckedEnglish(false);
-                      setLanguage('ar');
+                if (checkedArabic == true){
+                        setcheckedArabic(false);
+                        setcheckedEnglish(true);
+                        setLanguage('en');
+                }else {
+                        setcheckedArabic(true);
+                        setcheckedEnglish(false);
+                        setLanguage('ar');
+                }
+                      
           }
         const onButtonCancelClick = () => {
                 // getanguage();

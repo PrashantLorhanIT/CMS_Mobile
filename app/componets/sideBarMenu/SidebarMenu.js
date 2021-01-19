@@ -21,6 +21,7 @@ useEffect (() => {
   AsyncStorage.getItem('InboxCount').then((value) => {
     setInboxCount(value);
   });
+  
 },[setInboxCount])
 
   if (config.fallback == 'en'){

@@ -15,7 +15,7 @@ export const getCorrespondeceList = (userId, category) => {
         try {
             const params = {
                 UserID: userId,
-                PageSize: 100,
+                PageSize: 200,
                 PageNumber: 1,
                 Category: category
             }

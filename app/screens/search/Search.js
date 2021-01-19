@@ -571,8 +571,8 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
                                               underlineColorAndroid = 'transparent'
                                            >
                                           <Picker.Item label="Correspondence" value="Correspondence" />
-                                          <Picker.Item label="MOM" value="MOM" />
-                                          <Picker.Item label="RFI" value="RFI" />
+                                          {/* <Picker.Item label="MOM" value="MOM" />
+                                          <Picker.Item label="RFI" value="RFI" /> */}
                                           </Picker>
           
             </View>
@@ -799,8 +799,8 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
                                               underlineColorAndroid = 'transparent'
                                            >
                                           <Picker.Item label="Correspondence" value="Correspondence" />
-                                          <Picker.Item label="MOM" value="MOM" />
-                                          <Picker.Item label="RFI" value="RFI" />
+                                          {/* <Picker.Item label="MOM" value="MOM" />
+                                          <Picker.Item label="RFI" value="RFI" /> */}
                                           </Picker>
           
             </View>
@@ -2740,8 +2740,8 @@ _renderSearchList =() => {
                                                   underlineColorAndroid = 'transparent'
                                                >
                                               <Picker.Item label="Correspondence" value="Correspondence" />
-                                              <Picker.Item label="MOM" value="MOM" />
-                                              <Picker.Item label="RFI" value="RFI" />
+                                              {/* <Picker.Item label="MOM" value="MOM" />
+                                              <Picker.Item label="RFI" value="RFI" /> */}
                                               </Picker>
               
                 </View>
@@ -2786,8 +2786,8 @@ _renderSearchList =() => {
                                                   underlineColorAndroid = 'transparent'
                                                >
                                               <Picker.Item label="Correspondence" value="Correspondence" />
-                                              <Picker.Item label="MOM" value="MOM" />
-                                              <Picker.Item label="RFI" value="RFI" />
+                                              {/* <Picker.Item label="MOM" value="MOM" />
+                                              <Picker.Item label="RFI" value="RFI" /> */}
                                               </Picker>
               
                 </View>

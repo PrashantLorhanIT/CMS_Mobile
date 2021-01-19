@@ -80,6 +80,8 @@ class NetworkManager {
         
         return new Promise(async (resolve, reject) => {
             try {
+                console.log('Production Base url with login');
+                console.log(`${this.baseUrl}${requestMethod}`);
                 const response = await axios.post(`${this.baseUrl}${requestMethod}`, params);
                 console.log(response);
                 resolve(response.data);

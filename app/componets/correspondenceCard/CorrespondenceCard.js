@@ -12,12 +12,14 @@ import {
     Button,
     Content,
   } from 'native-base';
-  import {TouchableOpacity} from 'react-native';
+  import {TouchableOpacity,Image} from 'react-native';
   import styles from './CorrespondenceCard.style';
   import { withNavigation } from 'react-navigation';
   import { FONT_SIZE_12, FONT_SIZE_16,FONT_WEIGHT_BOLD, FONT_SIZE_14,FONT_FAMILY_PT_REGULAR } from '../../utils/styles/typography';
   import moment from 'moment';
   import * as config from '../../utils/localization/config/i18n';
+  import attachment from '../../assets/image/attchment/attachment.png';
+
 
   class CorrespondenceCard extends Component {
 
@@ -74,17 +76,25 @@ import {
                           <Text style={styles.dateText}>{moment(this.props.correspondence.inboxlistDate).format('MMM DD, YYYY  HH:mm')}</Text>
                           </View>
                        </View>
+                       
                        <View style={{marginBottom:0,flexDirection:'column', marginTop:0}}>
                          <Text style={{fontSize:13, color: '#43425d',fontFamily:FONT_FAMILY_PT_REGULAR, marginTop:5,marginBottom:5,marginLeft:5}}>{this.props.correspondence.subject} </Text>
                          </View> 
+                         
                        <View style={styles.container}>
                          <View style={styles.userContainer}>
                            <Text style={styles.dateText}>{this.props.correspondence.workflowName ? this.props.correspondence.workflowName : ''}</Text>
                          </View>
                          <View style={styles.dateContainer}>
-                          <Text style={styles.dateText}>{this.props.correspondence.senderFirstName ? this.props.correspondence.senderFirstName : ''} {this.props.correspondence.senderLastName ? this.props.correspondence.senderLastName : ''} </Text>
+                           { this.props.correspondence.isDocumentUploaded == "Y" && 
+                          <Image source={attachment} style={{width:25,height:25,marginLeft:0, marginRight:10}}/>
+                           }
                           </View>
                        </View> 
+                           <View style={{flexDirection:'row',marginLeft:5, marginRight:10,marginTop:2}}>
+                          <Text style={styles.dateText}>{this.props.correspondence.senderFirstName ? this.props.correspondence.senderFirstName : ''} {this.props.correspondence.senderLastName ? this.props.correspondence.senderLastName : ''} </Text>
+                          </View>
+                          
                     {this.FlatListItemSeparator()}
                     </View>
                     </View>     
@@ -107,14 +117,19 @@ import {
                        <View style={{marginBottom:0,flexDirection:'column', marginTop:0}}>
                          <Text style={{fontSize:13, color: '#43425d',fontFamily:FONT_FAMILY_PT_REGULAR, marginTop:5,marginBottom:5,marginLeft:5}}>{this.props.correspondence.subject} </Text>
                          </View> 
-                       <View style={styles.container}>
+                         <View style={styles.container}>
                          <View style={styles.userContainer}>
                            <Text style={styles.dateText}>{this.props.correspondence.workflowName ? this.props.correspondence.workflowName : ''}</Text>
                          </View>
                          <View style={styles.dateContainer}>
-                          <Text style={styles.dateText}>{this.props.correspondence.senderFirstName ? this.props.correspondence.senderFirstName : ''} {this.props.correspondence.senderLastName ? this.props.correspondence.senderLastName : ''} </Text>
+                         { this.props.correspondence.isDocumentUploaded == "Y" && 
+                          <Image source={attachment} style={{width:25,height:25,marginLeft:0, marginRight:10}}/>
+                         }
                           </View>
                        </View> 
+                           <View style={{flexDirection:'row',marginLeft:5, marginRight:10,marginTop:2}}>
+                          <Text style={styles.dateText}>{this.props.correspondence.senderFirstName ? this.props.correspondence.senderFirstName : ''} {this.props.correspondence.senderLastName ? this.props.correspondence.senderLastName : ''} </Text>
+                          </View>
                     {this.FlatListItemSeparator()}
                     </View>
                     </View>     

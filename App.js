@@ -24,7 +24,7 @@ class App extends Component {
   state = { isI18nInitialized: false }
 
   componentDidMount() {
-  //  config.fallback = 'en'
+   config.fallback = 'en'
     AsyncStorage.getItem('SelectedLanguage').then((value) => {
     
       if (value == 'en'){

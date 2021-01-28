@@ -29,6 +29,7 @@ import RFIDelegateModelPopup from '../../../componets/correspondencePopup/rfiDel
 import RFIForwardModelPopup from '../../../componets/correspondencePopup/rfiForwardPopup/RFIForwardPopup';
 import SignatureModelPopup from '../../../componets/correspondencePopup/signaturePopup/SignaturePopup';
 import MomApproveModelPopup from '../../../componets/correspondencePopup/momApprovePop/MomAopprovePopup';
+import ExternalLinkModelPopup from '../../../componets/correspondencePopup/externalLink/CorrespondenceExternalLinkPopup';
 import Modal from 'react-native-modal';
 import moment from 'moment';
 import { ThemeProvider } from 'react-native-paper';
@@ -69,6 +70,7 @@ class CoreespondenceDetails extends Component {
         isMomCommentModelVisible:false,
         isSignatureModelVisible: false,
         isMomApproveModelVisible: false,
+        isExternalLinkModelVisible: false,
         distributeData:[],
         reviewerData:[],
         ApproverData:[],
@@ -649,6 +651,9 @@ class CoreespondenceDetails extends Component {
                   <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleRFIPropertiesTap() }}>
                         <Image source={info} style={{width:20,height:20}}/>
                     </TouchableOpacity>
+                    <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleExternalLinkTap() }}>
+                        <Image source={info} style={{width:20,height:20}}/>
+                    </TouchableOpacity>
                     {/* {
                       this.props.correspondenceDetailData.showDelegate != 'Y' &&
                       <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleRFIForwardTap() }}>
@@ -694,6 +699,9 @@ class CoreespondenceDetails extends Component {
                       <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleCommentsTap() }}>
                       <Image source={comment} style={{width:20,height:20}}/>
                       </TouchableOpacity>
+                      <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleExternalLinkTap() }}>
+                        <Image source={info} style={{width:20,height:20}}/>
+                    </TouchableOpacity>
                       {/* <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleForwardTap() }}>
                       <Image source={forward} style={{width:20,height:20}}/>
                       </TouchableOpacity> */}
@@ -732,6 +740,9 @@ class CoreespondenceDetails extends Component {
                     <Image source={forward} style={{width:20,height:20}}/>
                     </TouchableOpacity>
                 }
+                  <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleExternalLinkTap() }}>
+                        <Image source={info} style={{width:20,height:20}}/>
+                    </TouchableOpacity>
                 </View>
             );
             }else {
@@ -760,6 +771,9 @@ class CoreespondenceDetails extends Component {
                       <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleForwardTap() }}>
                       <Image source={forward} style={{width:20,height:20}}/>
                       </TouchableOpacity>
+                      <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleExternalLinkTap() }}>
+                        <Image source={info} style={{width:20,height:20}}/>
+                    </TouchableOpacity>
                 </View>
             );
             }else {
@@ -1540,6 +1554,13 @@ if (config.fallback == 'en'){
           };
         });
       }
+      handleExternalLinkTap = () => {
+        this.setState((state) => {
+          return {
+            isExternalLinkModelVisible: true,
+          };
+        });
+      }
 
       alertWithMessage = (message) =>
       Alert.alert(
@@ -1620,7 +1641,7 @@ if (config.fallback == 'en'){
 
 
     render() {
-        const { isDelegateModalVisible, isApproveModalVisible, isRejectModalVisible, isCorrespondencePropertiesVisible, isCorrespondenceCommentsVisible, isForwardModelVisible , isInitiateModalVisible, isRFICommentModelVisible, isRFIPropertiesModelVisible, isMomPropertiesModelVisible, isMomCommentModelVisible, isRFIDelegateModelVisible, isRFIForwardModelVisible, isSignatureModelVisible, isMomApproveModelVisible} = this.state;
+        const { isDelegateModalVisible, isApproveModalVisible, isRejectModalVisible, isCorrespondencePropertiesVisible, isCorrespondenceCommentsVisible, isForwardModelVisible , isInitiateModalVisible, isRFICommentModelVisible, isRFIPropertiesModelVisible, isMomPropertiesModelVisible, isMomCommentModelVisible, isRFIDelegateModelVisible, isRFIForwardModelVisible, isSignatureModelVisible, isMomApproveModelVisible, isExternalLinkModelVisible} = this.state;
 
         return (
               <Container style={{backgroundColor:'#f3f2f2'}}>
@@ -1753,6 +1774,15 @@ if (config.fallback == 'en'){
                   this.props.getMomDetails(userId, corrId);
                      }
                   }}  /> 
+                }
+                {
+                 isExternalLinkModelVisible && <ExternalLinkModelPopup  externalLink = {this.props.correspondenceDetailData.weTransferLinks}  onModalClose={() => { this.setState({ isExternalLinkModelVisible: false }) }} /> 
+                //  if (isRefresh == true) {
+                //   const corrId = this.props.navigation.state.params.ridInOutCorr;
+                //   const userId = this.props.userProfile.ridUsermaster;
+                //   this.props.getMomDetails(userId, corrId);
+                //      }
+                //   }}  /> 
                 }
                  <Content>
                  {this._renderHeader()}

@@ -24,6 +24,7 @@ export const getCorrespondenceDetails = (userId, corrId) => {
             console.log(response);
             const jsonArray = response['data'];
             dispatch(setCorrespondenceDetails(jsonArray));
+            dispatch(setCorrespondenceDetailsAttachment([]));
             const Aaram = {
                 CorrID:corrId
             }

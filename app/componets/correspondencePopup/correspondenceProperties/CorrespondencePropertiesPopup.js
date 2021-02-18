@@ -371,7 +371,7 @@ const CorrespondencePropertiesPopup = (props) => {
                               {_renderSegment()}
                               {_renderCard()}
                               </View>
-                               <View style={{marginTop:10, flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+                               <View style={{marginTop:10, flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                                   <Button style={{margin:5,marginLeft:20,marginBottom:20,backgroundColor:'#373d38',width:100,height:35,justifyContent:'center'}} onPress={() => { onButtonCancelClick() }}>
                                    <Text uppercase={false} style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Cancel')}</Text>
                                   </Button>

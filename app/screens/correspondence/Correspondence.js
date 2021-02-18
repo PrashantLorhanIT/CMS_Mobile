@@ -187,7 +187,7 @@ _renderCategoryCount =() => {
      <View  style = {{ backgroundColor:'white',flexDirection:'column',justifyContent:'flex-start',marginTop:0,borderWidth: 1,
             borderRadius:5,borderColor: 'gray',marginLeft:10, marginRight:10, height: 35, width: '70%'}}>
               
-              <Picker style={{marginTop:-5}}
+              <Picker style={{marginTop:-5, width: screenWidth -140}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf',fontFamily:FONT_FAMILY_PT_REGULAR, fontSize: FONT_SIZE_14 }}

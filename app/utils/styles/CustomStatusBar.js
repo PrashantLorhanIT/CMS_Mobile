@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StatusBar} from 'react-native';
 import { StyleSheet, Platform } from 'react-native';
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 45 : StatusBar.currentHeight;
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 50 : StatusBar.currentHeight;
 
 const CustomStatusBar = ({ backgroundColor, ...props }) => (
     <View style={[styles.statusBar, { backgroundColor }]}>

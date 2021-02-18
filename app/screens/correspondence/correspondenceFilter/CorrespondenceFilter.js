@@ -170,7 +170,7 @@ const CorrespondenceFilter = (props) => {
                                   <View style={{margin:5, marginBottom:0 ,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
         <View  style = {{flexDirection:'column',justifyContent:'flex-start',marginTop:7, borderWidth: 1,
           borderRadius:5,borderColor: 'lightgray', width:screenWidth-90, height: 35}}>
-             <Picker style={{ marginTop:-5}}
+             <Picker style={{ marginTop:-5, width:screenWidth-90}}
                                               mode="dropdown"
                                               iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                               placeholderStyle={{ color: '#afafaf' }}
@@ -197,7 +197,7 @@ const CorrespondenceFilter = (props) => {
             <View style={{margin:5, marginBottom:0,width:screenWidth ,flexDirection:'row',height:50,alignContent:'center',alignSelf:'center',justifyContent:'center'}}>
         <View  style = {{ backgroundColor:'#ffffff',flexDirection:'column',justifyContent:'flex-start', marginTop:7, borderWidth: 1,
           borderRadius:5,borderColor: 'lightgray', width:screenWidth-90, height: 35}}>
-             <Picker style={{marginTop:-5}}
+             <Picker style={{marginTop:-5,width:screenWidth-90}}
                                               mode="dropdown"
                                               iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                               placeholderStyle={{ color: '#afafaf' }}

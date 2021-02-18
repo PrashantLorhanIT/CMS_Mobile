@@ -561,9 +561,9 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
   
      <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0,  borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-             <Picker style={{marginTop:-5}}
+             <Picker style={{marginTop:-5, width: screenWidth -40}}
                                               mode="dropdown"
-                                              iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons"  style={{width:25,marginRight:5,marginLeft:-30}}/>}
+                                              iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons"  style={{width:25,marginRight:5,marginLeft:-10}}/>}
                                               placeholderStyle={{ color: '#afafaf' }}
                                               placeholderTextColor='#afafaf'
                                               selectedValue={this.state.searchType}
@@ -601,7 +601,7 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
             </View>
             <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-             <Picker style={{marginTop:-5}}
+             <Picker style={{marginTop:-5, width: screenWidth -40}}
                                               mode="dropdown"
                                               iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                               placeholderStyle={{ color: '#afafaf' }}
@@ -624,7 +624,7 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
             
             <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-             <Picker style={{marginTop:-5 }}
+             <Picker style={{marginTop:-5, width: screenWidth- 40 }}
                                               mode="dropdown"
                                               iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                               placeholderStyle={{ color: '#afafaf' }}
@@ -649,7 +649,7 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
             </View>
             <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-             <Picker style={{marginTop:-5}}
+             <Picker style={{marginTop:-5, width: screenWidth -40}}
                                               mode="dropdown"
                                               iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                               placeholderStyle={{ color: '#afafaf' }}
@@ -776,8 +776,8 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
                           
           
                   </View>
-                  <View style={{justifyContent:'flex-start',marginTop:5,marginBottom:5}}>
-                      <Button style={{margin:5,backgroundColor:'#373d38',justifyContent:'center',marginLeft:35,marginRight:35,height:40,borderRadius:20}} onPress={() => {this.goQuickSearchListScreen()}}>
+                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:5,marginBottom:5}}>
+                      <Button style={{backgroundColor:'#373d38',justifyContent:'center',marginTop:25,marginLeft:35,marginRight:35,height:40,borderRadius:20, width: '80%'}} onPress={() => {this.goQuickSearchListScreen()}}>
                       <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Search')}</Text>
                      </Button> 
                   </View>
@@ -1050,7 +1050,7 @@ _renderAdvanceSearchSelectValues = () => {
               </View>
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{ marginTop:-5 }}
+               <Picker style={{ marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -1073,7 +1073,7 @@ _renderAdvanceSearchSelectValues = () => {
   
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{  marginTop:-5 }}
+               <Picker style={{  marginTop:-5, width: screenWidth -40 }}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -1094,7 +1094,7 @@ _renderAdvanceSearchSelectValues = () => {
               
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{marginTop:-5}}
+               <Picker style={{marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -1118,7 +1118,7 @@ _renderAdvanceSearchSelectValues = () => {
               </View>
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{marginTop:-5 }}
+               <Picker style={{marginTop:-5, width: screenWidth-40 }}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -1140,7 +1140,7 @@ _renderAdvanceSearchSelectValues = () => {
               </View>
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{marginTop:-5}}
+               <Picker style={{marginTop:-5, width: screenWidth- 40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -1162,7 +1162,7 @@ _renderAdvanceSearchSelectValues = () => {
               </View>
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{marginTop:-5}}
+               <Picker style={{marginTop:-5, width:screenWidth-40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -1184,7 +1184,7 @@ _renderAdvanceSearchSelectValues = () => {
               </View>
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{marginTop:-5}}
+               <Picker style={{marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -1379,8 +1379,8 @@ _renderAdvanceSearchSelectValues = () => {
             
               </View>
               
-                    <View style={{justifyContent:'flex-start',marginTop:5,marginBottom:5}}>
-                        <Button style={{margin:5,backgroundColor:'#373d38',justifyContent:'center',marginLeft:35,marginRight:35,height:40,borderRadius:20}} onPress={() => {this.goCorrespondenceAdvaceSearchList()}}>
+                    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:5,marginBottom:5}}>
+                        <Button style={{backgroundColor:'#373d38',justifyContent:'center',marginTop:25,marginLeft:35,marginRight:35,height:40,borderRadius:20, width: '80%'}} onPress={() => {this.goCorrespondenceAdvaceSearchList()}}>
                         <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Search')}</Text>
                        </Button> 
                     </View>
@@ -1790,7 +1790,7 @@ _renderAdvanceSearchSelectValues = () => {
                 </View>
                 <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-                 <Picker style={{ marginTop:-5}}
+                 <Picker style={{ marginTop:-5, width: screenWidth -40}}
                                                   mode="dropdown"
                                                   iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                   placeholderStyle={{ color: '#afafaf' }}
@@ -1812,7 +1812,7 @@ _renderAdvanceSearchSelectValues = () => {
                 </View>
                 <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{marginTop:-5}}
+               <Picker style={{marginTop:-5, width: screenWidth-40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -1834,7 +1834,7 @@ _renderAdvanceSearchSelectValues = () => {
               </View>
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{marginTop:-5}}
+               <Picker style={{marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -1856,7 +1856,7 @@ _renderAdvanceSearchSelectValues = () => {
               </View>
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-               <Picker style={{marginTop:-5}}
+               <Picker style={{marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf' }}
@@ -2180,7 +2180,7 @@ _renderAdvanceSearchSelectValues = () => {
                 </View>
                 <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0, borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-                 <Picker style={{marginTop:-5}}
+                 <Picker style={{marginTop:-5, width: screenWidth -40}}
                                                   mode="dropdown"
                                                   iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                   placeholderStyle={{ color: '#afafaf' }}
@@ -2730,9 +2730,9 @@ _renderSearchList =() => {
             {this._renderSegment()}
             <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0, margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-                 <Picker style={{ marginTop:-5}}
+                 <Picker style={{ marginTop:-5, width: screenWidth -40}}
                                                   mode="dropdown"
-                                                  iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons"/>}
+                                                  iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                   placeholderStyle={{ color: '#afafaf' }}
                                                   placeholderTextColor='#afafaf'
                                                   selectedValue={this.state.advancesearchType}

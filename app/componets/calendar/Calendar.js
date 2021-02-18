@@ -140,7 +140,7 @@ class Calendar extends Component {
             <SafeAreaView style={styles.safeArea}>
            
             <Header style={{backgroundColor:'#aa182c',height:33}}>
-                                    <Left style={{margin:5,marginTop:-20}}>
+                                    <Left style={{margin:5,marginTop:-15}}>
                                         <Button transparent onPress={() => {
                             this.props.onModalClose();
                             this.setState({
@@ -153,7 +153,7 @@ class Calendar extends Component {
                                         </Button>
                                     </Left>
                                     {/* //<Body> */}
-                                     <Title style={{color:'white',marginTop:-17,width:'70%',height:45, flexWrap: 'wrap',flexDirection:'column',fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Calendar')}</Title>
+                                     <Title style={{color:'white',marginTop:-5,width:'70%',height:45, flexWrap: 'wrap',flexDirection:'column',fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Calendar')}</Title>
                                     {/* </Body> */}
                                     <Right></Right>
                                 </Header>

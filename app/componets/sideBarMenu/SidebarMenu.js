@@ -64,7 +64,7 @@ useEffect (() => {
         navOptionThumb: dashboardmenu,
       },
       {
-        navOptionName:`${'صندوق الوارد'} (${inboxCount})`,
+        navOptionName:`${'صندوق الوارد'} ${inboxCount != null && inboxCount != NaN} ? (${inboxCount}) : '' `,
         screenToNavigate: 'Correspondence',
         navOptionThumb: inboxmenu
       },

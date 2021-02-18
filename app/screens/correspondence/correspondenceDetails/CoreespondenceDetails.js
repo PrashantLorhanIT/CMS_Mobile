@@ -483,7 +483,40 @@ class CoreespondenceDetails extends Component {
               {this._renderCorrespondencePropertiesButton()}             
             </View>
            );
-        } else {
+        } else  if (this.props.correspondenceDetailData.result_Status == 'IN VERIFICATION'){
+
+          return (
+            <View style={{margin:5,marginTop:10, backgroundColor:'#f3f2f2',height:80}}>
+              
+              <View style={{flex:1,margin:5,marginBottom:25}}>
+                <View style={{flex:1,flexDirection:'row',justifyContent:'center'}}>
+                  <View style={{flex:1,flexDirection:'row',justifyContent:'space-between'}}>
+                    {
+                      this.props.correspondenceDetailData.result_Status != 'IN DISTRIBUTION' &&
+                      <Button style={{marginLeft:0,marginTop:5,height:30,justifyContent:'center',backgroundColor:'#bcbccb', borderRadius:15,alignSelf:'flex-start'}}>
+                       <Text uppercase={false} style={{fontSize:11,fontFamily:FONT_FAMILY_PT_REGULAR,alignSelf:'center',color:'#4d4f5c'}}>{this.props.correspondenceDetailData.result_Status && this.props.correspondenceDetailData.result_Status}</Text>
+                     </Button>
+                    }   
+                  </View>
+                    <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end'}}> 
+                     {/* { this.props.correspondenceDetailData.showDelegate != 'N' &&
+                       <Button style={{margin:5,backgroundColor:'#373d38',width:88,height:30, alignContent:'center'}} onPress={() => { this.handleDelegateTap() }}>
+                      <Text uppercase={false} style={{fontSize:11,fontFamily:FONT_FAMILY_PT_REGULAR,textAlign:'center',justifyContent:'center'}}>Delegate</Text>
+                      </Button>
+                    } */}
+                     { this.props.correspondenceDetailData.showApproveRejct !='N' && this.props.correspondenceDetailData.approveRejectButtonText != 'Initiate' &&
+                    <Button style={{margin:5,backgroundColor:'#373d38',justifyContent:'center',width:75,height:30}} onPress={() => { this.handleApproveTap(this.props.correspondenceDetailData.approveRejectButtonText) }}>
+                    <Text uppercase={false} style={{fontSize:11,fontFamily:FONT_FAMILY_PT_REGULAR}}>{this.props.correspondenceDetailData.approveRejectButtonText}</Text>
+                   </Button>
+                  }
+                  </View> 
+                </View>
+              </View>
+              {this._renderCorrespondencePropertiesButton()}             
+            </View>
+           );
+        } 
+        else {
         return (
           <View style={{margin:5,marginTop:10, backgroundColor:'#f3f2f2',height:80}}>
             
@@ -1414,7 +1447,7 @@ if (config.fallback == 'en'){
         const workFTID = this.props.correspondenceDetailData.ridWorkflowTransaction;
         const singingUrl = this.props.correspondenceDetailData.signingURL;
         const crn = this.props.correspondenceDetailData.crn
-        if (buttonText == "Approve;Reject"){
+        if (buttonText == "Approve;Reject" || buttonText == 'Approve'){
             const approve = this.getFirstPartString(buttonText);
            if (this.props.navigation.state.params.workflowName == 'MOM'){
            

@@ -235,7 +235,7 @@ _renderInboxSelectValuesDropDwon = () => {
     
          <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0,  borderWidth: 1,
             borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-              <Picker style={{ marginTop:-5}}
+              <Picker style={{ marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf',fontFamily:FONT_FAMILY_PT_REGULAR ,fontSize:FONT_SIZE_14}}
@@ -258,7 +258,7 @@ _renderInboxSelectValuesDropDwon = () => {
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0,  borderWidth: 1,
             borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
               
-              <Picker style={{marginTop:-5}}
+              <Picker style={{marginTop:-5,width: screenWidth-40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf',fontFamily:FONT_FAMILY_PT_REGULAR, fontSize: FONT_SIZE_14 }}
@@ -294,7 +294,7 @@ _renderInboxSelectValuesDropDwon = () => {
                                             </View>
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0,  borderWidth: 1,
             borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-              <Picker style={{marginTop:-5}}
+              <Picker style={{marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf',fontFamily:FONT_FAMILY_PT_REGULAR,fontSize:FONT_SIZE_14 }}
@@ -316,7 +316,7 @@ _renderInboxSelectValuesDropDwon = () => {
              
               <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0,  borderWidth: 1,
             borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-              <Picker style={{ marginTop:-5}}
+              <Picker style={{ marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf', fontFamily:FONT_FAMILY_PT_REGULAR, fontSize: FONT_SIZE_14 }}
@@ -458,7 +458,7 @@ _renderOutboxSelectValuesDropDwon = () => {
        
                <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0,  borderWidth: 1,
             borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-              <Picker style={{ marginTop:-5}}
+              <Picker style={{ marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf',fontFamily:FONT_FAMILY_PT_REGULAR ,fontSize:FONT_SIZE_14}}
@@ -481,7 +481,7 @@ _renderOutboxSelectValuesDropDwon = () => {
     
                <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0,  borderWidth: 1,
             borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-              <Picker style={{marginTop:-5}}
+              <Picker style={{marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf',fontFamily:FONT_FAMILY_PT_REGULAR,fontSize:FONT_SIZE_14 }}
@@ -519,7 +519,7 @@ _renderOutboxSelectValuesDropDwon = () => {
              
                <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0,  borderWidth: 1,
             borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-              <Picker style={{marginTop:-5}}
+              <Picker style={{marginTop:-5, width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf',fontFamily:FONT_FAMILY_PT_REGULAR, fontSize: FONT_SIZE_14 }}
@@ -540,7 +540,7 @@ _renderOutboxSelectValuesDropDwon = () => {
                                             </View>
                <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0,  borderWidth: 1,
             borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
-              <Picker style={{marginTop:-5}}
+              <Picker style={{marginTop:-5,width: screenWidth -40}}
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
                                                 placeholderStyle={{ color: '#afafaf', fontFamily:FONT_FAMILY_PT_REGULAR, fontSize: FONT_SIZE_14 }}

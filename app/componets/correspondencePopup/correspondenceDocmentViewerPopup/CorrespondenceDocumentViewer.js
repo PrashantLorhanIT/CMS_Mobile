@@ -46,8 +46,8 @@ const CorrespondenceDocumentViewer = (props) => {
                   barStyle="light-content"/>
             <SafeAreaView style={styles.safeArea}>
            
-            <Header style={{backgroundColor:'#aa182c',height:33}}>
-                                    <Left style={{margin:5,marginTop:-20}}>
+            <Header style={{backgroundColor:'#aa182c',height:50}}>
+                                    <Left style={{margin:5,marginTop:0}}>
                                         <Button transparent onPress={() => {
                             props.onModalClose();
                             setVisible(false);
@@ -143,14 +143,15 @@ const styles = StyleSheet.create({
         color:'white',
         
         width:'70%',
-        height:45, 
+        height:40, 
         flexWrap: 'wrap',
         flexDirection:'row',
         fontFamily:FONT_FAMILY_PT_REGULAR,
         alignItems:'center',
+        alignSelf:'center',
         ...Platform.select({
           ios: {
-            marginTop:-15,
+            marginTop:5,
           },
           android: {
             marginTop:-10,

@@ -108,7 +108,7 @@ if (config.fallback == 'en'){
                             </ImageBackground>
                             </View>
                             <View style={{paddingTop:0,backgroundColor:'white',marginBottom:60}}>
-                               <Text style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR,margin:15,marginBottom:0}}>{t('InboxScreen:ApproveMessage')}?</Text>
+                               <Text style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR,margin:15,marginBottom:0}}>{`t('InboxScreen:ApproveMessage') CRN ${'1123243434'}`}?</Text>
                                  <View style={{margin:5,marginLeft:10,marginRight:10,height:30}}>
                                    <Textarea style={{height:70, fontFamily:FONT_FAMILY_PT_REGULAR, fontSize:14}} spellCheck="false"  rowSpan={4} bordered placeholder={t('InboxScreen:Comments')}  type="text" value={comment} onChangeText={(value) => { setcomment(value) }} />
                                  </View>

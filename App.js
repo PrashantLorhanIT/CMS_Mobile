@@ -25,13 +25,13 @@ class App extends Component {
 
   componentDidMount() {
    config.fallback = 'en'
-    AsyncStorage.getItem('SelectedLanguage').then((value) => {
+   // AsyncStorage.getItem('SelectedLanguage').then((value) => {
     
-      if (value == 'en'){
-        config.fallback = 'en'
-      } else {
-        config.fallback = 'ar'
-      }
+      // if (value == 'en'){
+      //   config.fallback = 'en'
+      // } else {
+      //   config.fallback = 'ar'
+      // }
     i18n.init()
         .then(() => {
            // const RNDir = RNI18nManager.isRTL ? 'RTL' : 'LTR';
@@ -53,19 +53,19 @@ class App extends Component {
             this.setState({ isI18nInitialized: true });
         })
         .catch((error) => console.warn(error));
-       });
+    //   });
 }
 
   render() {
     console.disableYellowBox = true;
     const store = configureStore();
-    AsyncStorage.getItem('SelectedLanguage').then((value) => {
-      if (value == 'en'){
-        config.fallback = 'en'
-      } else {
-        config.fallback = 'ar'
-      }
-    });
+    // AsyncStorage.getItem('SelectedLanguage').then((value) => {
+    //   if (value == 'en'){
+    //     config.fallback = 'en'
+    //   } else {
+    //     config.fallback = 'ar'
+    //   }
+    // });
   return (
     
     <>

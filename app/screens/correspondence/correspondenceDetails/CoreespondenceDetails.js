@@ -1680,7 +1680,7 @@ if (config.fallback == 'en'){
               <Container style={{backgroundColor:'#f3f2f2'}}>
 
             {
-            isApproveModalVisible && <ApproveModelPopup userId = {this.props.userProfile.ridUsermaster} workFTID = {this.props.correspondenceDetailData.ridWorkflowTransaction} token ={ this.props.loggedInUser.token} onModalClose={() => { this.setState({ isApproveModalVisible: false }) }} getApproveValues={(isBack) => {
+            isApproveModalVisible && <ApproveModelPopup userId = {this.props.userProfile.ridUsermaster} crn ={this.props.correspondenceDetailData.crn} workFTID = {this.props.correspondenceDetailData.ridWorkflowTransaction} token ={ this.props.loggedInUser.token} onModalClose={() => { this.setState({ isApproveModalVisible: false }) }} getApproveValues={(isBack) => {
               
               if (isBack == true) {
                 setTimeout(() => { 

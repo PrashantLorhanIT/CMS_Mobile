@@ -174,8 +174,8 @@
       "SelectProject/ContractIdentifier": "Select Project/Contract Identifier",
       "SelectReviewer": "Select Reviewer",
       "SelectApprover": "Select Approver",
-      "SelectReplyFromDate": "Select Reply From Date",
-      "SelectReplyToDate": "Select Reply To Date",
+      "SelectReplyFromDate": "Select Due From Date",
+      "SelectReplyToDate": "Select Due To Date",
       "Confidential": "Confidential",
       "ReplyRequired": "Reply Required",
       "Initiator": "Initiator",
@@ -216,7 +216,8 @@
       "Date": "Date",
       "SelectLocation": "Select Location",
       "SelectDiscipline": "Select Discipline",
-      "SelectContract": "Select Contract"
+      "SelectContract": "Select Contract",
+      "SelectOverdueDelay": "Select Overdue Delay"
 
     },
 

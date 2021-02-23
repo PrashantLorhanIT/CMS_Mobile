@@ -23,7 +23,7 @@ import Loader from '../../../componets/loder/Loader';
 import i18n, { t } from '../../../utils/localization/servicesi18n/index';
 import * as config from '../../../utils/localization/config/i18n';
 
-const CorrespondenceApprovePopup = (props) => {
+const CorrespondenceExternalLinkUpdatePopup = (props) => {
 
     const [visible, setVisible] = useState(true);
     const [comment, setcomment] =  useState('');
@@ -164,4 +164,4 @@ if (config.fallback == 'en'){
       
 }
 
-export default CorrespondenceApprovePopup;
+export default CorrespondenceExternalLinkUpdatePopup;

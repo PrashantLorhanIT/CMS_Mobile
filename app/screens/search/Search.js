@@ -57,6 +57,7 @@ class Search extends Component {
             fromDateFormat:  "",
             toDate:  "",
             toDateFormat: "",
+            overdureDelay: "",
             momRefernceNumber: "",
             momStatus: "",
             momSubject: "",
@@ -93,6 +94,7 @@ class Search extends Component {
             corrisConfidential: false,
             corrisReplyRequired: false,
             isCalendarVisible: false,
+            corrOverdueDelay: "",
             isAdvanceSearchFromToDateCalendaerVisible: false,
             isAdvanceSearchReplyFromToDateCalendaerVisible: false,
             reviewerData:[],
@@ -116,6 +118,8 @@ class Search extends Component {
         // this.handleOnCorrRefernceNumberChange = this.handleOnCorrRefernceNumberChandlenge.bind(this);
         // this.handleOnCorrSubjectChange = this.handleOnCorrSubjectChange.bind(this);
         // this.handleOnCorrSuperSearchChange = this.handleOnCorrSuperSearchChange.bind(this);
+        //this.handleOnCorrOverdueDelayChange = this.handleOnCorrOverdueDelayChange.bind(this);
+        
     }
 
     componentDidMount = () => {
@@ -217,6 +221,7 @@ class Search extends Component {
           fromDateFormat: "",
           toDateFormat:"",
           toDate:"",
+          overdureDelay: "",
         });
       }
       onValueSearchTypeClear =() => {
@@ -232,6 +237,7 @@ class Search extends Component {
           fromDateFormat: "",
           toDateFormat:"",
           toDate:"",
+          overdureDelay: "",
         });
       }
       onValueAdvanceSearchTypeChange =(value) => {
@@ -333,6 +339,13 @@ class Search extends Component {
         if (value != -1) {
         this.setState({
           recipient: value
+        });
+       }
+      }
+      onValueOverdueDelayChange =(value) => {
+        if (value != -1) {
+        this.setState({
+          overdureDelay: value
         });
        }
       }
@@ -489,6 +502,7 @@ handleOnCorrSuperSearchChange(e) {
   corrsuperSearch: e.nativeEvent.text
  })    
 }
+
 handleOnfromandToDateChange(e) { 
   console.log('Indise handle method');
  this.setState({
@@ -513,6 +527,14 @@ onValueMomContractChange =(value) => {
   if (value != -1) {
   this.setState({
     momContract: value
+  });
+}
+}
+
+onValueCorrOverdueDelayChange =(value) => {
+  if (value != -1) {
+  this.setState({
+    corrOverdueDelay: value
   });
 }
 }
@@ -617,7 +639,7 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
                                           <Picker.Item label="REVIEWED" value="REVIEWED" />
                                           <Picker.Item label="APPROVED" value="APPROVED" />
                                           <Picker.Item label="IN DRAFT" value="Draft" />
-  
+                                          <Picker.Item label="DISTRIBUTED" value="DISTRIBUTED" />
                                           </Picker>
           
             </View>
@@ -671,6 +693,7 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
                                           </Picker>
           
             </View>
+            
             <TouchableOpacity  onPress={() => { this.setState({ isCalendarVisible: true }) }}>
   
             <View style={{flex:1, flexDirection:'row',width:screenWidth-35,justifyContent:'space-between',alignContent:'center'}}>
@@ -730,7 +753,26 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
   
   </View>
   </TouchableOpacity>
-  
+  <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
+          borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
+               <Picker style={{ marginTop:-5, width: screenWidth -40}}
+                                                mode="dropdown"
+                                                iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
+                                                placeholderStyle={{ color: '#afafaf' }}
+                                                placeholderTextColor='#afafaf'
+                                                placeholder= {t('SearchScreen:SelectOverdueDelay')}
+                                                selectedValue={this.state.overdureDelay}
+                                                onValueChange={this.onValueOverdueDelayChange}
+                                                underlineColorAndroid = 'transparent'
+                                              
+                                             >
+                                               <Picker.Item color={'gray'} label= {t('SearchScreen:SelectOverdueDelay')} value={-1} key={-1} />
+                                            <Picker.Item label="7 Days" value="7 Days" />
+                                            <Picker.Item label="15 Days" value="15 Days" />
+                                            <Picker.Item label="1 Month" value="1 Month" />
+                                            </Picker>
+            
+              </View>
             <View style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0}}>
              <Input
                                               type="text"
@@ -960,8 +1002,27 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
   
   </View>
   </TouchableOpacity>
-  
-            <View style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0}}>
+  <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:15,borderWidth: 1,
+          borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
+               <Picker style={{ marginTop:-5, width: screenWidth -40}}
+                                                mode="dropdown"
+                                                iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
+                                                placeholderStyle={{ color: '#afafaf' }}
+                                                placeholderTextColor='#afafaf'
+                                                placeholder= {t('SearchScreen:SelectOverdueDelay')}
+                                                selectedValue={this.state.overdureDelay}
+                                                onValueChange={this.onValueOverdueDelayChange}
+                                                underlineColorAndroid = 'transparent'
+                                              
+                                             >
+                                               <Picker.Item color={'gray'} label= {t('SearchScreen:SelectOverdueDelay')} value={-1} key={-1} />
+                                            <Picker.Item label="7 Days" value="7 Days" />
+                                            <Picker.Item label="15 Days" value="15 Days" />
+                                            <Picker.Item label="1 Month" value="1 Month" />
+                                            </Picker>
+            
+              </View>
+            <View style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:0,marginTop:0}}>
              <Input
                                               type="text"
                                               value={this.state.subject}
@@ -1066,6 +1127,7 @@ _renderAdvanceSearchSelectValues = () => {
                                             <Picker.Item label="REVIEWED" value="REVIEWED" />
                                             <Picker.Item label="APPROVED" value="APPROVED" />
                                             <Picker.Item label="IN DRAFT" value="Draft" />
+                                           <Picker.Item label="DISTRIBUTED" value="DISTRIBUTED" />
     
                                             </Picker>
             
@@ -1160,7 +1222,7 @@ _renderAdvanceSearchSelectValues = () => {
                                             </Picker>
             
               </View>
-              <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
+              {/* <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
                <Picker style={{marginTop:-5, width:screenWidth-40}}
                                                 mode="dropdown"
@@ -1203,7 +1265,7 @@ _renderAdvanceSearchSelectValues = () => {
   })}
                                             </Picker>
             
-              </View>
+              </View> */}
               <TouchableOpacity  onPress={() => { this.setState({ isAdvanceSearchFromToDateCalendaerVisible: true }) }}>
   
               <View style={{flex:1, flexDirection:'row',width:screenWidth-35,justifyContent:'space-between',alignContent:'center'}}>
@@ -1331,7 +1393,27 @@ _renderAdvanceSearchSelectValues = () => {
                 
             </View>
   
-              <View style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:15}}>
+            <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:15,borderWidth: 1,
+          borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
+               <Picker style={{ marginTop:-5, width: screenWidth -40}}
+                                                mode="dropdown"
+                                                iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginRight:5,marginLeft:-30}}/>}
+                                                placeholderStyle={{ color: '#afafaf' }}
+                                                placeholderTextColor='#afafaf'
+                                                placeholder= {t('SearchScreen:SelectOverdueDelay')}
+                                                selectedValue={this.state.corrOverdueDelay}
+                                                onValueChange={this.onValueCorrOverdueDelayChange}
+                                                underlineColorAndroid = 'transparent'
+                                              
+                                             >
+                                               <Picker.Item color={'gray'} label= {t('SearchScreen:SelectOverdueDelay')} value={-1} key={-1} />
+                                            <Picker.Item label="7 Days" value="7 Days" />
+                                            <Picker.Item label="15 Days" value="15 Days" />
+                                            <Picker.Item label="1 Month" value="1 Month" />
+                                            </Picker>
+            
+              </View>
+              <View style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0}}>
                <Input
                                                 type="text"
                                                 value={this.state.corrSubject}
@@ -1431,6 +1513,7 @@ _renderAdvanceSearchSelectValues = () => {
                                             <Picker.Item label="REVIEWED" value="REVIEWED" />
                                             <Picker.Item label="APPROVED" value="APPROVED" />
                                             <Picker.Item label="IN DRAFT" value="Draft" />
+                                            <Picker.Item label="DISTRIBUTED" value="DISTRIBUTED" />
     
                                             </Picker>
             
@@ -1525,7 +1608,7 @@ _renderAdvanceSearchSelectValues = () => {
                                             </Picker>
             
               </View>
-              <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
+              {/* <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
                <Picker style={{marginTop:-5, textAlign:'right', flexDirection:'row-reverse'}}
                                                 mode="dropdown"
@@ -1546,8 +1629,8 @@ _renderAdvanceSearchSelectValues = () => {
   })}
                                             </Picker>
             
-              </View>
-              <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
+              </View> */}
+              {/* <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
           borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
                <Picker style={{marginTop:-5, textAlign:'right', flexDirection:'row-reverse'}}
                                                 mode="dropdown"
@@ -1568,7 +1651,7 @@ _renderAdvanceSearchSelectValues = () => {
   })}
                                             </Picker>
             
-              </View>
+              </View> */}
               <TouchableOpacity  onPress={() => { this.setState({ isAdvanceSearchFromToDateCalendaerVisible: true }) }}>
   
               <View style={{flex:1, flexDirection:'row',width:screenWidth-35,justifyContent:'space-between',alignContent:'center'}}>
@@ -1699,8 +1782,27 @@ _renderAdvanceSearchSelectValues = () => {
                   /> 
                 
             </View>
-  
-              <View style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:15}}>
+            <View  style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15, marginTop:0,borderWidth: 1,
+          borderRadius:5,borderColor: 'gray', width:screenWidth-35, height: 35}}>
+               <Picker style={{ marginTop:-5, textAlign:'right', flexDirection:'row-reverse'}}
+                                                mode="dropdown"
+                                                iosIcon={<Icon name="arrow-drop-down" type="MaterialIcons" style={{width:25,marginLeft:5,marginRight:-30}}/>}
+                                                placeholderStyle={{ color: '#afafaf' }}
+                                                placeholderTextColor='#afafaf'
+                                                placeholder= {t('SearchScreen:SelectStatus')}
+                                                selectedValue={this.state.corrOverdueDelay}
+                                                onValueChange={this.onValueCorrOverdueDelayChange}
+                                                underlineColorAndroid = 'transparent'
+                                              
+                                             >
+                                               <Picker.Item color={'gray'} label= {t('SearchScreen:SelectStatus')} value={-1} key={-1} />
+                                            <Picker.Item label="7 Days" value="7 Days" />
+                                            <Picker.Item label="15 Days" value="15 Days" />
+                                            <Picker.Item label="1 Month" value="1 Month" />
+                                            </Picker>
+            
+              </View>
+              <View style = {{ backgroundColor:'#f2f2f2',flexDirection:'column',justifyContent:'flex-start',margin:15,marginTop:0}}>
                <Input
                                                 type="text"
                                                 value={this.state.corrSubject}
@@ -2195,9 +2297,9 @@ _renderAdvanceSearchSelectValues = () => {
                                               <Picker.Item label="INITIATED" value="INITIATED" />
                                               <Picker.Item label="REVIEWED" value="REVIEWED" />
                                               <Picker.Item label="APPROVED" value="APPROVED" />
-                                              {/* <Picker.Item label="DISTRIBUTED" value="DISTRIBUTED" /> */}
                                               <Picker.Item label="IN DRAFT" value="Draft" />
-      
+                                              <Picker.Item label="DISTRIBUTED" value="DISTRIBUTED" />
+
                                               </Picker>
               
                 </View>
@@ -2374,8 +2476,8 @@ _renderAdvanceSearchSelectValues = () => {
                                               <Picker.Item label="INITIATED" value="INITIATED" />
                                               <Picker.Item label="REVIEWED" value="REVIEWED" />
                                               <Picker.Item label="APPROVED" value="APPROVED" />
-                                              {/* <Picker.Item label="DISTRIBUTED" value="DISTRIBUTED" /> */}
                                               <Picker.Item label="IN DRAFT" value="Draft" />
+                                                <Picker.Item label="DISTRIBUTED" value="DISTRIBUTED" />
       
                                               </Picker>
               

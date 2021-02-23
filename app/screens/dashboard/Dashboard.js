@@ -702,7 +702,7 @@ _renderOutboxSelectValuesDropDwon = () => {
                 <DashboardCard  name= {t('DashboardScreeen:ResponseOverdue')} count= {this.props.dashboardSummary.overDue && this.props.dashboardSummary.overDue} image={incoming} red = {true}/>
                 <DashboardCard  name= {t('DashboardScreeen:TotalClosed')} count= {this.props.dashboardSummary.closed && this.props.dashboardSummary.closed} image={outgoing} red = {false} /> 
                 <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator} red = {false} />   
-                <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal && inboxtotal} image={calculator} red = {false} />   
+                {/* <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal && inboxtotal} image={calculator} red = {false} />    */}
              </ScrollView>
            </View>
          </View>
@@ -718,7 +718,7 @@ _renderOutboxSelectValuesDropDwon = () => {
                 <DashboardCard  name= {t('DashboardScreeen:ResponseOverdue')} count= {this.props.dashboardSummary.overDue && this.props.dashboardSummary.overDue} image={incoming} red = {true}/>
                 <DashboardCard  name= {t('DashboardScreeen:TotalClosed')} count= {this.props.dashboardSummary.closed && this.props.dashboardSummary.closed} image={outgoing} red = {false} /> 
                 <DashboardCard  name= {t('DashboardScreeen:TotalInfo')} count= {this.props.dashboardSummary.infoOnly && this.props.dashboardSummary.infoOnly} image={calculator}  red = {false}/> 
-                <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal  && inboxtotal } image={calculator} red = {false} />     
+                {/* <DashboardCard  name= 'InboxTotalCount' count= {inboxtotal  && inboxtotal } image={calculator} red = {false} />      */}
              </ScrollView>
            </View>
          </View>

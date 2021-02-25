@@ -33,7 +33,8 @@ useEffect (() => {
         navOptionThumb: dashboardmenu,
       },
       {
-        navOptionName: `${'Inbox'} (${inboxCount})`,
+        navOptionName: 'Inbox',
+        //navOptionName:`${'صندوق الوارد'} ${inboxCount != null && inboxCount != NaN} ? (${inboxCount}) : '' `,
         screenToNavigate: 'Correspondence',
         navOptionThumb: inboxmenu
       },
@@ -64,7 +65,8 @@ useEffect (() => {
         navOptionThumb: dashboardmenu,
       },
       {
-        navOptionName:`${'صندوق الوارد'} ${inboxCount != null && inboxCount != NaN} ? (${inboxCount}) : '' `,
+       // navOptionName:`${'صندوق الوارد'} ${inboxCount != null && inboxCount != NaN} ? (${inboxCount}) : '' `,
+        navOptionName:'صندوق الوارد',
         screenToNavigate: 'Correspondence',
         navOptionThumb: inboxmenu
       },

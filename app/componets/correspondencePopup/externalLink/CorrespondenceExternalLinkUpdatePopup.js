@@ -26,7 +26,7 @@ import * as config from '../../../utils/localization/config/i18n';
 const CorrespondenceExternalLinkUpdatePopup = (props) => {
 
     const [visible, setVisible] = useState(true);
-    const [comment, setcomment] =  useState('');
+    const [comment, setcomment] =  useState(props.externalLink);
     const [isback, setIsback] = useState(false);
 
     const onButtonCancelClick = () => {
@@ -104,13 +104,13 @@ if (config.fallback == 'en'){
                     <View style={{marginTop:200,width:screenWidth-40, height:280,marginLeft:20, marginRight:20, borderRadius:10,backgroundColor:'white'}}>
                     <View style={{marginTop:0, marginLeft:0, marginRight:0, width:'100%', height:70, flexDirection:'column',marginBottom:-10}}>
                             <ImageBackground source={HeaderTilte} style={{width:'100%', height:50, borderTopRightRadius:10,borderTopLeftRadius:10, overflow: 'hidden'}} >
-                            <Text style={{marginLeft:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:15, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff'}}>{t('InboxScreen:Approve')}</Text>
+                            <Text style={{marginLeft:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:15, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff'}}>{'External Link'}</Text>
                             </ImageBackground>
                             </View>
                             <View style={{paddingTop:0,backgroundColor:'white',marginBottom:60}}>
-                               <Text style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR,margin:15,marginBottom:0}}>{t('InboxScreen:ApproveMessage')} {`CRN  ${props.crn}`}?</Text>
+                               <Text style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR,margin:15,marginBottom:0}}>{'External links'}</Text>
                                  <View style={{margin:5,marginLeft:10,marginRight:10,height:30}}>
-                                   <Textarea style={{height:70, fontFamily:FONT_FAMILY_PT_REGULAR, fontSize:14}} spellCheck="false"  rowSpan={4} bordered placeholder={t('InboxScreen:Comments')}  type="text" value={comment} onChangeText={(value) => { setcomment(value) }} />
+                                   <Textarea style={{height:70, fontFamily:FONT_FAMILY_PT_REGULAR, fontSize:14}} spellCheck="false"  rowSpan={4} bordered type="text" value={comment} onChangeText={(value) => { setcomment(value) }} />
                                  </View>
                             </View>
                              <View style={{marginTop:10, flexDirection:'row',justifyContent:'space-between'}}>
@@ -118,7 +118,7 @@ if (config.fallback == 'en'){
                                  <Text uppercase={false} style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Cancel')}</Text>
                                 </Button>
                                  <Button style={{margin:5,marginRight:20,backgroundColor:'#373d38',width:100,height:35, justifyContent:'center'}} onPress={() => { onButtonApproveClick() }}>
-                                <Text uppercase={false} style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Approve')}</Text>
+                                <Text uppercase={false} style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Submit')}</Text>
                                  </Button>
                             </View> 
                             </View>
@@ -127,7 +127,7 @@ if (config.fallback == 'en'){
                 </SafeAreaView>
             </Modal>
   );
-}else {
+} else {
       return(
         <Modal transparent animated visible={visible} animationType='fade' onRequestClose={() => { console.log('onRequestClose'); }}>
             {/* <BlurView style={{position: 'absolute', top: 0,left: 0, height: '100%',width: '100%'}} blurType='light' blurRadius={1} /> */}
@@ -137,18 +137,18 @@ if (config.fallback == 'en'){
                         <View style={{marginTop:200,width:screenWidth-40, height:260,marginLeft:20, marginRight:20, borderRadius:10,backgroundColor:'white'}}>
                         <View style={{marginTop:0, marginLeft:0, marginRight:0, width:'100%', height:70, flexDirection:'column',marginBottom:-10}}>
                                 <ImageBackground source={HeaderTilte} style={{width:'100%', height:50, borderTopRightRadius:10,borderTopLeftRadius:10, overflow: 'hidden'}} >
-                                <Text style={{marginRight:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:15, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff',textAlign:'right'}}>{t('InboxScreen:Approve')}</Text>
+                                <Text style={{marginRight:25,justifyContent:'center',alignContent:'center',alignItems:'center',marginTop:15, fontSize:17,fontFamily:FONT_FAMILY_PT_BOLD,color:'#ffffff',textAlign:'right'}}>{'External Link'}</Text>
                                 </ImageBackground>
                                 </View>
                                 <View style={{paddingTop:0,backgroundColor:'white',marginBottom:60}}>
-                                   <Text style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR,margin:15,marginBottom:0,textAlign:'right'}}>{t('InboxScreen:ApproveMessage')}?</Text>
+                                   <Text style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR,margin:15,marginBottom:0,textAlign:'right'}}>{'External links'}</Text>
                                      <View style={{margin:5,marginLeft:10,marginRight:10,height:30}}>
                                        <Textarea style={{height:70, fontFamily:FONT_FAMILY_PT_REGULAR, fontSize:14,textAlign:'right'}} spellCheck="false"  rowSpan={4} bordered placeholder={t('InboxScreen:Comments')}  type="text" value={comment} onChangeText={(value) => { setcomment(value) }} />
                                      </View>
                                 </View>
                                  <View style={{marginTop:10, flexDirection:'row',justifyContent:'space-between'}}>
                                  <Button style={{margin:5,marginLeft:20,backgroundColor:'#373d38',width:100,height:35, justifyContent:'center'}} onPress={() => { onButtonApproveClick() }}>
-                                    <Text uppercase={false} style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Approve')}</Text>
+                                    <Text uppercase={false} style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Submit')}</Text>
                                      </Button>
                                     <Button style={{margin:5,marginRight:20,backgroundColor:'#373d38',width:100,height:35,justifyContent:'center'}} onPress={() => { onButtonCancelClick() }}>
                                      <Text uppercase={false} style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR}}>{t('InboxScreen:Cancel')}</Text>

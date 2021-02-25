@@ -30,6 +30,7 @@ import RFIForwardModelPopup from '../../../componets/correspondencePopup/rfiForw
 import SignatureModelPopup from '../../../componets/correspondencePopup/signaturePopup/SignaturePopup';
 import MomApproveModelPopup from '../../../componets/correspondencePopup/momApprovePop/MomAopprovePopup';
 import ExternalLinkModelPopup from '../../../componets/correspondencePopup/externalLink/CorrespondenceExternalLinkPopup';
+import ExternalLinkUpdateModelPopup from '../../../componets/correspondencePopup/externalLink/CorrespondenceExternalLinkUpdatePopup';
 import Modal from 'react-native-modal';
 import moment from 'moment';
 import { ThemeProvider } from 'react-native-paper';
@@ -39,6 +40,7 @@ import MomTaskCard from '../../../componets/momTaskCard/MomTaskCard';
 import MOMActionItemsCard from '../../../componets/momActionItemsCard/MomActionItemsCard';
 import { setCorrespondenceDetails, } from './CorrespondenceDetails.Action';
 import info from '../../../assets/image/info/info.png';
+import exteranlLink from '../../../assets/image/externalLink/externallink.png';
 import comment from '../../../assets/image/comments/comment.png';
 import forward from '../../../assets/image/forward/Forword.png';
 import { FONT_SIZE_12, FONT_SIZE_16, FONT_WEIGHT_BOLD, FONT_FAMILY_PT_BOLD, FONT_FAMILY_PT_REGULAR, FONT_SIZE_14} from '../../../utils/styles/typography';
@@ -71,6 +73,7 @@ class CoreespondenceDetails extends Component {
         isSignatureModelVisible: false,
         isMomApproveModelVisible: false,
         isExternalLinkModelVisible: false,
+        isExternalLinkUpdateModelVisible: false,
         distributeData:[],
         reviewerData:[],
         ApproverData:[],
@@ -460,7 +463,7 @@ class CoreespondenceDetails extends Component {
                 <View style={{flex:1,flexDirection:'row',justifyContent:'center'}}>
                   <View style={{flex:1,flexDirection:'row',justifyContent:'space-between'}}>
                     {
-                      this.props.correspondenceDetailData.result_Status != 'IN DISTRIBUTION' &&
+                      // this.props.correspondenceDetailData.result_Status != 'IN DISTRIBUTION' &&
                       <Button style={{marginLeft:0,marginTop:5,height:30,justifyContent:'center',backgroundColor:'#bcbccb', borderRadius:15,alignSelf:'flex-start'}}>
                        <Text uppercase={false} style={{fontSize:11,fontFamily:FONT_FAMILY_PT_REGULAR,alignSelf:'center',color:'#4d4f5c'}}>{this.props.correspondenceDetailData.result_Status && this.props.correspondenceDetailData.result_Status}</Text>
                      </Button>
@@ -492,7 +495,7 @@ class CoreespondenceDetails extends Component {
                 <View style={{flex:1,flexDirection:'row',justifyContent:'center'}}>
                   <View style={{flex:1,flexDirection:'row',justifyContent:'space-between'}}>
                     {
-                      this.props.correspondenceDetailData.result_Status != 'IN DISTRIBUTION' &&
+                      // this.props.correspondenceDetailData.result_Status != 'IN DISTRIBUTION' &&
                       <Button style={{marginLeft:0,marginTop:5,height:30,justifyContent:'center',backgroundColor:'#bcbccb', borderRadius:15,alignSelf:'flex-start'}}>
                        <Text uppercase={false} style={{fontSize:11,fontFamily:FONT_FAMILY_PT_REGULAR,alignSelf:'center',color:'#4d4f5c'}}>{this.props.correspondenceDetailData.result_Status && this.props.correspondenceDetailData.result_Status}</Text>
                      </Button>
@@ -524,7 +527,7 @@ class CoreespondenceDetails extends Component {
               <View style={{flex:1,flexDirection:'row',justifyContent:'center'}}>
                 <View style={{flex:1,flexDirection:'row',justifyContent:'space-between'}}>
                   {
-                    this.props.correspondenceDetailData.result_Status != 'IN DISTRIBUTION' &&
+                    // this.props.correspondenceDetailData.result_Status != 'IN DISTRIBUTION' &&
                     <Button style={{marginLeft:0,marginTop:5,height:30,justifyContent:'center',backgroundColor:'#bcbccb', borderRadius:15,alignSelf:'flex-start'}}>
                      <Text uppercase={false} style={{fontSize:11,fontFamily:FONT_FAMILY_PT_REGULAR,alignSelf:'center',color:'#4d4f5c'}}>{this.props.correspondenceDetailData.result_Status && this.props.correspondenceDetailData.result_Status}</Text>
                    </Button>
@@ -733,7 +736,7 @@ class CoreespondenceDetails extends Component {
                       <Image source={comment} style={{width:20,height:20}}/>
                       </TouchableOpacity>
                       <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleExternalLinkTap() }}>
-                        <Image source={info} style={{width:20,height:20}}/>
+                        <Image source={exteranlLink} style={{width:20,height:20}}/>
                     </TouchableOpacity>
                       {/* <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleForwardTap() }}>
                       <Image source={forward} style={{width:20,height:20}}/>
@@ -774,7 +777,7 @@ class CoreespondenceDetails extends Component {
                     </TouchableOpacity>
                 }
                   <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleExternalLinkTap() }}>
-                        <Image source={info} style={{width:20,height:20}}/>
+                        <Image source={exteranlLink} style={{width:20,height:20}}/>
                     </TouchableOpacity>
                 </View>
             );
@@ -805,7 +808,7 @@ class CoreespondenceDetails extends Component {
                       <Image source={forward} style={{width:20,height:20}}/>
                       </TouchableOpacity>
                       <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleExternalLinkTap() }}>
-                        <Image source={info} style={{width:20,height:20}}/>
+                        <Image source={exteranlLink} style={{width:20,height:20}}/>
                     </TouchableOpacity>
                 </View>
             );
@@ -1588,11 +1591,20 @@ if (config.fallback == 'en'){
         });
       }
       handleExternalLinkTap = () => {
-        this.setState((state) => {
-          return {
-            isExternalLinkModelVisible: true,
-          };
-        });
+
+        if (this.props.correspondenceDetailData.result_Status == 'IN DISTRIBUTION') {
+          this.setState((state) => {
+            return {
+              isExternalLinkUpdateModelVisible: true,
+            };
+          });
+        } else {
+          this.setState((state) => {
+            return {
+              isExternalLinkModelVisible: true,
+            };
+          });
+        }  
       }
 
       alertWithMessage = (message) =>
@@ -1674,7 +1686,7 @@ if (config.fallback == 'en'){
 
 
     render() {
-        const { isDelegateModalVisible, isApproveModalVisible, isRejectModalVisible, isCorrespondencePropertiesVisible, isCorrespondenceCommentsVisible, isForwardModelVisible , isInitiateModalVisible, isRFICommentModelVisible, isRFIPropertiesModelVisible, isMomPropertiesModelVisible, isMomCommentModelVisible, isRFIDelegateModelVisible, isRFIForwardModelVisible, isSignatureModelVisible, isMomApproveModelVisible, isExternalLinkModelVisible} = this.state;
+        const { isDelegateModalVisible, isApproveModalVisible, isRejectModalVisible, isCorrespondencePropertiesVisible, isCorrespondenceCommentsVisible, isForwardModelVisible , isInitiateModalVisible, isRFICommentModelVisible, isRFIPropertiesModelVisible, isMomPropertiesModelVisible, isMomCommentModelVisible, isRFIDelegateModelVisible, isRFIForwardModelVisible, isSignatureModelVisible, isMomApproveModelVisible, isExternalLinkModelVisible, isExternalLinkUpdateModelVisible} = this.state;
 
         return (
               <Container style={{backgroundColor:'#f3f2f2'}}>
@@ -1810,6 +1822,15 @@ if (config.fallback == 'en'){
                 }
                 {
                  isExternalLinkModelVisible && <ExternalLinkModelPopup  externalLink = {this.props.correspondenceDetailData.weTransferLinks}  onModalClose={() => { this.setState({ isExternalLinkModelVisible: false }) }} /> 
+                //  if (isRefresh == true) {
+                //   const corrId = this.props.navigation.state.params.ridInOutCorr;
+                //   const userId = this.props.userProfile.ridUsermaster;
+                //   this.props.getMomDetails(userId, corrId);
+                //      }
+                //   }}  /> 
+                }
+                {
+                 isExternalLinkUpdateModelVisible && <ExternalLinkUpdateModelPopup  externalLink = {this.props.correspondenceDetailData.weTransferLinks}  onModalClose={() => { this.setState({ isExternalLinkUpdateModelVisible: false }) }} /> 
                 //  if (isRefresh == true) {
                 //   const corrId = this.props.navigation.state.params.ridInOutCorr;
                 //   const userId = this.props.userProfile.ridUsermaster;

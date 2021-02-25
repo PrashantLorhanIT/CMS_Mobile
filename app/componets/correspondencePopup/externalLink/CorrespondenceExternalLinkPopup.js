@@ -113,7 +113,7 @@ const CorrespondenceExternalLinkPopup = (props) => {
                                 <View style={{paddingTop:0,backgroundColor:'white',marginBottom:50}}>
                                    <Text style={{fontSize:14,margin:5,marginLeft:15,marginBottom:0,fontFamily:FONT_FAMILY_PT_REGULAR}}>{'External links'}:</Text>
                                      <View style={{margin:5,marginLeft:10,marginRight:10,height:30}}>
-                                       <Textarea style={{height:70, color:'blue',fontFamily:FONT_FAMILY_PT_REGULAR,fontSize:14}} spellCheck="false"  rowSpan={4} bordered  type="text" value={props.externalLink}  />
+                                       <Textarea style={{height:70, color:'blue',fontFamily:FONT_FAMILY_PT_REGULAR,fontSize:14}} spellCheck="false" editable = {false} rowSpan={4} bordered  type="text" value={props.externalLink}  />
                                      </View>
                                 </View>
                                  <View style={{marginTop:10, flexDirection:'row',justifyContent:'center'}}>

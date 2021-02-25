@@ -1,5 +1,5 @@
-export const fallback = "";
- console.log('English json file', require('../language/ar.json'));
+export const fallback = "en";
+ //console.log('English json file', require('../language/ar.json'));
 export const supportedLocales = {
     en: {
         name: "English",

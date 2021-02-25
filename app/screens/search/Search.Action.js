@@ -69,7 +69,7 @@ export const getSearchDropDwonValues = () => {
         }
     }
 }
-export const getQuickSearchCorrespondenceRecordList = (referencenumber, subject, status, senderRidEntityList, recipientRidEntityList, correspondenceFromDate, correspondenceToDate, superSearch, entityId) => {
+export const getQuickSearchCorrespondenceRecordList = (userEntityCode,referencenumber, subject, status, senderRidEntityList, recipientRidEntityList, correspondenceFromDate, correspondenceToDate, superSearch, entityId, overDuedDelay) => {
     console.log('getQuickSearchCorrespondenceRecordList Action method')
     return async (dispatch) => {
         const token = await AsyncStorage.getItem('token');
@@ -92,15 +92,21 @@ export const getQuickSearchCorrespondenceRecordList = (referencenumber, subject,
             dispatch(isAppLoading(false));
             } else {
                 const params = {
+                        LoggedInUserEntityCode: userEntityCode ? userEntityCode: null,
+                        PageNumber: 0, 
+                        PageSize: 0,
                         referencenumber: referencenumber ? referencenumber : null,   
                         subject: subject ? subject : null,   
-                       // ridCorrCategory: 2,
+                        ridCorrCategory: null,
                         status: status ? status : null,
                         userEntityID: entityId,
                         senderRidEntityList: senderRidEntityList ? senderRidEntityList : null,
                         recipientRidEntityList: recipientRidEntityList ? recipientRidEntityList : null,
                         correspondenceFromDate: correspondenceFromDate ? correspondenceFromDate : null,
                         correspondenceToDate: correspondenceToDate ? correspondenceToDate :null,
+                        RelationCondition: null,
+                        overDuedDelay: overDuedDelay ? overDuedDelay : null,
+                        superSearch: superSearch ? superSearch : null
                     } 
                     console.log('getQuickSearchCorrespondenceRecordList Action Parameters');
             console.log(params);
@@ -227,7 +233,7 @@ export const getQuickSearchRFIRecordList = (referencenumber, subject, status, se
     }
 }
 export const getAdvanceSearchCorrespondenceRecordList = (referencenumber, subject, ridCorrCategory, ridContractlist, senderRidEntityList, recipientRidEntityList, 
-    reviwer, approver, correspondenceFromDate, correspondenceToDate, replyrequiredbyFromdate, replyrequiredbyTodate, isreplyrequired, isconfidential, status, superSearch, entityId) => {
+    reviwer, approver, correspondenceFromDate, correspondenceToDate, replyrequiredbyFromdate, replyrequiredbyTodate, isreplyrequired, isconfidential, status, superSearch, entityId, userEntityCode, overDuedDelay, documentType) => {
     console.log('Advance Search Action Correspondence method')
     return async (dispatch) => {
         const token = await AsyncStorage.getItem('token');
@@ -251,7 +257,9 @@ export const getAdvanceSearchCorrespondenceRecordList = (referencenumber, subjec
             } else {
                 const params = {
                     referencenumber: referencenumber ? referencenumber : null,     
-                    subject: subject ? subject : null,   
+                    subject: subject ? subject : null,
+                    PageNumber: 1,
+                    PageSize: 10,
                     ridCorrCategory: ridCorrCategory ? ridCorrCategory : null,
                     ridContractlist: ridContractlist ? ridContractlist : null,
                     senderRidEntityList: senderRidEntityList ? senderRidEntityList : null,
@@ -266,7 +274,12 @@ export const getAdvanceSearchCorrespondenceRecordList = (referencenumber, subjec
                     isconfidential: isconfidential == true ? "Y" : null,
                     status: status ? status : null,
                     userEntityID: entityId,
-                    
+                    superSearch: superSearch ? superSearch : null,
+                    LoggedInUserEntityCode: userEntityCode ? userEntityCode : null,
+                    RelationCondition: null,
+                    overDuedDelay: overDuedDelay ? overDuedDelay : null,
+                    ridDocumenttype: documentType ? documentType : null,
+
                 } 
                 console.log('Advance Search Action Correspondence Parameters');
                 console.log(params);

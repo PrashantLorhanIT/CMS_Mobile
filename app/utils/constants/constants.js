@@ -38,6 +38,7 @@ export const constants = {
                 correspondenceTaskList: 'UserTask/GetUserTasksByCorrID',
                 correspondenceForward: 'Inbox/ForwardCorrespondendce',
                 CorrespondenceSignature: 'Corr/IsSignatureDone',
+                CorespondenceExternalLink:'',
                 
                 //Task 
                 taskDetails: 'UserTask/GetUserTaskDetailByTaskID',

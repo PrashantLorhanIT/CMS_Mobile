@@ -38,64 +38,12 @@ const CorrespondenceExternalLinkPopup = (props) => {
         setVisible(false);
       };
       
-      const onButtonClick = () => {
-        props.onModalClose(); 
-        setVisible(false);
-        props.getApproveValues(true);
-      };
+    
 
-    const  onButtonApproveClick = () => {
-        const wrokFlowTransactionId = props.workFTID;
-        const Approve = "Y";
-        const comments = comment
-        AsyncStorage.getItem('token').then((token) => {
-          submitCorrespondenceDetailApproveReject(wrokFlowTransactionId, Approve, comments, token);   
-        });
-      };
+    
 
-    const  submitCorrespondenceDetailApproveReject =  (wftId, approve, comment, token) => {
-        console.log('Correspondence details Action method  Approve');
-        // return async (dispatch) => {
-            try {
-                const params = {
-                  workFlowTransactionID: wftId,
-                  approve: approve,
-                  comment: comment
-                    
-                }
+    
 
-                console.log('Parameter in Correspondence Details Approve');
-                console.log(params);
-                console.log(token);
-                // <Loader isLoading = {true} />
-                axios.post(`${constants.webService.baseURL}${constants.webService.methods.common.correspondenceApproveReject}`, params, axios.defaults.headers.Authorization = `Bearer ${token}`)
-                .then(res => {
-                  console.log('Correspondence Details Approve response inside');
-                    console.log(res);
-                    console.log(res.data)
-                    if (res.data.statusCode == "200") {
-                      alertWithMessage("Initiated sucessfully");  
-                    } else {
-                    } 
-                })
-                .catch(error => console.log(error));
-       
-            } catch (error) {
-                //dispatch(isAppLoading(false));
-            }
-      //  }
-    }
-
-    const alertWithMessage = (message) =>
-    Alert.alert(
-        "",
-        
-        message,
-        [
-            { text: "OK", onPress: () => {onButtonClick()} }
-        ],
-        { cancelable: false }
-    );
     
       return(
         <Modal transparent animated visible={visible} animationType='fade' onRequestClose={() => { console.log('onRequestClose'); }}>

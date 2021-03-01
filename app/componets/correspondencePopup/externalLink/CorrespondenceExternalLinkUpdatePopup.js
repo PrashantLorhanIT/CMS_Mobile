@@ -26,7 +26,7 @@ import * as config from '../../../utils/localization/config/i18n';
 const CorrespondenceExternalLinkUpdatePopup = (props) => {
 
     const [visible, setVisible] = useState(true);
-    const [comment, setcomment] =  useState(props.externalLink);
+    const [exteranlLink, setExteranlLink] =  useState(props.externalLink);
     const [isback, setIsback] = useState(false);
 
     const onButtonCancelClick = () => {
@@ -44,12 +44,12 @@ const CorrespondenceExternalLinkUpdatePopup = (props) => {
         const Approve = "Y";
         const comments = comment
         AsyncStorage.getItem('token').then((token) => {
-          submitCorrespondenceDetailApproveReject(wrokFlowTransactionId, Approve, comments, token);
+          updateCorrespondenceExternalLinks(wrokFlowTransactionId, Approve, comments, token);
         });
       };
       
-      const  submitCorrespondenceDetailApproveReject =  (wftId, approve, comment, token) => {
-        console.log('Correspondence details Action method  Approve');
+      const  updateCorrespondenceExternalLinks =  (wftId, approve, comment, token) => {
+        console.log('Correspondence details Action updateCorrespondenceExternalLinks');
         // return async (dispatch) => {
           // useEffect(() => {
             try {
@@ -59,17 +59,17 @@ const CorrespondenceExternalLinkUpdatePopup = (props) => {
                     comment: comment
                 }
 
-                console.log('Parameter in Correspondence Details Approve');
+                console.log('Parameter in Correspondence Details updateCorrespondenceExternalLinks');
                 console.log(params);
                 // <Loader isLoading = {true} />
-                axios.post(`${constants.webService.baseURL}${constants.webService.methods.common.correspondenceApproveReject}`, params, axios.defaults.headers.Authorization = `Bearer ${token}`)
+                axios.post(`${constants.webService.baseURL}${constants.webService.methods.common.CorespondenceExternalLink}`, params, axios.defaults.headers.Authorization = `Bearer ${token}`)
                 .then(res => {
-                  console.log('Correspondence Details Approve response inside');
+                  console.log('Correspondence Details AppupdateCorrespondenceExternalLinks response inside');
                     console.log(res);
                     console.log(res.data)
                     if (res.data.statusCode == "200") {
                       setIsback(true);
-                      alertWithMessage("Approve sucessfully");  
+                      alertWithMessage("Updated sucessfully");  
                     }  else {
                       setIsback(false);
                     }   
@@ -110,7 +110,7 @@ if (config.fallback == 'en'){
                             <View style={{paddingTop:0,backgroundColor:'white',marginBottom:60}}>
                                <Text style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR,margin:15,marginBottom:0}}>{'External links'}</Text>
                                  <View style={{margin:5,marginLeft:10,marginRight:10,height:30}}>
-                                   <Textarea style={{height:70, fontFamily:FONT_FAMILY_PT_REGULAR, fontSize:14}} spellCheck="false"  rowSpan={4} bordered type="text" value={comment} onChangeText={(value) => { setcomment(value) }} />
+                                   <Textarea style={{height:70, fontFamily:FONT_FAMILY_PT_REGULAR, fontSize:14}} spellCheck="false"  rowSpan={4} bordered type="text" value={exteranlLink} onChangeText={(value) => { setExteranlLink(value) }} />
                                  </View>
                             </View>
                              <View style={{marginTop:10, flexDirection:'row',justifyContent:'space-between'}}>
@@ -143,7 +143,7 @@ if (config.fallback == 'en'){
                                 <View style={{paddingTop:0,backgroundColor:'white',marginBottom:60}}>
                                    <Text style={{fontSize:14,fontFamily:FONT_FAMILY_PT_REGULAR,margin:15,marginBottom:0,textAlign:'right'}}>{'External links'}</Text>
                                      <View style={{margin:5,marginLeft:10,marginRight:10,height:30}}>
-                                       <Textarea style={{height:70, fontFamily:FONT_FAMILY_PT_REGULAR, fontSize:14,textAlign:'right'}} spellCheck="false"  rowSpan={4} bordered placeholder={t('InboxScreen:Comments')}  type="text" value={comment} onChangeText={(value) => { setcomment(value) }} />
+                                       <Textarea style={{height:70, fontFamily:FONT_FAMILY_PT_REGULAR, fontSize:14,textAlign:'right'}} spellCheck="false"  rowSpan={4} bordered  type="text" value={exteranlLink} onChangeText={(value) => { setExteranlLink(value) }} />
                                      </View>
                                 </View>
                                  <View style={{marginTop:10, flexDirection:'row',justifyContent:'space-between'}}>

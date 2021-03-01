@@ -12,7 +12,7 @@ import {
     Content, 
     
   } from 'native-base';
-import { SafeAreaView, Dimensions, ScrollView, Image,TouchableOpacity, AsyncStorage} from 'react-native';
+import { SafeAreaView, Dimensions, ScrollView, Image,TouchableOpacity,Alert, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import ApproveModelPopup from '../../../componets/correspondencePopup/approvePopup/CorrespondenceApprovePopup';
 import RejectModelPopup from '../../../componets/correspondencePopup/rejectPopup/CorrespondenceRejectPopup';
@@ -431,7 +431,7 @@ class CoreespondenceDetails extends Component {
                      </Button>
                   </View>
                   <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end'}}>
-                     { this.props.correspondenceDetailData.showDelegate != 'N' &&
+                     { this.props.correspondenceDetailData.showDelegate != 'N' && this.props.correspondenceDetailData.result_Status != 'IN APPROVAL' &&
                        <Button style={{margin:5,backgroundColor:'#373d38',width:88,height:30}} onPress={() => { this.handleDelegateTap() }}>
                       <Text uppercase={false} style={{fontSize:11,fontFamily:FONT_FAMILY_PT_REGULAR}}>Delegate</Text>
                       </Button>
@@ -534,7 +534,7 @@ class CoreespondenceDetails extends Component {
                   }   
                 </View>
                 <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end'}}>
-                   { this.props.correspondenceDetailData.showDelegate != 'N' &&
+                   { this.props.correspondenceDetailData.showDelegate != 'N' && this.props.correspondenceDetailData.result_Status != 'IN APPROVAL'  &&
                      <Button style={{margin:5,backgroundColor:'#373d38',width:88,height:30, alignContent:'center'}} onPress={() => { this.handleDelegateTap() }}>
                     <Text uppercase={false} style={{fontSize:11,fontFamily:FONT_FAMILY_PT_REGULAR,textAlign:'center',justifyContent:'center'}}>Delegate</Text>
                     </Button>
@@ -771,7 +771,7 @@ class CoreespondenceDetails extends Component {
                       <Image source={comment} style={{width:20,height:20}}/>
                       </TouchableOpacity>
                       {
-                  this.props.correspondenceDetailData.showDelegate != 'Y' &&
+                  this.props.correspondenceDetailData.showDelegate != 'Y' && this.props.correspondenceDetailData.result_Status != 'IN VERIFICATION' &&
                   <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleForwardTap() }}>
                     <Image source={forward} style={{width:20,height:20}}/>
                     </TouchableOpacity>
@@ -791,7 +791,7 @@ class CoreespondenceDetails extends Component {
                       <Image source={comment} style={{width:20,height:20}}/>
                       </TouchableOpacity>
                       {
-                  this.props.correspondenceDetailData.showDelegate != 'Y' &&
+                  this.props.correspondenceDetailData.showDelegate != 'Y' && this.props.correspondenceDetailData.result_Status != 'IN VERIFICATION' &&
                   <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleForwardTap() }}>
                     <Image source={forward} style={{width:20,height:20}}/>
                     </TouchableOpacity>
@@ -804,9 +804,11 @@ class CoreespondenceDetails extends Component {
             if (config.fallback == 'en'){
               return(
                 <View style={{margin:10,marginTop:25,flexDirection:'row'}}>
+                  { this.props.correspondenceDetailData.result_Status != 'IN VERIFICATION' &&
                       <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleForwardTap() }}>
                       <Image source={forward} style={{width:20,height:20}}/>
                       </TouchableOpacity>
+            }
                       <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleExternalLinkTap() }}>
                         <Image source={exteranlLink} style={{width:20,height:20}}/>
                     </TouchableOpacity>
@@ -815,9 +817,14 @@ class CoreespondenceDetails extends Component {
             }else {
               return(
                 <View style={{margin:10,marginTop:25,flexDirection:'row-reverse'}}>
+                  { this.props.correspondenceDetailData.result_Status != 'IN VERIFICATION' &&
                       <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleForwardTap() }}>
                       <Image source={forward} style={{width:20,height:20}}/>
                       </TouchableOpacity>
+            }
+                      <TouchableOpacity style={{margin:5,width:40,height:30,justifyContent:'center'}} onPress={() => { this.handleExternalLinkTap() }}>
+                        <Image source={exteranlLink} style={{width:20,height:20}}/>
+                    </TouchableOpacity>
                 </View>
             );
             }
@@ -1592,24 +1599,29 @@ if (config.fallback == 'en'){
       }
       handleExternalLinkTap = () => {
 
-        if (this.props.correspondenceDetailData.result_Status == 'IN DISTRIBUTION') {
+        if (this.props.correspondenceDetailData.weTransferLinks != '' && this.props.correspondenceDetailData.weTransferLinks != null){
+        if (this.props.correspondenceDetailData.result_Status == 'IN DISTRIBUTION' && this.props.correspondenceDetailData.result_Status == '') {
           this.setState((state) => {
             return {
               isExternalLinkUpdateModelVisible: true,
             };
           });
         } else {
-          this.setState((state) => {
-            return {
-              isExternalLinkModelVisible: true,
-            };
-          });
-        }  
+          
+            this.setState((state) => {
+              return {
+                isExternalLinkModelVisible: true,
+              };
+            });
+          }
+        } else {
+            this.alertWithMessage('Correspondence external link not available'); 
+          }    
       }
 
       alertWithMessage = (message) =>
       Alert.alert(
-          "ETIHADRAIL",
+          "",
           message,
           [
               { text: "OK", onPress: () => console.log("OK Pressed") }

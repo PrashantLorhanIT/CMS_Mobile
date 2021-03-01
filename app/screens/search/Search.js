@@ -2632,18 +2632,20 @@ _renderSearchList =() => {
   }
 }
   goQuickSearchListScreen() {
+    const entityId = this.props.userProfile.ridEntityList;
+    const entityCode = this.props.userProfile.entityCode;
      if (this.state.searchType == "Correspondence") {
       this.props.setSearchDetailEmpty()
-      const entityId = this.props.userProfile.ridEntityList;
-       if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
-        this.props.getQuickSearchCorrespondenceRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId);
+      
+       if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '' || this.state.overdureDelay) {
+        this.props.getQuickSearchCorrespondenceRecordList(entityCode, this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId, this.state.overdureDelay);
         } else {
 
           this.alertWithMessage('Please select at least one search parameter');
         }
      } else if (this.state.searchType == "MOM") {
       this.props.setSearchDetailEmpty()
-      const entityId = this.props.userProfile.ridEntityList;
+      //const entityId = this.props.userProfile.ridEntityList;
       if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
         this.props.getQuickSearchMomRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId);
        } else {
@@ -2651,7 +2653,7 @@ _renderSearchList =() => {
       }
      } else if (this.state.searchType == "RFI") {
       this.props.setSearchDetailEmpty()
-      const entityId = this.props.userProfile.ridEntityList;
+     // const entityId = this.props.userProfile.ridEntityList;
       if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
         this.props.getQuickSearchRFIRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId);
        } else {
@@ -2663,10 +2665,11 @@ _renderSearchList =() => {
   goCorrespondenceAdvaceSearchList() {
     this.props.setSearchDetailEmpty()
     const entityId = this.props.userProfile.ridEntityList;
+    const entityCode = this.props.userProfile.entityCode;
       if (this.state.corrRefernceNumber != '' || this.state.corrSubject != '' || this.state.corrSource != '' || this.state.corrProjectContract != '' || this.state.corrSender != '' || this.state.corrRecipent != '' ||
         this.state.corrReviewer != '' || this.state.corrApprover != '' || this.state.corrFromDateFormat != '' || this.state.corrToDateFormat != '' || this.state.corrReplyFromDateFormat != '' || this.state.corrReplyToDateFormat != '' || this.state.corrisReplyRequired != '' || this.state.corrisConfidential != '' || this.state.corrStatus != '' || this.state.corrsuperSearch != '') {
         this.props.getAdvanceSearchCorrespondenceRecordList(this.state.corrRefernceNumber, this.state.corrSubject, this.state.corrSource, this.state.corrProjectContract, this.state.corrSender, this.state.corrRecipent, 
-          this.state.corrReviewer, this.state.corrApprover, this.state.corrFromDateFormat, this.state.corrToDateFormat, this.state.corrReplyFromDateFormat, this.state.corrReplyToDateFormat, this.state.corrisReplyRequired, this.state.corrisConfidential, this.state.corrStatus, this.state.corrsuperSearch, entityId);
+          this.state.corrReviewer, this.state.corrApprover, this.state.corrFromDateFormat, this.state.corrToDateFormat, this.state.corrReplyFromDateFormat, this.state.corrReplyToDateFormat, this.state.corrisReplyRequired, this.state.corrisConfidential, this.state.corrStatus, this.state.corrsuperSearch, entityId, entityCode, this.state.corrOverdueDelay, '');
        } else {
          this.alertWithMessage('Please select at least one search parameter');
 

@@ -211,7 +211,8 @@ class Search extends Component {
         this.props.setSearchDetailEmpty();
         this.setState({
           searchType: value,
-          rreferenceNumber:"",
+          
+          referenceNumber:"",
           status: '',
           subject: "",
           superSearch:"",
@@ -315,7 +316,61 @@ class Search extends Component {
           corrisReplyRequired: false,
         });
       }
+      onCorrespondecneValueAdvanceSearchTypeClear =() => {
+        this.props.setSearchDetailEmpty();
+        this.setState({
+          corrRefernceNumber: '',
+          corrStatus: '',
+          corrSource: '',
+          corrSubject: '',
+          corrProjectContract: '',
+          corrSender: '',
+          corrRecipent: '',
+          corrReviewer: '',
+          corrApprover: '',
+          corrFromDate:  '',
+          corrFromDateFormat:'',
+          corrToDate : '',
+          corrToDateFormat:'',
+          corrReplyFromDate: '',
+          corrReplyFromDateFormat: '',
+          corrReplyToDate: '',
+          corrReplyToDateFormat: '',
+          corrsuperSearch:'',
+          corrisConfidential: false,
+          corrisReplyRequired: false,
+        });
+      }
+
+      onMomValueAdvanceSearchTypeClear =() => {
+        this.props.setSearchDetailEmpty();
+        this.setState({
+          momRefernceNumber: '',
+          momStatus: '',
+          momSubject: '',
+          momInitiator: '',
+          momSuperSearch: '',
+          momLocation:"",
+          momDiscipline: "",
+          momContract: "",
+        });
+      }
+      onRFIValueAdvanceSearchTypeClear =() => {
+        this.props.setSearchDetailEmpty();
+        this.setState({
+        
+          rfiRefernceNumber: "",
+          rfiStatus: "",
+          rfiSubject: "",
+          rfiInitiator: "",
+          rfiQuery: "",
+          rfiResponse: "",
+          rfiSuperSearch: "",
+          
+        });
+      }
       handleOnCorrespondenceReferenceNumberChange(e) { 
+        
         e.persist();
        this.setState({
         referenceNumber: e.nativeEvent.text
@@ -397,7 +452,7 @@ onValueRFIStatusChange =(value) => {
   this.setState({
     rfiStatus: value
   });
-}
+ }
 }
 handleOnRfiReferenceNumberChange(e) {
   e.persist();
@@ -639,7 +694,7 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
                                           <Picker.Item label="REVIEWED" value="REVIEWED" />
                                           <Picker.Item label="APPROVED" value="APPROVED" />
                                           <Picker.Item label="IN DRAFT" value="Draft" />
-                                          <Picker.Item label="DISTRIBUTED" value="DISTRIBUTED" />
+                                          <Picker.Item label="DISTRIBUTED" value="VERIFIED"/>
                                           </Picker>
           
             </View>
@@ -767,9 +822,9 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
                                               
                                              >
                                                <Picker.Item color={'gray'} label= {t('SearchScreen:SelectOverdueDelay')} value={-1} key={-1} />
-                                            <Picker.Item label="7 Days" value="7 Days" />
-                                            <Picker.Item label="15 Days" value="15 Days" />
-                                            <Picker.Item label="1 Month" value="1 Month" />
+                                            <Picker.Item label="7 Days" value="7" />
+                                            <Picker.Item label="15 Days" value="15" />
+                                            <Picker.Item label="1 Month" value="30" />
                                             </Picker>
             
               </View>
@@ -818,8 +873,11 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
                           
           
                   </View>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:5,marginBottom:5}}>
-                      <Button style={{backgroundColor:'#373d38',justifyContent:'center',marginTop:25,marginLeft:35,marginRight:35,height:40,borderRadius:20, width: '80%'}} onPress={() => {this.goQuickSearchListScreen()}}>
+                  <View style={{flexDirection:'row',justifyContent:'space-evenly',alignContent:'center',alignItems:'stretch',marginTop:5,marginBottom:5}}>
+                      <Button style={{backgroundColor:'#373d38',flexDirection:'row',justifyContent:'center',marginTop:25,height:40,marginLeft:5,marginRight:5,borderRadius:20, width: 150}} onPress={() => {this.onValueSearchTypeClear()}}>
+                      <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Clear')}</Text>
+                     </Button> 
+                     <Button style={{backgroundColor:'#373d38',flexDirection:'row',justifyContent:'center',alignContent:'center',alignSelf:'center',marginTop:25,marginLeft:5,marginRight:5,height:40,borderRadius:20,width:150}} onPress={() => {this.goQuickSearchListScreen()}}>
                       <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Search')}</Text>
                      </Button> 
                   </View>
@@ -1016,9 +1074,9 @@ handleOnAdvanceSearchReplyfromandToDateChangeValue(fromDates, toDates) {
                                               
                                              >
                                                <Picker.Item color={'gray'} label= {t('SearchScreen:SelectOverdueDelay')} value={-1} key={-1} />
-                                            <Picker.Item label="7 Days" value="7 Days" />
-                                            <Picker.Item label="15 Days" value="15 Days" />
-                                            <Picker.Item label="1 Month" value="1 Month" />
+                                            <Picker.Item label="7 Days" value="7" />
+                                            <Picker.Item label="15 Days" value="15" />
+                                            <Picker.Item label="1 Month" value="30" />
                                             </Picker>
             
               </View>
@@ -1127,7 +1185,7 @@ _renderAdvanceSearchSelectValues = () => {
                                             <Picker.Item label="REVIEWED" value="REVIEWED" />
                                             <Picker.Item label="APPROVED" value="APPROVED" />
                                             <Picker.Item label="IN DRAFT" value="Draft" />
-                                           <Picker.Item label="DISTRIBUTED" value="DISTRIBUTED" />
+                                           <Picker.Item label="DISTRIBUTED" value="VERIFIED" />
     
                                             </Picker>
             
@@ -1407,9 +1465,9 @@ _renderAdvanceSearchSelectValues = () => {
                                               
                                              >
                                                <Picker.Item color={'gray'} label= {t('SearchScreen:SelectOverdueDelay')} value={-1} key={-1} />
-                                            <Picker.Item label="7 Days" value="7 Days" />
-                                            <Picker.Item label="15 Days" value="15 Days" />
-                                            <Picker.Item label="1 Month" value="1 Month" />
+                                            <Picker.Item label="7 Days" value="7" />
+                                            <Picker.Item label="15 Days" value="15" />
+                                            <Picker.Item label="1 Month" value="30" />
                                             </Picker>
             
               </View>
@@ -1461,11 +1519,14 @@ _renderAdvanceSearchSelectValues = () => {
             
               </View>
               
-                    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:5,marginBottom:5}}>
-                        <Button style={{backgroundColor:'#373d38',justifyContent:'center',marginTop:25,marginLeft:35,marginRight:35,height:40,borderRadius:20, width: '80%'}} onPress={() => {this.goCorrespondenceAdvaceSearchList()}}>
-                        <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Search')}</Text>
-                       </Button> 
-                    </View>
+              <View style={{flexDirection:'row',justifyContent:'space-evenly',alignContent:'center',alignItems:'stretch',marginTop:5,marginBottom:5}}>
+                      <Button style={{backgroundColor:'#373d38',flexDirection:'row',justifyContent:'center',marginTop:25,height:40,marginLeft:5,marginRight:5,borderRadius:20, width: 150}} onPress={() => {this.onCorrespondecneValueAdvanceSearchTypeClear()}}>
+                      <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Clear')}</Text>
+                     </Button> 
+                     <Button style={{backgroundColor:'#373d38',flexDirection:'row',justifyContent:'center',alignContent:'center',alignSelf:'center',marginTop:25,marginLeft:5,marginRight:5,height:40,borderRadius:20,width:150}} onPress={() => {this.goCorrespondenceAdvaceSearchList()}}>
+                      <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Search')}</Text>
+                     </Button> 
+                  </View>
               </View>
        );
     }else {
@@ -1796,9 +1857,9 @@ _renderAdvanceSearchSelectValues = () => {
                                               
                                              >
                                                <Picker.Item color={'gray'} label= {t('SearchScreen:SelectStatus')} value={-1} key={-1} />
-                                            <Picker.Item label="7 Days" value="7 Days" />
-                                            <Picker.Item label="15 Days" value="15 Days" />
-                                            <Picker.Item label="1 Month" value="1 Month" />
+                                            <Picker.Item label="7 Days" value="7" />
+                                            <Picker.Item label="15 Days" value="15" />
+                                            <Picker.Item label="1 Month" value="30" />
                                             </Picker>
             
               </View>
@@ -2046,11 +2107,14 @@ _renderAdvanceSearchSelectValues = () => {
                                                   
                                               /> 
                 </View>
-                      <View style={{justifyContent:'flex-start',marginTop:5,marginBottom:5}}>
-                          <Button style={{margin:5,backgroundColor:'#373d38',justifyContent:'center',marginLeft:35,marginRight:35,height:40,borderRadius:20}} onPress={() => {this.goMomAdvaceSearchList()}}>
-                          <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Search')}</Text>
-                         </Button> 
-                      </View>
+                <View style={{flexDirection:'row',justifyContent:'space-evenly',alignContent:'center',alignItems:'stretch',marginTop:5,marginBottom:5}}>
+                      <Button style={{backgroundColor:'#373d38',flexDirection:'row',justifyContent:'center',marginTop:25,height:40,marginLeft:5,marginRight:5,borderRadius:20, width: 150}} onPress={() => {this.onMomValueAdvanceSearchTypeClear()}}>
+                      <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Clear')}</Text>
+                     </Button> 
+                     <Button style={{backgroundColor:'#373d38',flexDirection:'row',justifyContent:'center',alignContent:'center',alignSelf:'center',marginTop:25,marginLeft:5,marginRight:5,height:40,borderRadius:20,width:150}} onPress={() => {this.goMomAdvaceSearchList()}}>
+                      <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Search')}</Text>
+                     </Button> 
+                  </View>
                 </View>
           );
   
@@ -2424,11 +2488,14 @@ _renderAdvanceSearchSelectValues = () => {
                                                   
                                               /> 
                 </View>
-                      <View style={{justifyContent:'flex-start',marginTop:5,marginBottom:5}}>
-                          <Button style={{margin:5,backgroundColor:'#373d38',justifyContent:'center',marginLeft:35,marginRight:35,height:40,borderRadius:20}} onPress={() => {this.goRfiAdvaceSearchList()}}>
-                          <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Search')}</Text>
-                         </Button> 
-                      </View>
+                <View style={{flexDirection:'row',justifyContent:'space-evenly',alignContent:'center',alignItems:'stretch',marginTop:5,marginBottom:5}}>
+                      <Button style={{backgroundColor:'#373d38',flexDirection:'row',justifyContent:'center',marginTop:25,height:40,marginLeft:5,marginRight:5,borderRadius:20, width: 150}} onPress={() => {this.onRFIValueAdvanceSearchTypeClear()}}>
+                      <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Clear')}</Text>
+                     </Button> 
+                     <Button style={{backgroundColor:'#373d38',flexDirection:'row',justifyContent:'center',alignContent:'center',alignSelf:'center',marginTop:25,marginLeft:5,marginRight:5,height:40,borderRadius:20,width:150}} onPress={() => {this.goRfiAdvaceSearchList()}}>
+                      <Text uppercase={false} style={{fontSize:16,fontFamily:FONT_FAMILY_PT_BOLD}}>{t('SearchScreen:Search')}</Text>
+                     </Button> 
+                  </View>
                 </View>
           );
       }else{
@@ -2636,9 +2703,9 @@ _renderSearchList =() => {
     const entityCode = this.props.userProfile.entityCode;
      if (this.state.searchType == "Correspondence") {
       this.props.setSearchDetailEmpty()
-      
-       if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '' || this.state.overdureDelay) {
-        this.props.getQuickSearchCorrespondenceRecordList(entityCode, this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId, this.state.overdureDelay);
+      console.log('Refernce number vlaue check', this.state.referenceNumber);
+       if (this.state.referenceNumber != '' || this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '' || this.state.overdureDelay) {
+         this.props.getQuickSearchCorrespondenceRecordList(entityCode, this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId, this.state.overdureDelay);
         } else {
 
           this.alertWithMessage('Please select at least one search parameter');
@@ -2646,7 +2713,7 @@ _renderSearchList =() => {
      } else if (this.state.searchType == "MOM") {
       this.props.setSearchDetailEmpty()
       //const entityId = this.props.userProfile.ridEntityList;
-      if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
+      if (this.state.referenceNumber != '' || this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
         this.props.getQuickSearchMomRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId);
        } else {
          this.alertWithMessage('Please select at least one search parameter');
@@ -2654,7 +2721,7 @@ _renderSearchList =() => {
      } else if (this.state.searchType == "RFI") {
       this.props.setSearchDetailEmpty()
      // const entityId = this.props.userProfile.ridEntityList;
-      if (this.state.referenceNumber != '' && this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
+      if (this.state.referenceNumber != '' || this.state.subject != '' || this.state.status != '' || this.state.sender != '' || this.state.recipient != '' || this.state.fromDateFormat != '' || this.state.toDateFormat != '' || this.state.superSearch != '') {
         this.props.getQuickSearchRFIRecordList(this.state.referenceNumber, this.state.subject, this.state.status, this.state.sender, this.state.recipient, this.state.fromDateFormat, this.state.toDateFormat, this.state.superSearch, entityId);
        } else {
          this.alertWithMessage('Please select at least one search parameter');

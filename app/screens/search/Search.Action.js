@@ -105,7 +105,7 @@ export const getQuickSearchCorrespondenceRecordList = (userEntityCode,referencen
                         correspondenceFromDate: correspondenceFromDate ? correspondenceFromDate : null,
                         correspondenceToDate: correspondenceToDate ? correspondenceToDate :null,
                         RelationCondition: null,
-                        overDuedDelay: overDuedDelay ? overDuedDelay : null,
+                        overDuedDelay: Number(overDuedDelay) ? Number(overDuedDelay) : null,
                         superSearch: superSearch ? superSearch : null
                     } 
                     console.log('getQuickSearchCorrespondenceRecordList Action Parameters');

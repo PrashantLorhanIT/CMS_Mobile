@@ -27,7 +27,6 @@ const CorrespondenceExternalLinkUpdatePopup = (props) => {
 
     const [visible, setVisible] = useState(true);
     const [exteranlLink, setExteranlLink] =  useState(props.externalLink);
-    const [isback, setIsback] = useState(false);
 
     const onButtonCancelClick = () => {
         props.onModalClose(); 
@@ -40,23 +39,21 @@ const CorrespondenceExternalLinkUpdatePopup = (props) => {
       };
 
       const onButtonApproveClick = () => {
-        const wrokFlowTransactionId = props.workFTID;
-        const Approve = "Y";
-        const comments = comment
+        const Id = props.id;
         AsyncStorage.getItem('token').then((token) => {
-          updateCorrespondenceExternalLinks(wrokFlowTransactionId, Approve, comments, token);
+          updateCorrespondenceExternalLinks(Id, token);
         });
       };
       
-      const  updateCorrespondenceExternalLinks =  (wftId, approve, comment, token) => {
+      const  updateCorrespondenceExternalLinks =  (wftId, token) => {
         console.log('Correspondence details Action updateCorrespondenceExternalLinks');
         // return async (dispatch) => {
           // useEffect(() => {
             try {
                 const params = {
                     workFlowTransactionID: wftId,
-                     approve: approve,
-                    comment: comment
+                    Category: 1,
+                    WeTransferLinks: exteranlLink
                 }
 
                 console.log('Parameter in Correspondence Details updateCorrespondenceExternalLinks');
@@ -68,10 +65,9 @@ const CorrespondenceExternalLinkUpdatePopup = (props) => {
                     console.log(res);
                     console.log(res.data)
                     if (res.data.statusCode == "200") {
-                      setIsback(true);
                       alertWithMessage("Updated sucessfully");  
                     }  else {
-                      setIsback(false);
+                      
                     }   
                 })
                 .catch(error => console.log(error));

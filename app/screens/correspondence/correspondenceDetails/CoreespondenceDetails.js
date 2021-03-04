@@ -1839,10 +1839,10 @@ if (config.fallback == 'en'){
                 //   const userId = this.props.userProfile.ridUsermaster;
                 //   this.props.getMomDetails(userId, corrId);
                 //      }
-                //   }}  /> 
+                //   }}  />  ridWorkflowInstance
                 }
                 {
-                 isExternalLinkUpdateModelVisible && <ExternalLinkUpdateModelPopup  externalLink = {this.props.correspondenceDetailData.weTransferLinks}  onModalClose={() => { this.setState({ isExternalLinkUpdateModelVisible: false }) }} /> 
+                 isExternalLinkUpdateModelVisible && <ExternalLinkUpdateModelPopup  id = {this.props.correspondenceDetailData.ridWorkflowInstance} externalLink = {this.props.correspondenceDetailData.weTransferLinks}  onModalClose={() => { this.setState({ isExternalLinkUpdateModelVisible: false }) }} /> 
                 //  if (isRefresh == true) {
                 //   const corrId = this.props.navigation.state.params.ridInOutCorr;
                 //   const userId = this.props.userProfile.ridUsermaster;

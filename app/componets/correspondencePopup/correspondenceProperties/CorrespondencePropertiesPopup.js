@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions,StyleSheet } from 'react-native';
+import { View, SafeAreaView, Image, Modal, ImageBackground, Dimensions,StyleSheet, ScrollView} from 'react-native';
 import { Container, Content, Button, Text, Icon, Input, Label, Textarea,Segment,Card,CardItem, Body,} from 'native-base';
 import HeaderTilte from '../../../assets/image/popup/popup.jpg';
 import { FONT_SIZE_12, FONT_SIZE_16,FONT_WEIGHT_BOLD, FONT_SIZE_14, FONT_FAMILY_PT_REGULAR, FONT_WEIGHT_REGULAR, FONT_FAMILY_PT_BOLD} from '../../../utils/styles/typography';
@@ -254,16 +254,22 @@ const CorrespondencePropertiesPopup = (props) => {
        } else if (distribute == true) {
        if (config.fallback == 'en'){
         return (
+          
           <Card style={{marginTop:0,marginLeft:15,marginRight:15}}>
+             
              <CardItem>
                <Body>
-                 <View style={styles.textContainer}>
+                 <View style={styles.textContainerMdl}>
+                 <ScrollView>
                  <Text style={styles.nameText}>{t('InboxScreen:MDL')}:</Text>
                  <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:40,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{mdl ? mdl : 'N/A'}</Text>
+                 </ScrollView>
                </View>
-               <View style={styles.textContainer}>
+               <View style={styles.textContainerMdl}>
+               <ScrollView>
                  <Text style={styles.nameText}>{t('InboxScreen:AdHoc')}:</Text>
                  <Text style={{fontSize:14,fontWeight: FONT_WEIGHT_REGULAR,fontFamily:FONT_FAMILY_PT_REGULAR,color:'#43425d',marginLeft:28,marginRight:5,flexWrap: 'wrap', flexShrink:1}}>{adHoc ? adHoc: 'N/A'}</Text>
+                 </ScrollView>
                </View>
                <View style={styles.textContainer}>
                  <Text style={styles.nameText}>{t('InboxScreen:To')}:</Text>
@@ -280,6 +286,7 @@ const CorrespondencePropertiesPopup = (props) => {
                </Body>
              </CardItem>
            </Card>
+           
         );
        } else {
         return (
@@ -499,6 +506,15 @@ nameText: {
  marginBottom: 3,
  justifyContent: "flex-start",
 },
+textContainerMdl: {
+  flexDirection: "row",
+  marginLeft: 10,
+  marginRight: 5,
+  marginTop: 5,
+  marginBottom: 3,
+  justifyContent: "flex-start",
+  height:100
+ },
 textContainerArabic: {
   flexDirection: "row",
   marginLeft: 10,

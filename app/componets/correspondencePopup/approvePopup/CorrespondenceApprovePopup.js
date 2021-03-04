@@ -68,8 +68,9 @@ const CorrespondenceApprovePopup = (props) => {
                     console.log(res);
                     console.log(res.data)
                     if (res.data.statusCode == "200") {
-                      setIsback(true);
+                       
                       alertWithMessage("Approve sucessfully");  
+                      setIsback(true);
                     }  else {
                       setIsback(false);
                     }   
